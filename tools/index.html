@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="鑫瀚精密工業生產管理工具 - 稼動率追蹤器、報價單產生器等實用工具，提升製造效率與管理品質">
+    <meta name="keywords" content="生產管理工具, 稼動率追蹤, CNC報價單, 製造效率, 生產監控">
+    <title>生產管理工具 | 鑫瀚精密工業 | Production Tools</title>
+    
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --dark-blue: #1e3a8a;
+            --orange: #f59e0b;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --green: #059669;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: var(--gray-50);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            background: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin: -2rem -2rem 3rem -2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .tool-card h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .tool-card p {
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .tool-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .tool-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .tool-features li:before {
+            content: '✓';
+            color: var(--green);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .tool-button {
+            background: var(--orange);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .tool-button:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .header {
+                margin: -1rem -1rem 2rem -1rem;
+                padding: 2rem 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .tool-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← 回到首頁</a>
+        
+        <div class="header">
+            <h1>🛠️ 生產管理工具</h1>
+            <p>提升製造效率與管理品質的實用工具</p>
+        </div>
+
+        <div class="tools-grid">
+            <!-- 稼動率追蹤工具 -->
+            <div class="tool-card">
+                <span class="tool-icon">📊</span>
+                <h2>稼動率追蹤工具</h2>
+                <p>即時監控 26 台走心式車床的運作狀況，追蹤機台稼動率、停機時間分析，優化生產排程效率。</p>
+                
+                <ul class="tool-features">
+                    <li>即時機台狀態監控</li>
+                    <li>稼動率統計分析</li>
+                    <li>停機原因分類追蹤</li>
+                    <li>生產效率趨勢圖表</li>
+                    <li>月度/季度報告產生</li>
+                    <li>異常警示通知</li>
+                </ul>
+                
+                <a href="utilization-tracker/" class="tool-button">開始使用</a>
+            </div>
+
+            <!-- 報價單產生器 -->
+            <div class="tool-card">
+                <span class="tool-icon">💰</span>
+                <h2>線上報價產生器</h2>
+                <p>根據零件規格、材質、數量等參數，快速產生專業報價單。包含成本分析與交期評估。</p>
+                
+                <ul class="tool-features">
+                    <li>智慧成本計算系統</li>
+                    <li>材質價格自動更新</li>
+                    <li>交期評估與排程</li>
+                    <li>專業報價單格式</li>
+                    <li>報價有效期 30 天</li>
+                    <li>樣品費 NT$8,000 (可抵量產)</li>
+                </ul>
+                
+                <a href="quote-generator/" class="tool-button">立即報價</a>
+            </div>
+
+            <!-- 材質選擇指南 -->
+            <div class="tool-card">
+                <span class="tool-icon">🧪</span>
+                <h2>材質選擇指南</h2>
+                <p>協助選擇最適合的加工材質，包含 SUS304/316L、C3604、AL6061 等材料特性與應用建議。</p>
+                
+                <ul class="tool-features">
+                    <li>材質特性比較表</li>
+                    <li>應用領域建議</li>
+                    <li>加工性能評估</li>
+                    <li>成本效益分析</li>
+                    <li>表面處理選項</li>
+                    <li>材質認證資訊</li>
+                </ul>
+                
+                <a href="material-guide/" class="tool-button">查看指南</a>
+            </div>
+
+            <!-- 公差計算器 -->
+            <div class="tool-card">
+                <span class="tool-icon">📐</span>
+                <h2>公差計算器</h2>
+                <p>精密零件公差設計工具，協助工程師設定合理的公差範圍，平衡品質要求與製造成本。</p>
+                
+                <ul class="tool-features">
+                    <li>標準公差等級對照</li>
+                    <li>公差堆疊計算</li>
+                    <li>製造成本影響評估</li>
+                    <li>品質風險分析</li>
+                    <li>最佳化建議</li>
+                    <li>技術文件產生</li>
+                </ul>
+                
+                <a href="tolerance-calculator/" class="tool-button">開始計算</a>
+            </div>
+
+            <!-- 交期查詢系統 -->
+            <div class="tool-card">
+                <span class="tool-icon">📅</span>
+                <h2>交期查詢系統</h2>
+                <p>即時查詢訂單進度與預估交期，透明化生產流程，讓客戶隨時掌握訂單狀況。</p>
+                
+                <ul class="tool-features">
+                    <li>訂單即時狀態追蹤</li>
+                    <li>生產進度視覺化</li>
+                    <li>交期預測分析</li>
+                    <li>延期風險預警</li>
+                    <li>品質檢驗進度</li>
+                    <li>出貨準備狀態</li>
+                </ul>
+                
+                <a href="delivery-tracker/" class="tool-button">查詢訂單</a>
+            </div>
+
+            <!-- 品質管理系統 -->
+            <div class="tool-card">
+                <span class="tool-icon">🔍</span>
+                <h2>品質管理系統</h2>
+                <p>完整的品質管控工具，包含檢驗報告、統計製程管制、不良率分析等功能。</p>
+                
+                <ul class="tool-features">
+                    <li>首件檢驗報告產生</li>
+                    <li>SPC 統計製程管制</li>
+                    <li>品質趨勢分析</li>
+                    <li>不良品追蹤系統</li>
+                    <li>改善措施記錄</li>
+                    <li>客戶滿意度調查</li>
+                </ul>
+                
+                <a href="quality-system/" class="tool-button">進入系統</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "生產管理工具",
+        "description": "鑫瀚精密工業生產管理工具 - 稼動率追蹤器、報價單產生器等實用工具，提升製造效率與管理品質",
+        "url": "https://kinghan-cnc.com/tools/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "KingHan Precision Industry Co., Ltd.",
+            "url": "https://kinghan-cnc.com"
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "首頁",
+                    "item": "https://kinghan-cnc.com"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "生產管理工具",
+                    "item": "https://kinghan-cnc.com/tools/"
+                }
+            ]
+        }
+    }
+    </script>
+</body>
+</html>
