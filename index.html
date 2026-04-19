@@ -1,49 +1,1070 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鑫瀚精密工業 | KingHan Precision CNC</title>
-<style>
-body{font-family:-apple-system,sans-serif;max-width:800px;margin:0 auto;padding:40px 20px;color:#333;line-height:1.8}
-h1{color:#1a5276;border-bottom:3px solid #2980b9;padding-bottom:10px}
-h2{color:#2980b9;margin-top:30px}
-.contact{background:#f0f8ff;padding:20px;border-radius:10px;margin-top:30px}
-.contact p{margin:8px 0}
-ul{list-style:none;padding:0}
-ul li::before{content:"✅ "}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="鑫瀚精密工業 - 專業 CNC 走心式車床加工服務，26台 Citizen/Nomura 設備，主力加工區間 Ø3.0-25mm，精度±0.005mm">
+    <meta name="keywords" content="CNC加工, 走心式車床, 精密加工, Citizen, Nomura, SUS304, C3604, AL6061, 醫療零件, 航太零件">
+    <title>鑫瀚精密工業 | KingHan Precision Industry Co., Ltd. | 專業 CNC 加工服務</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kinghan-cnc.com/">
+    <meta property="og:title" content="鑫瀚精密工業 | KingHan Precision Industry">
+    <meta property="og:description" content="專業 CNC 走心式車床加工服務，26台設備，精度±0.005mm">
+    <meta property="og:image" content="https://kinghan-cnc.com/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kinghan-cnc.com/">
+    <meta property="twitter:title" content="鑫瀚精密工業 | KingHan Precision Industry">
+    <meta property="twitter:description" content="專業 CNC 走心式車床加工服務，26台設備，精度±0.005mm">
+    <meta property="twitter:image" content="https://kinghan-cnc.com/images/og-image.jpg">
+    
+    <!-- CSS -->
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --dark-blue: #1e3a8a;
+            --light-blue: #3b82f6;
+            --orange: #f59e0b;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--orange);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--orange);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .cta-button {
+            background: var(--orange);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            margin-top: 2rem;
+        }
+
+        .cta-button:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services */
+        .services {
+            background: var(--gray-50);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gray-900);
+        }
+
+        .service-card p {
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* Equipment */
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .equipment-card {
+            background: var(--gray-50);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .equipment-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .equipment-spec {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Materials */
+        .materials {
+            background: var(--gray-50);
+        }
+
+        .materials-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .material-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .material-item:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .material-item h4 {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Applications */
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .application-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-blue);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .application-card h3 {
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+        }
+
+        .application-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .application-card li {
+            padding: 0.3rem 0;
+            color: var(--gray-600);
+        }
+
+        .application-card li:before {
+            content: '✓';
+            color: var(--primary-blue);
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            color: var(--orange);
+            min-width: 20px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            color: var(--gray-800);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--gray-200);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: var(--dark-blue);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gray-900);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--orange);
+        }
+
+        .footer-section p,
+        .footer-section li {
+            color: var(--gray-300);
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--gray-300);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--orange);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-600);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--gray-400);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-blue);
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .services-grid,
+            .equipment-grid,
+            .materials-list,
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .loading {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        .loading.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-<h1>🏭 鑫瀚精密工業有限公司</h1>
-<h2>KingHan Precision Industry Co., Ltd.</h2>
-<p>專業走心式車床加工 | Swiss-Type CNC Lathe Machining</p>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">🏭 KingHan Precision</a>
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home">首頁</a></li>
+                    <li><a href="#services">服務</a></li>
+                    <li><a href="#equipment">設備</a></li>
+                    <li><a href="#materials">材質</a></li>
+                    <li><a href="#applications">應用</a></li>
+                    <li><a href="/blog/">技術文章</a></li>
+                    <li><a href="/tools/">工具</a></li>
+                    <li><a href="#contact">聯絡</a></li>
+                </ul>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+            </nav>
+        </div>
+    </header>
 
-<h2>我們的優勢</h2>
-<ul>
-<li>26 台走心式車床（Citizen / Nomura）</li>
-<li>主力加工區間 Ø3.0 ~ 25mm</li>
-<li>SUS304 / SUS316L / C3604 / AL6061 等多材質對應</li>
-<li>精度 ±0.005mm</li>
-<li>醫療、航太、汽車、電子零組件</li>
-<li>穩定量產 交期可控</li>
-</ul>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <h1 class="fade-in-up">鑫瀚精密工業</h1>
+            <p class="hero-subtitle fade-in-up">KingHan Precision Industry Co., Ltd.</p>
+            <p class="hero-subtitle fade-in-up">專業 CNC 走心式車床加工服務 | 精度 ±0.005mm</p>
+            
+            <div class="hero-stats loading">
+                <div class="stat">
+                    <span class="stat-number">26</span>
+                    <span class="stat-label">台走心式車床</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">±0.005</span>
+                    <span class="stat-label">mm 精度</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">Ø3.0~25</span>
+                    <span class="stat-label">mm 主力區間</span>
+                </div>
+            </div>
+            
+            <a href="#contact" class="cta-button">立即諮詢報價</a>
+        </div>
+    </section>
 
-<h2>加工能力</h2>
-<ul>
-<li>最小加工徑：Ø3.0mm</li>
-<li>主力區間：Ø3.0 ~ 25mm</li>
-<li>中階：Ø25 ~ 32mm</li>
-<li>最大：Ø40mm（特定機型）</li>
-</ul>
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <div class="section-title">
+                <h2>專業加工服務</h2>
+                <p>提供高精度、高品質的 CNC 走心式車床加工服務，滿足各行業的精密零件需求</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card loading">
+                    <div class="service-icon">🏥</div>
+                    <h3>醫療級加工</h3>
+                    <p>符合醫療器材標準的精密加工，包括手術器械、植入物零件等高精度醫療器材。</p>
+                </div>
+                <div class="service-card loading">
+                    <div class="service-icon">✈️</div>
+                    <h3>航太零件</h3>
+                    <p>航太等級的精密零件加工，嚴格品質控制，符合航空工業的高標準要求。</p>
+                </div>
+                <div class="service-card loading">
+                    <div class="service-icon">🚗</div>
+                    <h3>汽車零件</h3>
+                    <p>汽車工業精密零件加工，從引擎零件到精密電子元件，提供穩定量產服務。</p>
+                </div>
+                <div class="service-card loading">
+                    <div class="service-icon">📱</div>
+                    <h3>電子零件</h3>
+                    <p>電子產品精密零件加工，包括連接器、散熱零件等高精度電子元件。</p>
+                </div>
+                <div class="service-card loading">
+                    <div class="service-icon">⚙️</div>
+                    <h3>客製化加工</h3>
+                    <p>根據客戶需求提供客製化加工服務，從樣品製作到大量生產一條龍服務。</p>
+                </div>
+                <div class="service-card loading">
+                    <div class="service-icon">📦</div>
+                    <h3>量產服務</h3>
+                    <p>26台設備同時運作，提供穩定的量產能力，確保交期與品質的一致性。</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="contact">
-<h2>📞 聯絡我們</h2>
-<p>📞 電話：04-7863027</p>
-<p>📧 Email：HsinHancnc@gmail.com</p>
-<p>📍 地址：彰化縣彰化市寶廍路380號</p>
-<p>🌐 本站持續建置中，完整內容即將上線</p>
-</div>
+    <!-- Equipment Section -->
+    <section id="equipment" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>設備能力</h2>
+                <p>配備26台先進走心式車床，提供穩定可靠的精密加工服務</p>
+            </div>
+            <div class="equipment-grid">
+                <div class="equipment-card loading">
+                    <h3>設備品牌</h3>
+                    <div class="equipment-spec">Citizen / Nomura</div>
+                    <p>頂級走心式車床品牌</p>
+                </div>
+                <div class="equipment-card loading">
+                    <h3>設備數量</h3>
+                    <div class="equipment-spec">26 台</div>
+                    <p>大規模產線配置</p>
+                </div>
+                <div class="equipment-card loading">
+                    <h3>加工精度</h3>
+                    <div class="equipment-spec">±0.005 mm</div>
+                    <p>超高精度加工能力</p>
+                </div>
+                <div class="equipment-card loading">
+                    <h3>主力區間</h3>
+                    <div class="equipment-spec">Ø3.0~25 mm</div>
+                    <p>最佳效率加工範圍</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Materials Section -->
+    <section id="materials" class="section materials">
+        <div class="container">
+            <div class="section-title">
+                <h2>加工材質</h2>
+                <p>專精於各種金屬材料的精密加工，滿足不同行業的材料需求</p>
+            </div>
+            <div class="materials-list">
+                <div class="material-item loading">
+                    <h4>SUS304</h4>
+                    <p>不鏽鋼304</p>
+                </div>
+                <div class="material-item loading">
+                    <h4>SUS316L</h4>
+                    <p>醫療級不鏽鋼</p>
+                </div>
+                <div class="material-item loading">
+                    <h4>C3604</h4>
+                    <p>黃銅合金</p>
+                </div>
+                <div class="material-item loading">
+                    <h4>AL6061</h4>
+                    <p>鋁合金</p>
+                </div>
+                <div class="material-item loading">
+                    <h4>碳鋼</h4>
+                    <p>各級碳鋼</p>
+                </div>
+                <div class="material-item loading">
+                    <h4>合金鋼</h4>
+                    <p>特殊合金鋼</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section id="applications" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>應用領域</h2>
+                <p>我們的精密加工服務廣泛應用於各個關鍵產業</p>
+            </div>
+            <div class="applications-grid">
+                <div class="application-card loading">
+                    <h3>🏥 醫療器材</h3>
+                    <ul>
+                        <li>手術器械零件</li>
+                        <li>植入物零件</li>
+                        <li>檢測設備零件</li>
+                        <li>醫療儀器零件</li>
+                    </ul>
+                </div>
+                <div class="application-card loading">
+                    <h3>✈️ 航太工業</h3>
+                    <ul>
+                        <li>航空引擎零件</li>
+                        <li>航太電子零件</li>
+                        <li>飛機結構零件</li>
+                        <li>導航設備零件</li>
+                    </ul>
+                </div>
+                <div class="application-card loading">
+                    <h3>🚗 汽車工業</h3>
+                    <ul>
+                        <li>引擎零件</li>
+                        <li>傳動系統零件</li>
+                        <li>燃油系統零件</li>
+                        <li>制動系統零件</li>
+                    </ul>
+                </div>
+                <div class="application-card loading">
+                    <h3>📱 電子產業</h3>
+                    <ul>
+                        <li>連接器零件</li>
+                        <li>散熱零件</li>
+                        <li>精密軸心</li>
+                        <li>電子元件外殼</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>聯絡我們</h2>
+                <p>歡迎來電洽詢，我們將為您提供最專業的加工解決方案</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info loading">
+                    <h3>聯絡資訊</h3>
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <span>彰化縣彰化市寶廍路380號</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📞</i>
+                        <span>04-7863027</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>✉️</i>
+                        <span>HsinHancnc@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>🌐</i>
+                        <span>kinghan-cnc.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>🕒</i>
+                        <span>週一至週五 08:00 - 17:00</span>
+                    </div>
+                </div>
+                <div class="contact-form loading">
+                    <h3>線上諮詢</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">公司名稱</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">電子郵件</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">電話</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">需求說明</label>
+                            <textarea id="message" name="message" placeholder="請詳細描述您的加工需求..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">送出詢問</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>鑫瀚精密工業有限公司</h3>
+                    <p>KingHan Precision Industry Co., Ltd.</p>
+                    <p>專精於 CNC 走心式車床精密加工，提供高品質、高精度的加工服務。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>服務項目</h3>
+                    <ul>
+                        <li><a href="/blog/medical-cnc-machining/">醫療級加工</a></li>
+                        <li><a href="/blog/aerospace-precision-machining/">航太零件加工</a></li>
+                        <li><a href="/blog/swiss-vs-traditional-lathe/">走心式車床加工</a></li>
+                        <li><a href="/blog/cnc-tolerance-guide/">精密公差加工</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>加工材質</h3>
+                    <ul>
+                        <li><a href="/blog/stainless-steel-sus304/">不鏽鋼 SUS304/316L</a></li>
+                        <li><a href="/blog/brass-c3604-machining/">黃銅 C3604</a></li>
+                        <li><a href="/blog/aluminum-al6061-machining/">鋁合金 AL6061</a></li>
+                        <li><a href="/blog/swiss-material-selection/">其他合金材質</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>快速連結</h3>
+                    <ul>
+                        <li><a href="/tools/utilization-tracker/">稼動率追蹤</a></li>
+                        <li><a href="/tools/quote-generator/">線上報價</a></li>
+                        <li><a href="/blog/">技術文章</a></li>
+                        <li><a href="#contact">聯絡我們</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 鑫瀚精密工業有限公司 KingHan Precision Industry Co., Ltd. 保留所有權利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Loading animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('loaded');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all loading elements
+        document.querySelectorAll('.loading').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.name || !data.email || !data.message) {
+                alert('請填寫必填欄位');
+                return;
+            }
+            
+            // Create mailto link
+            const subject = encodeURIComponent('CNC 加工詢問 - ' + data.name);
+            const body = encodeURIComponent(
+                `姓名: ${data.name}\n` +
+                `公司: ${data.company || '未提供'}\n` +
+                `電話: ${data.phone || '未提供'}\n` +
+                `電子郵件: ${data.email}\n\n` +
+                `需求說明:\n${data.message}`
+            );
+            
+            const mailtoLink = `mailto:HsinHancnc@gmail.com?subject=${subject}&body=${body}`;
+            window.location.href = mailtoLink;
+            
+            // Reset form
+            this.reset();
+            alert('感謝您的詢問！系統將開啟您的郵件程式，請送出郵件給我們。我們將盡快回覆您。');
+        });
+
+        // Page loaded animations
+        window.addEventListener('load', function() {
+            document.querySelector('.hero-stats').classList.add('loaded');
+        });
+
+        // Header scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            const header = document.querySelector('header');
+            
+            if (currentScroll <= 0) {
+                header.style.transform = 'translateY(0)';
+                return;
+            }
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Add meta viewport for better mobile experience
+        if (!document.querySelector('meta[name="viewport"]')) {
+            const viewport = document.createElement('meta');
+            viewport.name = 'viewport';
+            viewport.content = 'width=device-width, initial-scale=1.0';
+            document.getElementsByTagName('head')[0].appendChild(viewport);
+        }
+    </script>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ManufacturingBusinessPlace",
+        "name": "鑫瀚精密工業有限公司",
+        "alternateName": "KingHan Precision Industry Co., Ltd.",
+        "description": "專業 CNC 走心式車床加工服務，26台 Citizen/Nomura 設備，主力加工區間 Ø3.0-25mm，精度±0.005mm",
+        "telephone": "+886-4-7863027",
+        "email": "HsinHancnc@gmail.com",
+        "url": "https://kinghan-cnc.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "寶廍路380號",
+            "addressLocality": "彰化市",
+            "addressRegion": "彰化縣",
+            "addressCountry": "TW"
+        },
+        "openingHours": "Mo-Fr 08:00-17:00",
+        "serviceArea": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": 24.0518,
+                "longitude": 120.5161
+            }
+        },
+        "makesOffer": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "CNC 走心式車床加工",
+                    "description": "精密零件加工服務"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "醫療級零件加工",
+                    "description": "符合醫療標準的精密加工"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "航太零件加工",
+                    "description": "航太等級精密零件製造"
+                }
+            }
+        ]
+    }
+    </script>
 </body>
 </html>
