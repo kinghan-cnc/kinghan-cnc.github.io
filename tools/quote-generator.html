@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="鑫瀚精密工業線上報價系統，快速計算CNC加工報價，包含材料成本、加工費用、交期評估">
+    <meta name="keywords" content="CNC報價, 線上報價, 加工報價計算, 精密加工報價">
+    <title>線上報價產生器 | 鑫瀚精密工業</title>
+    
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --orange: #f59e0b;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --green: #059669;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .header {
+            background: var(--primary-blue);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .form-container {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 2rem;
+        }
+
+        .form-panel {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .quote-panel {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .quote-summary {
+            background: var(--gray-50);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-total {
+            border-top: 2px solid var(--primary-blue);
+            padding-top: 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .calculate-btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .calculate-btn:hover {
+            background: var(--primary-blue);
+            opacity: 0.9;
+        }
+
+        .download-btn {
+            background: var(--orange);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+
+        .terms {
+            background: #fef3c7;
+            border: 1px solid #fcd34d;
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #92400e;
+        }
+
+        .terms h4 {
+            margin-bottom: 0.5rem;
+            color: #92400e;
+        }
+
+        .terms ul {
+            margin-left: 1rem;
+        }
+
+        .terms li {
+            margin-bottom: 0.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.5rem;
+            }
+            
+            .form-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .quote-panel {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../" class="back-link">← 回到工具頁面</a>
+            <h1>💰 線上報價產生器</h1>
+            <p>快速獲得精確的CNC加工報價</p>
+        </div>
+
+        <div class="form-container">
+            <div class="form-panel">
+                <h3>零件規格資訊</h3>
+                
+                <form id="quote-form">
+                    <div class="form-group">
+                        <label for="part-name">零件名稱 *</label>
+                        <input type="text" id="part-name" required placeholder="請輸入零件名稱">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="material">材質 *</label>
+                            <select id="material" required>
+                                <option value="">請選擇材質</option>
+                                <option value="sus304">SUS304 不鏽鋼</option>
+                                <option value="sus316l">SUS316L 醫療級不鏽鋼</option>
+                                <option value="c3604">C3604 黃銅</option>
+                                <option value="al6061">AL6061 鋁合金</option>
+                                <option value="carbon-steel">碳鋼 (S45C)</option>
+                                <option value="titanium">鈦合金 (Ti-6Al-4V)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quantity">數量 *</label>
+                            <input type="number" id="quantity" required min="1" placeholder="1">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="diameter">主要直徑 (mm) *</label>
+                            <input type="number" id="diameter" required min="3" max="40" step="0.1" placeholder="10.0">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="length">長度 (mm) *</label>
+                            <input type="number" id="length" required min="1" max="300" step="0.1" placeholder="50.0">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tolerance">公差等級</label>
+                            <select id="tolerance">
+                                <option value="standard">標準 (±0.02mm)</option>
+                                <option value="precision">精密 (±0.005mm)</option>
+                                <option value="ultra">超精密 (±0.002mm)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="surface-finish">表面粗糙度</label>
+                            <select id="surface-finish">
+                                <option value="standard">標準 (Ra 1.6μm)</option>
+                                <option value="fine">精細 (Ra 0.8μm)</option>
+                                <option value="mirror">鏡面 (Ra 0.1μm)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="complexity">加工複雜度</label>
+                        <select id="complexity">
+                            <option value="simple">簡單 (外徑車削)</option>
+                            <option value="medium">中等 (含內孔/螺紋)</option>
+                            <option value="complex">複雜 (多特徵/橫孔)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>需要樣品？</label>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <label style="font-weight: normal;">
+                                <input type="radio" name="sample" value="no" checked> 不需要
+                            </label>
+                            <label style="font-weight: normal;">
+                                <input type="radio" name="sample" value="yes"> 需要樣品 (+NT$8,000)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="delivery-date">期望交期</label>
+                        <input type="date" id="delivery-date">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="special-requirements">特殊需求</label>
+                        <textarea id="special-requirements" rows="3" placeholder="請描述任何特殊加工要求、表面處理、認證需求等..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="company-name">公司名稱 *</label>
+                            <input type="text" id="company-name" required placeholder="請輸入公司名稱">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-name">聯絡人 *</label>
+                            <input type="text" id="contact-name" required placeholder="請輸入聯絡人姓名">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">電子郵件 *</label>
+                            <input type="email" id="email" required placeholder="example@company.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">聯絡電話</label>
+                            <input type="tel" id="phone" placeholder="02-1234-5678">
+                        </div>
+                    </div>
+
+                    <button type="button" class="calculate-btn" onclick="calculateQuote()">
+                        💰 計算報價
+                    </button>
+                </form>
+            </div>
+
+            <div class="quote-panel">
+                <h3>報價估算</h3>
+                
+                <div class="quote-summary" id="quote-summary">
+                    <div class="quote-line">
+                        <span>材料費用:</span>
+                        <span id="material-cost">NT$ ---</span>
+                    </div>
+                    <div class="quote-line">
+                        <span>加工費用:</span>
+                        <span id="machining-cost">NT$ ---</span>
+                    </div>
+                    <div class="quote-line">
+                        <span>設定費用:</span>
+                        <span id="setup-cost">NT$ ---</span>
+                    </div>
+                    <div class="quote-line">
+                        <span>樣品費用:</span>
+                        <span id="sample-cost">NT$ 0</span>
+                    </div>
+                    <div class="quote-line quote-total">
+                        <span>總計:</span>
+                        <span id="total-cost">NT$ ---</span>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <strong>預估交期: </strong>
+                    <span id="estimated-delivery">請先計算報價</span>
+                </div>
+
+                <button type="button" class="download-btn" onclick="downloadQuote()" disabled id="download-btn">
+                    📄 下載報價單
+                </button>
+
+                <div class="terms">
+                    <h4>📋 報價條件</h4>
+                    <ul>
+                        <li><strong>報價有效期:</strong> 30天</li>
+                        <li><strong>樣品費用:</strong> NT$8,000 (可抵量產)</li>
+                        <li><strong>付款條件:</strong> 月結30天</li>
+                        <li><strong>交期計算:</strong> 收到訂單並確認圖面後起算</li>
+                        <li><strong>最小訂購量:</strong> 依零件複雜度而定</li>
+                        <li><strong>精度保證:</strong> 符合圖面標示公差</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 材料單價表 (NT$/kg)
+        const materialPrices = {
+            'sus304': 280,
+            'sus316l': 420,
+            'c3604': 320,
+            'al6061': 180,
+            'carbon-steel': 120,
+            'titanium': 1200
+        };
+
+        // 材料密度表 (g/cm³)
+        const materialDensities = {
+            'sus304': 8.0,
+            'sus316l': 8.0,
+            'c3604': 8.5,
+            'al6061': 2.7,
+            'carbon-steel': 7.8,
+            'titanium': 4.4
+        };
+
+        // 加工費率 (NT$/hour)
+        const machiningRates = {
+            'simple': 800,
+            'medium': 1200,
+            'complex': 1600
+        };
+
+        // 公差費率倍數
+        const toleranceMultipliers = {
+            'standard': 1.0,
+            'precision': 1.5,
+            'ultra': 2.0
+        };
+
+        // 表面粗糙度費率倍數
+        const surfaceFinishMultipliers = {
+            'standard': 1.0,
+            'fine': 1.3,
+            'mirror': 1.8
+        };
+
+        function calculateQuote() {
+            const formData = getFormData();
+            
+            if (!validateForm(formData)) {
+                alert('請填寫所有必填欄位');
+                return;
+            }
+
+            // 計算材料費用
+            const volume = Math.PI * Math.pow(formData.diameter / 2 / 10, 2) * (formData.length / 10); // cm³
+            const weight = volume * materialDensities[formData.material] / 1000; // kg
+            const materialCost = weight * materialPrices[formData.material] * formData.quantity;
+
+            // 計算加工時間 (基於零件複雜度和尺寸)
+            const baseTime = 0.5; // 基礎時間 (小時)
+            const sizeMultiplier = Math.max(0.1, formData.length / 100); // 長度影響
+            const diameterMultiplier = Math.max(0.1, formData.diameter / 20); // 直徑影響
+            const toleranceMultiplier = toleranceMultipliers[formData.tolerance];
+            const surfaceMultiplier = surfaceFinishMultipliers[formData.surfaceFinish];
+            
+            const machiningTime = baseTime * sizeMultiplier * diameterMultiplier * 
+                                toleranceMultiplier * surfaceMultiplier;
+            
+            const machiningCost = machiningTime * machiningRates[formData.complexity] * formData.quantity;
+
+            // 設定費用 (基礎費用，小批量分攤較高)
+            const setupCost = Math.max(2000, 8000 / Math.max(1, formData.quantity / 10));
+
+            // 樣品費用
+            const sampleCost = formData.sample === 'yes' ? 8000 : 0;
+
+            // 總計
+            const totalCost = materialCost + machiningCost + setupCost + sampleCost;
+
+            // 預估交期
+            const estimatedDays = calculateDeliveryTime(formData);
+
+            // 更新顯示
+            updateQuoteDisplay({
+                materialCost,
+                machiningCost,
+                setupCost,
+                sampleCost,
+                totalCost,
+                estimatedDays
+            });
+
+            // 啟用下載按鈕
+            document.getElementById('download-btn').disabled = false;
+        }
+
+        function getFormData() {
+            return {
+                partName: document.getElementById('part-name').value,
+                material: document.getElementById('material').value,
+                quantity: parseInt(document.getElementById('quantity').value) || 1,
+                diameter: parseFloat(document.getElementById('diameter').value) || 0,
+                length: parseFloat(document.getElementById('length').value) || 0,
+                tolerance: document.getElementById('tolerance').value,
+                surfaceFinish: document.getElementById('surface-finish').value,
+                complexity: document.getElementById('complexity').value,
+                sample: document.querySelector('input[name="sample"]:checked')?.value || 'no',
+                deliveryDate: document.getElementById('delivery-date').value,
+                specialRequirements: document.getElementById('special-requirements').value,
+                companyName: document.getElementById('company-name').value,
+                contactName: document.getElementById('contact-name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value
+            };
+        }
+
+        function validateForm(data) {
+            return data.partName && data.material && data.quantity > 0 && 
+                   data.diameter > 0 && data.length > 0 && 
+                   data.companyName && data.contactName && data.email;
+        }
+
+        function calculateDeliveryTime(data) {
+            let baseDays = 7; // 基礎交期
+            
+            if (data.quantity > 1000) baseDays += 5;
+            else if (data.quantity > 100) baseDays += 3;
+            
+            if (data.tolerance === 'ultra') baseDays += 3;
+            else if (data.tolerance === 'precision') baseDays += 1;
+            
+            if (data.complexity === 'complex') baseDays += 2;
+            else if (data.complexity === 'medium') baseDays += 1;
+            
+            if (data.sample === 'yes') baseDays += 3;
+            
+            return baseDays;
+        }
+
+        function updateQuoteDisplay(costs) {
+            document.getElementById('material-cost').textContent = `NT$ ${costs.materialCost.toLocaleString()}`;
+            document.getElementById('machining-cost').textContent = `NT$ ${costs.machiningCost.toLocaleString()}`;
+            document.getElementById('setup-cost').textContent = `NT$ ${costs.setupCost.toLocaleString()}`;
+            document.getElementById('sample-cost').textContent = `NT$ ${costs.sampleCost.toLocaleString()}`;
+            document.getElementById('total-cost').textContent = `NT$ ${costs.totalCost.toLocaleString()}`;
+            document.getElementById('estimated-delivery').textContent = `${costs.estimatedDays} 個工作天`;
+        }
+
+        function downloadQuote() {
+            const formData = getFormData();
+            
+            // 建立報價單內容
+            const quoteContent = generateQuoteDocument(formData);
+            
+            // 建立並下載文件
+            const blob = new Blob([quoteContent], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `鑫瀚精密_${formData.partName}_報價單_${new Date().toISOString().split('T')[0]}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function generateQuoteDocument(data) {
+            const date = new Date().toLocaleDateString('zh-TW');
+            const costs = getCurrentCosts();
+            
+            return `
+==============================================
+         鑫瀚精密工業有限公司 報價單
+==============================================
+
+報價日期：${date}
+報價編號：KH-${Date.now().toString().slice(-8)}
+
+客戶資訊
+----------------------------------------
+公司名稱：${data.companyName}
+聯絡人：${data.contactName}
+電子郵件：${data.email}
+聯絡電話：${data.phone || '未提供'}
+
+零件規格
+----------------------------------------
+零件名稱：${data.partName}
+材質：${document.getElementById('material').selectedOptions[0].text}
+數量：${data.quantity} pcs
+主要直徑：Ø${data.diameter}mm
+長度：${data.length}mm
+公差等級：${document.getElementById('tolerance').selectedOptions[0].text}
+表面粗糙度：${document.getElementById('surface-finish').selectedOptions[0].text}
+加工複雜度：${document.getElementById('complexity').selectedOptions[0].text}
+${data.sample === 'yes' ? '需要樣品：是 (NT$8,000)' : '需要樣品：否'}
+
+特殊需求：
+${data.specialRequirements || '無'}
+
+報價明細
+----------------------------------------
+材料費用：NT$ ${costs.materialCost.toLocaleString()}
+加工費用：NT$ ${costs.machiningCost.toLocaleString()}
+設定費用：NT$ ${costs.setupCost.toLocaleString()}
+樣品費用：NT$ ${costs.sampleCost.toLocaleString()}
+----------------------------------------
+總計：NT$ ${costs.totalCost.toLocaleString()}
+
+預估交期：${costs.estimatedDays} 個工作天
+
+報價條件
+----------------------------------------
+• 報價有效期：30天
+• 樣品費用：NT$8,000 (可抵量產)
+• 付款條件：月結30天
+• 交期計算：收到訂單並確認圖面後起算
+• 精度保證：符合圖面標示公差
+• 聯絡電話：04-7863027
+• 電子郵件：HsinHancnc@gmail.com
+
+==============================================
+          感謝您對鑫瀚精密的信賴
+==============================================
+            `;
+        }
+
+        function getCurrentCosts() {
+            return {
+                materialCost: parseInt(document.getElementById('material-cost').textContent.replace(/[^0-9]/g, '')) || 0,
+                machiningCost: parseInt(document.getElementById('machining-cost').textContent.replace(/[^0-9]/g, '')) || 0,
+                setupCost: parseInt(document.getElementById('setup-cost').textContent.replace(/[^0-9]/g, '')) || 0,
+                sampleCost: parseInt(document.getElementById('sample-cost').textContent.replace(/[^0-9]/g, '')) || 0,
+                totalCost: parseInt(document.getElementById('total-cost').textContent.replace(/[^0-9]/g, '')) || 0,
+                estimatedDays: parseInt(document.getElementById('estimated-delivery').textContent.match(/\d+/)?.[0]) || 0
+            };
+        }
+
+        // 樣品選項變更時更新顯示
+        document.querySelectorAll('input[name="sample"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const sampleCost = this.value === 'yes' ? 8000 : 0;
+                document.getElementById('sample-cost').textContent = `NT$ ${sampleCost.toLocaleString()}`;
+                
+                // 如果已經計算過報價，重新計算
+                if (!document.getElementById('download-btn').disabled) {
+                    calculateQuote();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
