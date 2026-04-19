@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="26台走心式車床稼動率即時追蹤系統，監控生產效率、停機分析、產能最佳化管理工具">
+    <meta name="keywords" content="稼動率追蹤, 機台監控, 生產效率, CNC稼動率, 製造監控">
+    <title>稼動率追蹤工具 | 鑫瀚精密工業</title>
+    
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --orange: #f59e0b;
+            --green: #059669;
+            --red: #dc2626;
+            --yellow: #d97706;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .header {
+            background: var(--primary-blue);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        .machines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .machine-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .machine-status {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .status-running { background: var(--green); }
+        .status-idle { background: var(--yellow); }
+        .status-maintenance { background: var(--red); }
+        .status-setup { background: var(--orange); }
+
+        .machine-id {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .machine-info {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-bottom: 0.3rem;
+        }
+
+        .utilization-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--gray-100);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .utilization-fill {
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .control-group select,
+        .control-group input {
+            padding: 0.5rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 5px;
+            background: white;
+        }
+
+        .refresh-btn {
+            background: var(--green);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            height: fit-content;
+            align-self: end;
+        }
+
+        .legend {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .alert {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.5rem;
+            }
+            
+            .machines-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../" class="back-link">← 回到工具頁面</a>
+            <h1>📊 稼動率追蹤系統</h1>
+            <p>26 台走心式車床即時監控</p>
+        </div>
+
+        <div class="alert">
+            <strong>系統提醒：</strong> 本工具為示範版本，實際生產環境需要整合 MES 系統或機台感測器數據。
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" style="color: var(--green);" id="overall-utilization">87.3%</div>
+                <div class="stat-label">整體稼動率</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color: var(--primary-blue);" id="running-machines">22</div>
+                <div class="stat-label">運行中機台</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color: var(--yellow);" id="idle-machines">3</div>
+                <div class="stat-label">待機中機台</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color: var(--red);" id="maintenance-machines">1</div>
+                <div class="stat-label">維護中機台</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>時間範圍</label>
+                <select id="time-range">
+                    <option value="today">今日</option>
+                    <option value="week">本週</option>
+                    <option value="month">本月</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>機台類型</label>
+                <select id="machine-type">
+                    <option value="all">全部機台</option>
+                    <option value="citizen">Citizen</option>
+                    <option value="nomura">Nomura</option>
+                </select>
+            </div>
+            <button class="refresh-btn" onclick="refreshData()">🔄 更新數據</button>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color status-running"></div>
+                <span>運行中</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color status-idle"></div>
+                <span>待機中</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color status-setup"></div>
+                <span>設定中</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color status-maintenance"></div>
+                <span>維護中</span>
+            </div>
+        </div>
+
+        <div class="machines-grid" id="machines-grid">
+            <!-- 機台卡片將由 JavaScript 生成 -->
+        </div>
+
+        <div class="chart-container">
+            <h3>稼動率趨勢圖</h3>
+            <canvas id="utilizationChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // 機台數據模擬
+        const machineData = [
+            {id: 'CNC-001', brand: 'Citizen', type: 'L20', status: 'running', utilization: 92.5, currentJob: 'J-2024-0156'},
+            {id: 'CNC-002', brand: 'Citizen', type: 'L25', status: 'running', utilization: 88.3, currentJob: 'J-2024-0157'},
+            {id: 'CNC-003', brand: 'Nomura', type: 'NN-20J', status: 'idle', utilization: 45.2, currentJob: null},
+            {id: 'CNC-004', brand: 'Citizen', type: 'K16', status: 'running', utilization: 94.1, currentJob: 'J-2024-0158'},
+            {id: 'CNC-005', brand: 'Citizen', type: 'L20', status: 'running', utilization: 86.7, currentJob: 'J-2024-0159'},
+            {id: 'CNC-006', brand: 'Nomura', type: 'NN-25J', status: 'setup', utilization: 15.3, currentJob: 'J-2024-0160'},
+            {id: 'CNC-007', brand: 'Citizen', type: 'L25', status: 'running', utilization: 91.8, currentJob: 'J-2024-0161'},
+            {id: 'CNC-008', brand: 'Citizen', type: 'K16', status: 'running', utilization: 89.4, currentJob: 'J-2024-0162'},
+            {id: 'CNC-009', brand: 'Nomura', type: 'NN-20J', status: 'maintenance', utilization: 0, currentJob: null},
+            {id: 'CNC-010', brand: 'Citizen', type: 'L20', status: 'running', utilization: 93.2, currentJob: 'J-2024-0163'},
+            {id: 'CNC-011', brand: 'Citizen', type: 'L25', status: 'running', utilization: 87.6, currentJob: 'J-2024-0164'},
+            {id: 'CNC-012', brand: 'Nomura', type: 'NN-25J', status: 'running', utilization: 90.1, currentJob: 'J-2024-0165'},
+            {id: 'CNC-013', brand: 'Citizen', type: 'K16', status: 'idle', utilization: 42.8, currentJob: null},
+            {id: 'CNC-014', brand: 'Citizen', type: 'L20', status: 'running', utilization: 95.3, currentJob: 'J-2024-0166'},
+            {id: 'CNC-015', brand: 'Citizen', type: 'L25', status: 'running', utilization: 88.9, currentJob: 'J-2024-0167'},
+            {id: 'CNC-016', brand: 'Nomura', type: 'NN-20J', status: 'running', utilization: 91.5, currentJob: 'J-2024-0168'},
+            {id: 'CNC-017', brand: 'Citizen', type: 'K16', status: 'running', utilization: 86.2, currentJob: 'J-2024-0169'},
+            {id: 'CNC-018', brand: 'Citizen', type: 'L20', status: 'running', utilization: 92.7, currentJob: 'J-2024-0170'},
+            {id: 'CNC-019', brand: 'Nomura', type: 'NN-25J', status: 'idle', utilization: 38.4, currentJob: null},
+            {id: 'CNC-020', brand: 'Citizen', type: 'L25', status: 'running', utilization: 89.8, currentJob: 'J-2024-0171'},
+            {id: 'CNC-021', brand: 'Citizen', type: 'K16', status: 'running', utilization: 93.6, currentJob: 'J-2024-0172'},
+            {id: 'CNC-022', brand: 'Nomura', type: 'NN-20J', status: 'running', utilization: 87.3, currentJob: 'J-2024-0173'},
+            {id: 'CNC-023', brand: 'Citizen', type: 'L20', status: 'running', utilization: 91.2, currentJob: 'J-2024-0174'},
+            {id: 'CNC-024', brand: 'Citizen', type: 'L25', status: 'running', utilization: 88.7, currentJob: 'J-2024-0175'},
+            {id: 'CNC-025', brand: 'Nomura', type: 'NN-25J', status: 'running', utilization: 90.4, currentJob: 'J-2024-0176'},
+            {id: 'CNC-026', brand: 'Citizen', type: 'K16', status: 'running', utilization: 94.8, currentJob: 'J-2024-0177'}
+        ];
+
+        function renderMachines() {
+            const grid = document.getElementById('machines-grid');
+            const machineType = document.getElementById('machine-type').value;
+            
+            let filteredMachines = machineData;
+            if (machineType !== 'all') {
+                filteredMachines = machineData.filter(machine => 
+                    machine.brand.toLowerCase() === machineType
+                );
+            }
+
+            grid.innerHTML = filteredMachines.map(machine => `
+                <div class="machine-card">
+                    <div class="machine-status status-${machine.status}"></div>
+                    <div class="machine-id">${machine.id}</div>
+                    <div class="machine-info">${machine.brand} ${machine.type}</div>
+                    <div class="machine-info">稼動率: ${machine.utilization}%</div>
+                    ${machine.currentJob ? 
+                        `<div class="machine-info">工單: ${machine.currentJob}</div>` : 
+                        '<div class="machine-info">無作業中工單</div>'
+                    }
+                    <div class="utilization-bar">
+                        <div class="utilization-fill" style="width: ${machine.utilization}%; background: ${getUtilizationColor(machine.utilization)};"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getUtilizationColor(utilization) {
+            if (utilization >= 85) return '#059669';
+            if (utilization >= 70) return '#d97706';
+            return '#dc2626';
+        }
+
+        function updateStats() {
+            const runningCount = machineData.filter(m => m.status === 'running').length;
+            const idleCount = machineData.filter(m => m.status === 'idle').length;
+            const maintenanceCount = machineData.filter(m => m.status === 'maintenance').length;
+            const totalUtilization = machineData.reduce((sum, m) => sum + m.utilization, 0) / machineData.length;
+
+            document.getElementById('overall-utilization').textContent = totalUtilization.toFixed(1) + '%';
+            document.getElementById('running-machines').textContent = runningCount;
+            document.getElementById('idle-machines').textContent = idleCount;
+            document.getElementById('maintenance-machines').textContent = maintenanceCount;
+        }
+
+        function refreshData() {
+            // 模擬數據更新
+            machineData.forEach(machine => {
+                if (machine.status === 'running') {
+                    machine.utilization = Math.max(0, Math.min(100, 
+                        machine.utilization + (Math.random() - 0.5) * 5
+                    ));
+                }
+            });
+
+            renderMachines();
+            updateStats();
+            
+            // 顯示更新提示
+            const btn = document.querySelector('.refresh-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✅ 已更新';
+            btn.style.background = '#059669';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '#059669';
+            }, 2000);
+        }
+
+        function drawChart() {
+            const canvas = document.getElementById('utilizationChart');
+            const ctx = canvas.getContext('2d');
+            
+            // 簡單的趨勢圖
+            const hours = Array.from({length: 24}, (_, i) => i);
+            const utilizationData = hours.map(h => 75 + Math.sin(h / 24 * Math.PI * 2) * 15 + Math.random() * 10);
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // 繪製網格
+            ctx.strokeStyle = '#e5e7eb';
+            ctx.lineWidth = 1;
+            
+            for (let i = 0; i <= 10; i++) {
+                const y = i * 20;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+            
+            // 繪製曲線
+            ctx.strokeStyle = '#1e40af';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            
+            utilizationData.forEach((utilization, index) => {
+                const x = (index / (utilizationData.length - 1)) * canvas.width;
+                const y = canvas.height - (utilization / 100 * canvas.height);
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            
+            ctx.stroke();
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMachines();
+            updateStats();
+            drawChart();
+            
+            // 綁定事件
+            document.getElementById('machine-type').addEventListener('change', renderMachines);
+            
+            // 自動更新（每30秒）
+            setInterval(refreshData, 30000);
+        });
+    </script>
+</body>
+</html>
