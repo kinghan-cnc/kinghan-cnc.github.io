@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鋁合金CNC加工指南：選材、工藝與注意事項｜鑫瀚精密</title>
+<meta name="description" content="鋁合金是CNC加工最常見的材料之一。本文比較6061、7075、2024等常見鋁合金型號，解析加工工藝、表面處理與選材建議。">
+<link rel="canonical" href="https://kinghan-cnc.com/zh/blog/aluminum-guide.html">
+<link rel="icon" type="image/png" href="../../logo.png">
+<style>
+:root{--bg-dark:#0d1117;--bg-section:#161b22;--bg-card:#1c2333;--accent:#f0a500;--text:#e6edf3;--text-dim:#8b949e;--border:#30363d}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:-apple-system,'Segoe UI','Noto Sans TC',sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.8}
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,17,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:0 2rem;height:64px}
+.logo{font-size:1.1rem;font-weight:700;color:var(--accent);letter-spacing:1px;display:flex;align-items:center;gap:10px;text-decoration:none}.logo img{height:36px;width:36px;border-radius:50%}.logo span{color:var(--text);font-weight:400}
+nav ul{list-style:none;display:flex;gap:1.5rem}nav a{color:var(--text-dim);text-decoration:none;font-size:0.9rem}nav a:hover{color:var(--accent)}
+.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+.lang-switch{background:none;border:1px solid var(--accent);color:var(--accent);padding:4px 12px;border-radius:4px;font-size:0.85rem;text-decoration:none}
+article{max-width:780px;margin:0 auto;padding:120px 2rem 80px}
+article h1{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:0.5rem}
+.meta{color:var(--text-dim);font-size:0.9rem;margin-bottom:2rem}
+article h2{color:var(--accent);font-size:1.4rem;margin:2.5rem 0 1rem;border-left:3px solid var(--accent);padding-left:1rem}
+article h3{color:var(--text);font-size:1.15rem;margin:1.5rem 0 0.5rem}
+article p{color:var(--text-dim);margin-bottom:1rem;font-size:1.05rem}
+article ul{color:var(--text-dim);margin:0 0 1rem 1.5rem}article li{margin-bottom:0.5rem}
+article strong{color:var(--text)}
+.compare-table{width:100%;border-collapse:collapse;margin:1.5rem 0}
+.compare-table th,.compare-table td{padding:0.8rem 1rem;border:1px solid var(--border);text-align:left;font-size:0.95rem}
+.compare-table th{background:var(--bg-card);color:var(--accent);font-weight:700}
+.compare-table td{color:var(--text-dim)}
+.cta-box{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2rem;text-align:center;margin:3rem 0}
+.cta-box h3{margin-bottom:0.5rem}.cta-box p{color:var(--text-dim);margin-bottom:1rem}
+.btn{display:inline-block;padding:12px 32px;background:var(--accent);color:#000;font-weight:700;text-decoration:none;border-radius:4px}
+.related{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}.related h3{margin-bottom:1rem;color:var(--accent)}.related a{color:var(--text-dim);text-decoration:none;display:block;margin-bottom:0.5rem}.related a:hover{color:var(--accent)}
+footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-dim);font-size:0.85rem}
+@media(max-width:768px){nav ul{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(13,17,23,0.98);padding:1rem 2rem;gap:1rem}nav ul.open{display:flex}.nav-toggle{display:block}.compare-table{font-size:0.85rem}.compare-table th,.compare-table td{padding:0.5rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/zh/" class="logo"><img src="../../logo.png" alt="鑫瀚">鑫瀚精密 <span>KING HAN</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="/zh/">首頁</a></li>
+    <li><a href="/zh/about.html">關於我們</a></li>
+    <li><a href="/zh/services.html">服務項目</a></li>
+    <li><a href="/zh/contact.html">聯絡我們</a></li>
+    <li><a href="/" class="lang-switch">EN</a></li>
+  </ul>
+</nav>
+
+<article>
+  <h1>鋁合金CNC加工指南：選材、工藝與注意事項</h1>
+  <p class="meta">鑫瀚精密工業｜CNC加工知識</p>
+
+  <p>鋁合金因為重量輕、切削性好、可陽極處理，是CNC加工中最受歡迎的材料之一。但不同型號的鋁合金特性差異很大，選對材料是控制成本與品質的第一步。</p>
+
+  <h2>常見鋁合金型號比較</h2>
+  <table class="compare-table">
+    <tr><th>型號</th><th>特性</th><th>常見用途</th><th>加工性</th></tr>
+    <tr><td><strong>6061-T6</strong></td><td>通用型，強度中等，耐腐蝕</td><td>結構件、治具、3C外殼</td><td>★★★★★</td></tr>
+    <tr><td><strong>7075-T6</strong></td><td>高強度，接近鋼材</td><td>航太、高應力結構件</td><td>★★★★☆</td></tr>
+    <tr><td><strong>2024-T4</strong></td><td>高強度，抗疲勞</td><td>航太、軍工</td><td>★★★☆☆</td></tr>
+    <tr><td><strong>5052</strong></td><td>耐腐蝕、可焊接</td><td>海洋、化工設備</td><td>★★★★☆</td></tr>
+    <tr><td><strong>6063-T5</strong></td><td>擠型用，表面美觀</td><td>建築、裝飾、散熱器</td><td>★★★★★</td></tr>
+  </table>
+
+  <h2>鋁合金加工的優勢</h2>
+  <ul>
+    <li><strong>切削效率高：</strong>鋁的切削速度是鋼材的3-5倍，加工工時短</li>
+    <li><strong>刀具壽命長：</strong>鋁合金對刀具磨損小，降低刀具成本</li>
+    <li><strong>表面處理豐富：</strong>陽極處理可實現多種顏色，美觀且耐磨</li>
+    <li><strong>重量輕：</strong>密度僅鋼材的1/3，適合輕量化設計</li>
+    <li><strong>材料成本低：</strong>相較鈦合金、不鏽鋼，鋁合金價格親民</li>
+  </ul>
+
+  <h2>加工注意事項</h2>
+
+  <h3>1. 切削參數</h3>
+  <p>鋁合金適合高轉速、高進給加工。走心式車床加工鋁合金時，通常使用：</p>
+  <ul>
+    <li>切削速度：200–500 m/min</li>
+    <li>進給率：0.05–0.3 mm/rev</li>
+    <li>使用鋒利的正角刀具，減少積屑瘤</li>
+  </ul>
+
+  <h3>2. 散熱與潤滑</h3>
+  <p>鋁合金導熱快，但切削溫度高時容易產生<strong>積屑瘤（BUE）</strong>，影響表面品質。充分的切削液供應是關鍵。</p>
+
+  <h3>3. 毛刺處理</h3>
+  <p>鋁合金韌性好，加工後容易產生毛刺。需要在製程中規劃去毛刺工序，或在設計時避免容易產生毛刺的特徵。</p>
+
+  <h3>4. 表面處理選擇</h3>
+  <ul>
+    <li><strong>陽極處理：</strong>最常見，Type II（裝飾）或Type III（硬質陽極）</li>
+    <li><strong>噴砂+陽極：</strong>霧面質感，3C產品常用</li>
+    <li><strong>化學鍍鎳：</strong>提升耐磨性與導電性</li>
+    <li><strong>鉻酸鹽轉化（Alodine）：</strong>導電性佳，航太常用</li>
+  </ul>
+
+  <h2>鑫瀚的鋁合金加工服務</h2>
+  <p>鑫瀚精密的走心式車床擁有豐富的鋁合金加工經驗，特別擅長 ø3.0–25mm 的鋁合金精密零件。從6061通用零件到7075航太級零件，我們都能穩定供應。</p>
+
+  <div class="cta-box">
+    <h3>需要鋁合金零件加工？</h3>
+    <p>走心式車床高效加工，量產價格有競爭力。</p>
+    <a href="/zh/contact.html" class="btn">立即詢價 ➜</a>
+  </div>
+
+  <div class="related">
+    <h3>相關文章</h3>
+    <a href="/zh/blog/cnc-pricing-guide.html">→ CNC加工報價怎麼算？</a>
+    <a href="/zh/blog/what-is-swiss-type-cnc.html">→ 走心式車床是什麼？</a>
+    <a href="/zh/blog/swiss-vs-conventional.html">→ 走心式 vs 走刀式車床比較</a>
+  </div>
+</article>
+
+<footer>
+  <p>&copy; 2026 鑫瀚精密工業有限公司</p>
+  <p style="margin-top:0.5rem"><a href="/zh/" style="color:var(--text-dim)">首頁</a> ｜ <a href="/zh/services.html" style="color:var(--text-dim)">服務項目</a> ｜ <a href="/zh/contact.html" style="color:var(--text-dim)">聯絡我們</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swiss-Type CNC Turning: Complete Guide for Engineers & Buyers | KING HAN Blog</title>
+<meta name="description" content="Complete guide to Swiss-type CNC turning — how it works, when to use it, materials, tolerances, cost factors, and how to source Swiss-turned parts for your project.">
+<meta name="keywords" content="Swiss-type CNC turning, Swiss turning guide, Swiss lathe machining, precision turned parts, Swiss screw machine, CNC turning">
+<link rel="icon" type="image/png" href="../logo.png">
+<link rel="canonical" href="https://kinghan-cnc.com/blog/swiss-type-cnc-turning-guide.html">
+<style>
+  :root{--bg-dark:#0d1117;--bg-section:#161b22;--bg-card:#1c2333;--accent:#f0a500;--accent-dim:#c48800;--text:#e6edf3;--text-dim:#8b949e;--border:#30363d}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.8}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,17,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:0 2rem;height:64px}
+  .logo{font-size:1.1rem;font-weight:700;color:var(--accent);letter-spacing:1px;display:flex;align-items:center;gap:10px;text-decoration:none}
+  .logo img{height:36px;width:36px;border-radius:50%}.logo span{color:var(--text);font-weight:400}
+  nav ul{list-style:none;display:flex;gap:1.5rem}
+  nav a{color:var(--text-dim);text-decoration:none;font-size:0.9rem;transition:color 0.2s}nav a:hover{color:var(--accent)}
+  .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+  .article-header{padding:120px 2rem 40px;text-align:center;background:linear-gradient(160deg,#0d1117 0%,#1a1f2e 50%,#0d1117 100%)}
+  .article-header h1{font-size:clamp(1.8rem,4vw,2.5rem);max-width:800px;margin:0 auto 1rem}
+  .article-header .meta{color:var(--text-dim);font-size:0.9rem}
+  .article{max-width:760px;margin:0 auto;padding:3rem 2rem}
+  .article h2{font-size:1.5rem;margin:2.5rem 0 1rem;color:var(--accent)}
+  .article h3{font-size:1.2rem;margin:2rem 0 0.8rem}
+  .article p{color:var(--text-dim);margin-bottom:1.2rem;font-size:1.02rem}
+  .article ul,.article ol{color:var(--text-dim);margin:0 0 1.2rem 1.5rem;font-size:1.02rem}
+  .article li{margin-bottom:0.5rem}
+  .article strong{color:var(--text)}
+  .article a{color:var(--accent);text-decoration:none}.article a:hover{text-decoration:underline}
+  .back-link{display:inline-block;margin-bottom:2rem;color:var(--accent);text-decoration:none;font-size:0.9rem}
+  .back-link:hover{text-decoration:underline}
+  .cta-box{background:var(--bg-card);border:1px solid var(--accent);border-radius:8px;padding:2rem;margin-top:3rem;text-align:center}
+  .cta-box h3{color:var(--accent);margin-bottom:0.5rem;font-size:1.3rem}
+  .cta-box p{color:var(--text-dim);margin-bottom:1rem}
+  .cta-box a{display:inline-block;background:var(--accent);color:#0d1117;padding:0.7rem 2rem;border-radius:6px;font-weight:700;text-decoration:none;transition:background 0.3s}
+  .cta-box a:hover{background:var(--accent-dim)}
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0}
+  th,td{border:1px solid var(--border);padding:0.6rem 1rem;text-align:left;font-size:0.95rem;color:var(--text-dim)}
+  th{background:var(--bg-card);color:var(--text);font-weight:600}
+  footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-dim);font-size:0.85rem}
+  @media(max-width:768px){nav ul{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(13,17,23,0.98);padding:1rem 2rem;gap:1rem}nav ul.open{display:flex}.nav-toggle{display:block}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is Swiss-type CNC turning?", "acceptedAnswer": {"@type": "Answer", "text": "Swiss-type CNC turning is a precision machining process that uses a sliding headstock and guide bushing to support the workpiece close to the cutting tool. This design minimizes deflection, enabling extremely tight tolerances (±0.005 mm) on small-diameter parts, typically under 32 mm."}},
+    {"@type": "Question", "name": "What tolerances can Swiss-type CNC turning achieve?", "acceptedAnswer": {"@type": "Answer", "text": "Swiss-type CNC lathes routinely hold tolerances of ±0.005 mm (±0.0002 in) on diameters and ±0.01 mm on lengths. With careful setup and climate-controlled environments, some operations can achieve ±0.002 mm."}},
+    {"@type": "Question", "name": "What materials can be Swiss-turned?", "acceptedAnswer": {"@type": "Answer", "text": "Swiss-type lathes can machine virtually any bar-stock material including stainless steel (303, 304, 316), brass, aluminum, titanium, copper, Inconel, PEEK, Delrin, and other engineering plastics and exotic alloys."}},
+    {"@type": "Question", "name": "When should I choose Swiss turning over conventional CNC turning?", "acceptedAnswer": {"@type": "Answer", "text": "Choose Swiss turning when your part has a length-to-diameter ratio greater than 3:1, requires tight tolerances under ±0.01 mm, has a diameter under 32 mm, or needs multiple operations (turning, milling, drilling, threading) completed in one setup to reduce cycle time and improve accuracy."}},
+    {"@type": "Question", "name": "How much do Swiss-turned parts cost?", "acceptedAnswer": {"@type": "Answer", "text": "Swiss-turned part costs depend on material, complexity, tolerances, and batch size. Simple brass pins may cost $0.15–$0.50 each at volume, while complex stainless steel medical components can range from $2–$15 each. Setup costs are higher than conventional turning, so Swiss machining is most cost-effective at quantities above 500 pieces."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="../logo.png" alt="KH Logo">KING HAN <span>PRECISION</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sourcing-service.html">Sourcing Service</a></li>
+    <li><a href="/blog/" style="color:var(--accent);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="article-header">
+  <h1>Swiss-Type CNC Turning: Complete Guide for Engineers & Buyers</h1>
+  <div class="meta">February 22, 2026 · 12 min read</div>
+</div>
+
+<div class="article">
+  <a href="/blog/" class="back-link">← Back to Blog</a>
+
+  <p>Swiss-type CNC turning is the gold standard for producing small, complex, high-precision turned parts. Originally developed in Switzerland for watchmaking, this technology has evolved into a critical manufacturing process serving aerospace, medical devices, electronics, automotive, and defense industries worldwide.</p>
+
+  <p>Whether you're an engineer specifying parts for a new product or a procurement professional evaluating machining options, understanding Swiss-type turning will help you make better sourcing decisions and design more manufacturable parts. This comprehensive guide covers everything from the fundamental mechanics to practical sourcing strategies.</p>
+
+  <h2>How Swiss-Type CNC Turning Works</h2>
+
+  <p>The defining feature of a Swiss-type lathe is its <strong>sliding headstock</strong> combined with a <strong>guide bushing</strong>. Unlike conventional CNC lathes where the workpiece extends unsupported from the chuck, Swiss-type machines feed bar stock through a precision guide bushing positioned just millimeters from the cutting tool.</p>
+
+  <p>This seemingly simple design difference has profound implications for machining capability:</p>
+
+  <ul>
+    <li><strong>Minimal deflection:</strong> The guide bushing supports the workpiece at the point of cutting, virtually eliminating the bending forces that limit conventional turning accuracy on long, slender parts.</li>
+    <li><strong>Sliding Z-axis:</strong> The headstock moves along the Z-axis (length direction) while the tool remains relatively stationary. This means the unsupported length of material between the guide bushing and the tool never exceeds a few millimeters, regardless of the part's total length.</li>
+    <li><strong>Multiple tool stations:</strong> Modern Swiss-type CNC lathes feature 5 to 13 axes with gang-type tool posts, back-working spindles, and live tooling positions that can perform turning, milling, drilling, cross-drilling, threading, and knurling — all in a single setup.</li>
+  </ul>
+
+  <h3>The Single-Setup Advantage</h3>
+
+  <p>One of the most significant benefits of Swiss turning is <strong>complete part machining in one operation</strong>. A conventional CNC approach might require turning on a lathe, then transferring to a mill for cross-holes and flats, then back to another lathe for back-side features. Each transfer introduces positioning errors and increases lead time.</p>
+
+  <p>With a Swiss-type machine equipped with a sub-spindle, the part is automatically transferred after front-side operations to complete back-side features — all within the same cycle. The result is higher accuracy, lower per-part cost at volume, and dramatically reduced work-in-progress inventory.</p>
+
+  <h2>Key Specifications and Capabilities</h2>
+
+  <table>
+    <tr><th>Parameter</th><th>Typical Range</th><th>Notes</th></tr>
+    <tr><td>Bar stock diameter</td><td>1 mm – 38 mm</td><td>Most common: 3–25 mm</td></tr>
+    <tr><td>Part length</td><td>Up to 300 mm</td><td>L/D ratios of 20:1 or higher</td></tr>
+    <tr><td>Diameter tolerance</td><td>±0.005 mm</td><td>±0.002 mm achievable</td></tr>
+    <tr><td>Length tolerance</td><td>±0.01 mm</td><td>Dependent on material</td></tr>
+    <tr><td>Surface finish</td><td>Ra 0.2 – 0.8 µm</td><td>As-machined, no polishing</td></tr>
+    <tr><td>Spindle speed</td><td>Up to 12,000 RPM</td><td>Some machines reach 15,000+</td></tr>
+    <tr><td>Number of axes</td><td>5 – 13</td><td>More axes = more simultaneous operations</td></tr>
+  </table>
+
+  <h2>Materials for Swiss-Type CNC Turning</h2>
+
+  <p>Swiss-type lathes can process virtually any material available in bar stock form. However, material selection significantly impacts tool life, cycle time, and achievable tolerances. Here's what you need to know about the most commonly Swiss-turned materials:</p>
+
+  <h3>Free-Machining Metals (Best Performance)</h3>
+  <ul>
+    <li><strong>Brass (C36000):</strong> The easiest material to Swiss-turn. Excellent chip breaking, long tool life, fast cycle times. Ideal for electrical connectors, fittings, and valve components.</li>
+    <li><strong>Free-machining stainless steel (303):</strong> Contains sulfur for improved machinability. Standard choice for non-critical corrosion-resistant parts.</li>
+    <li><strong>12L14 steel:</strong> Lead-bearing carbon steel with exceptional machinability. Common for automotive pins, shafts, and high-volume hardware.</li>
+    <li><strong>Aluminum (6061-T6, 2011):</strong> Very fast machining speeds. 2011 is the best free-machining aluminum alloy for Swiss turning. See our <a href="/blog/aluminum-cnc-machining-guide.html">aluminum CNC machining guide</a> for alloy details.</li>
+  </ul>
+
+  <h3>Challenging but Achievable Materials</h3>
+  <ul>
+    <li><strong>316 stainless steel:</strong> Work-hardens during cutting. Requires sharp tooling, proper speeds/feeds, and high-pressure coolant. Common for <a href="/blog/cnc-machining-medical-device-parts.html">medical device components</a>.</li>
+    <li><strong>Titanium (Grade 2 & Grade 5):</strong> Low thermal conductivity causes heat buildup at the tool tip. Requires specialized coatings and reduced cutting speeds. Essential for medical implants and aerospace.</li>
+    <li><strong>Inconel and Hastelloy:</strong> Extreme work-hardening and abrasive chip formation. Only shops with specific expertise should attempt these superalloys.</li>
+    <li><strong>PEEK and engineering plastics:</strong> Require different tool geometries (sharp, uncoated) and careful temperature management to avoid melting or burr formation.</li>
+  </ul>
+
+  <h2>When to Choose Swiss-Type CNC Turning</h2>
+
+  <p>Swiss turning isn't always the right choice. It excels in specific scenarios and may be overkill (or underkill) for others. Here's a practical decision framework:</p>
+
+  <h3>Swiss Turning Is Ideal When:</h3>
+  <ul>
+    <li>Part diameter is <strong>under 32 mm</strong> (under 25 mm is the sweet spot)</li>
+    <li>Length-to-diameter ratio exceeds <strong>3:1</strong></li>
+    <li>Tolerances are <strong>±0.01 mm or tighter</strong></li>
+    <li>Part requires <strong>multiple operations</strong> (turning + milling + drilling + threading)</li>
+    <li>Production volumes are <strong>500+ pieces</strong> (to justify setup costs)</li>
+    <li>Surface finish requirements are <strong>Ra 0.8 µm or better</strong></li>
+    <li>Part geometry includes features like cross-holes, flats, knurling, or threads</li>
+  </ul>
+
+  <h3>Consider Conventional CNC Turning When:</h3>
+  <ul>
+    <li>Part diameter exceeds 38 mm</li>
+    <li>Simple geometry with no secondary operations needed</li>
+    <li>Low volumes (under 100 pieces) with no repeat orders</li>
+    <li>Tolerances are ±0.05 mm or looser</li>
+  </ul>
+
+  <p>For a detailed comparison, see our article on <a href="/blog/swiss-type-vs-conventional-cnc.html">Swiss-type vs. conventional CNC lathes</a>.</p>
+
+  <h2>Industries and Applications</h2>
+
+  <p>Swiss-type CNC turning serves a remarkably diverse range of industries, each with specific requirements:</p>
+
+  <h3>Medical Devices</h3>
+  <p>Bone screws, dental implants, surgical instrument shafts, catheter tips, and endoscopic components. Medical Swiss turning demands <a href="/blog/cnc-material-certifications.html">material certifications</a>, cleanroom-compatible processes, and full traceability. Materials include 316L stainless, titanium Grade 5, and cobalt-chrome alloys.</p>
+
+  <h3>Aerospace & Defense</h3>
+  <p>Connector pins, actuator shafts, hydraulic fittings, sensor housings, and ordnance components. Aerospace Swiss parts require AS9100 compliance, lot traceability, and often first-article inspection reports (FAIRs).</p>
+
+  <h3>Electronics & Connectors</h3>
+  <p>Contact pins, socket terminals, RF connectors, test probe tips, and PCB standoffs. These parts are typically brass or beryllium copper, produced in volumes of 10,000 to millions. Cycle times under 15 seconds are common.</p>
+
+  <h3>Automotive</h3>
+  <p>Fuel injector components, ABS sensor pins, transmission valve spools, and turbocharger shaft components. Automotive Swiss turning emphasizes high-volume consistency and statistical process control (SPC).</p>
+
+  <h3>Hydraulics & Pneumatics</h3>
+  <p>Valve stems, spool valves, piston rods, and fitting bodies. These components often require excellent surface finishes for sealing and <a href="/blog/cnc-surface-finish-guide.html">surface finish specifications</a> in the Ra 0.2–0.4 µm range.</p>
+
+  <h2>Design Tips for Swiss-Type Turned Parts</h2>
+
+  <p>Designing parts specifically for Swiss-type manufacturing can dramatically reduce costs and improve quality. Here are practical guidelines:</p>
+
+  <h3>1. Respect the Bar Stock</h3>
+  <p>Swiss lathes machine from round bar stock. Your part's maximum outer diameter determines the bar size. Any features larger than the bar diameter require secondary operations. Design to minimize the bar diameter — a 12 mm part machined from 12.7 mm bar wastes far less material than one requiring 20 mm stock.</p>
+
+  <h3>2. Keep Length-to-Diameter Reasonable</h3>
+  <p>While Swiss machines handle high L/D ratios beautifully, extremely long parts (L/D > 15:1) may still require intermediate support or reduced cutting speeds. Aim for L/D ratios under 10:1 when possible for optimal cycle time.</p>
+
+  <h3>3. Standardize Thread Specifications</h3>
+  <p>Standard thread forms (M, UNC, UNF) are straightforward on Swiss lathes. Custom or non-standard thread forms dramatically increase programming and setup time. When possible, use standard threads and specify thread class (e.g., 6g/6H for metric).</p>
+
+  <h3>4. Consider Tool Access</h3>
+  <p>Cross-drilled holes, flats, and slots are easily produced with live tooling, but tool access geometry matters. Internal features need adequate clearance for tool entry. Deep internal bores (depth > 4× diameter) require specialized tooling and slower speeds.</p>
+
+  <h3>5. Specify Tolerances Wisely</h3>
+  <p>Tight tolerances increase cost — apply them only where functionally necessary. For non-critical dimensions, use general tolerance blocks (e.g., ISO 2768-m). Reserve ±0.005 mm tolerances for critical mating surfaces and bearing fits. Read our <a href="/blog/cnc-machining-tolerance-guide.html">CNC tolerance guide</a> for detailed specifications.</p>
+
+  <h3>6. Plan for Burr Management</h3>
+  <p>Swiss-turned parts inevitably have some burr at cut-off points and cross-hole intersections. Include chamfers (0.2–0.5 mm) at edges where burrs are unacceptable. This allows the machine to produce a clean break rather than requiring manual deburring.</p>
+
+  <h2>Cost Factors in Swiss-Type CNC Turning</h2>
+
+  <p>Understanding what drives Swiss turning costs helps you optimize your budget. The major cost components are:</p>
+
+  <table>
+    <tr><th>Cost Factor</th><th>Impact</th><th>How to Optimize</th></tr>
+    <tr><td>Setup / programming</td><td>$300–$1,500 per job</td><td>Combine variants in one setup; plan for repeat orders</td></tr>
+    <tr><td>Material</td><td>15–40% of part cost</td><td>Use free-machining grades; minimize bar diameter</td></tr>
+    <tr><td>Cycle time</td><td>Primary driver at volume</td><td>Simplify geometry; reduce unnecessary tight tolerances</td></tr>
+    <tr><td>Tooling</td><td>$200–$800 for special tools</td><td>Use standard tool sizes where possible</td></tr>
+    <tr><td>Secondary operations</td><td>30–100% cost adder</td><td>Design for single-setup completion</td></tr>
+    <tr><td>Inspection</td><td>5–15% overhead</td><td>Use statistical sampling vs. 100% inspection where allowed</td></tr>
+  </table>
+
+  <p>For a comprehensive breakdown of CNC machining pricing, see our <a href="/blog/cnc-machining-cost-breakdown.html">CNC machining cost guide</a>.</p>
+
+  <h2>How to Source Swiss-Turned Parts</h2>
+
+  <p>Not all CNC machine shops offer Swiss-type turning, and among those that do, capabilities vary widely. Here's what to evaluate when selecting a supplier:</p>
+
+  <h3>Machine Inventory</h3>
+  <p>Ask about specific machine brands and models. Top-tier Swiss-type manufacturers include Citizen, Star, Tornos, and Tsugami. A shop with multiple Swiss machines of different capacities can handle a broader range of part sizes and better accommodate rush orders.</p>
+
+  <h3>Industry Experience</h3>
+  <p>Swiss turning for medical devices requires different expertise than Swiss turning for electronics. Look for suppliers with documented experience in your industry, including relevant certifications (ISO 13485 for medical, AS9100 for aerospace, IATF 16949 for automotive).</p>
+
+  <h3>Quality Systems</h3>
+  <p>At minimum, expect ISO 9001 certification. Evaluate their <a href="/blog/cnc-quality-inspection.html">quality inspection methods</a> — do they use CMM measurement, optical comparators, or surface profilometers? How do they handle SPC and what does their PPAP process look like?</p>
+
+  <h3>Geographic Considerations</h3>
+  <p>Taiwan is a premier destination for Swiss-type CNC turning, combining Japanese-level precision with competitive pricing. Taiwanese machine shops typically use Citizen and Star machines with skilled operators trained in the island's deep manufacturing tradition. Learn more about <a href="/blog/cnc-parts-from-taiwan.html">sourcing CNC parts from Taiwan</a> and <a href="/blog/why-taiwan-precision-cnc-machining.html">why Taiwan leads in precision CNC machining</a>.</p>
+
+  <h2>Quality Assurance for Swiss-Turned Parts</h2>
+
+  <p>High-precision Swiss-turned parts demand rigorous quality control. Here are the key inspection methods and standards:</p>
+
+  <ul>
+    <li><strong>In-process gauging:</strong> Touch probes and laser measurement during machining for real-time SPC data.</li>
+    <li><strong>CMM inspection:</strong> Coordinate Measuring Machines verify critical dimensions, true position, and geometric tolerances on sample parts.</li>
+    <li><strong>Optical measurement:</strong> Vision systems and optical comparators efficiently measure small features, thread profiles, and surface contours.</li>
+    <li><strong>Surface roughness testing:</strong> Profilometers verify Ra/Rz values on critical sealing or bearing surfaces.</li>
+    <li><strong>Material certification:</strong> Mill test reports (MTRs) verify alloy composition and mechanical properties. Learn about <a href="/blog/cnc-material-certifications.html">material certifications for CNC parts</a>.</li>
+  </ul>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <h3>What is Swiss-type CNC turning?</h3>
+  <p>Swiss-type CNC turning is a precision machining process that uses a sliding headstock and guide bushing to support the workpiece close to the cutting tool. This design minimizes deflection, enabling extremely tight tolerances (±0.005 mm) on small-diameter parts, typically under 32 mm.</p>
+
+  <h3>What tolerances can Swiss-type CNC turning achieve?</h3>
+  <p>Swiss-type CNC lathes routinely hold tolerances of ±0.005 mm (±0.0002 in) on diameters and ±0.01 mm on lengths. With careful setup and climate-controlled environments, some operations can achieve ±0.002 mm.</p>
+
+  <h3>What materials can be Swiss-turned?</h3>
+  <p>Swiss-type lathes can machine virtually any bar-stock material including stainless steel (303, 304, 316), brass, aluminum, titanium, copper, Inconel, PEEK, Delrin, and other engineering plastics and exotic alloys.</p>
+
+  <h3>When should I choose Swiss turning over conventional CNC turning?</h3>
+  <p>Choose Swiss turning when your part has a length-to-diameter ratio greater than 3:1, requires tight tolerances under ±0.01 mm, has a diameter under 32 mm, or needs multiple operations (turning, milling, drilling, threading) completed in one setup to reduce cycle time and improve accuracy.</p>
+
+  <h3>How much do Swiss-turned parts cost?</h3>
+  <p>Swiss-turned part costs depend on material, complexity, tolerances, and batch size. Simple brass pins may cost $0.15–$0.50 each at volume, while complex stainless steel medical components can range from $2–$15 each. Setup costs are higher than conventional turning, so Swiss machining is most cost-effective at quantities above 500 pieces.</p>
+
+  <div class="cta-box">
+    <h3>Need Swiss-Type CNC Turned Parts?</h3>
+    <p>KING HAN operates multiple Citizen and Star Swiss-type CNC lathes with up to 9 axes. From prototypes to high-volume production runs, we deliver precision turned parts with tolerances to ±0.005 mm.</p>
+    <a href="/#contact">Get a Free Quote →</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 KING HAN PRECISION INDUSTRY LTD. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

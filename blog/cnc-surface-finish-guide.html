@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CNC Machining Surface Finishes: Ra Values, Treatments & Selection Guide | KING HAN Blog</title>
+<meta name="description" content="Complete guide to CNC machining surface finishes. Understand Ra roughness values, as-machined vs post-processed finishes, and how to specify the right surface treatment for your parts.">
+<meta name="keywords" content="CNC surface finish, Ra value, surface roughness CNC, machining surface treatment, anodizing, plating, passivation">
+<link rel="icon" type="image/png" href="../logo.png">
+<link rel="canonical" href="https://kinghan-cnc.com/blog/cnc-surface-finish-guide.html">
+<style>
+  :root{--bg-dark:#0d1117;--bg-section:#161b22;--bg-card:#1c2333;--accent:#f0a500;--accent-dim:#c48800;--text:#e6edf3;--text-dim:#8b949e;--border:#30363d}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.8}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,17,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:0 2rem;height:64px}
+  .logo{font-size:1.1rem;font-weight:700;color:var(--accent);letter-spacing:1px;display:flex;align-items:center;gap:10px;text-decoration:none}
+  .logo img{height:36px;width:36px;border-radius:50%}.logo span{color:var(--text);font-weight:400}
+  nav ul{list-style:none;display:flex;gap:1.5rem}
+  nav a{color:var(--text-dim);text-decoration:none;font-size:0.9rem;transition:color 0.2s}nav a:hover{color:var(--accent)}
+  .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+  .article-header{padding:120px 2rem 40px;text-align:center;background:linear-gradient(160deg,#0d1117 0%,#1a1f2e 50%,#0d1117 100%)}
+  .article-header h1{font-size:clamp(1.8rem,4vw,2.5rem);max-width:800px;margin:0 auto 1rem}
+  .article-header .meta{color:var(--text-dim);font-size:0.9rem}
+  .article{max-width:760px;margin:0 auto;padding:3rem 2rem}
+  .article h2{font-size:1.5rem;margin:2.5rem 0 1rem;color:var(--accent)}
+  .article h3{font-size:1.2rem;margin:2rem 0 0.8rem}
+  .article p{color:var(--text-dim);margin-bottom:1.2rem;font-size:1.02rem}
+  .article ul,.article ol{color:var(--text-dim);margin:0 0 1.2rem 1.5rem;font-size:1.02rem}
+  .article li{margin-bottom:0.5rem}
+  .article strong{color:var(--text)}
+  .article a{color:var(--accent);text-decoration:none}.article a:hover{text-decoration:underline}
+  .back-link{display:inline-block;margin-bottom:2rem;color:var(--accent);text-decoration:none;font-size:0.9rem}
+  .back-link:hover{text-decoration:underline}
+  .cta-box{background:var(--bg-card);border:1px solid var(--accent);border-radius:8px;padding:2rem;margin-top:3rem;text-align:center}
+  .cta-box h3{color:var(--accent);margin-bottom:0.5rem;font-size:1.3rem}
+  .cta-box p{color:var(--text-dim);margin-bottom:1rem}
+  .cta-box a{display:inline-block;background:var(--accent);color:#0d1117;padding:0.7rem 2rem;border-radius:6px;font-weight:700;text-decoration:none;transition:background 0.3s}
+  .cta-box a:hover{background:var(--accent-dim)}
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0}
+  th,td{border:1px solid var(--border);padding:0.6rem 1rem;text-align:left;font-size:0.95rem;color:var(--text-dim)}
+  th{background:var(--bg-card);color:var(--text);font-weight:600}
+  footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-dim);font-size:0.85rem}
+  @media(max-width:768px){nav ul{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(13,17,23,0.98);padding:1rem 2rem;gap:1rem}nav ul.open{display:flex}.nav-toggle{display:block}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="../logo.png" alt="KH Logo">KING HAN <span>PRECISION</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sourcing-service.html">Sourcing Service</a></li>
+    <li><a href="/blog/" style="color:var(--accent);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="article-header">
+  <h1>CNC Machining Surface Finishes: Ra Values, Treatments & Selection Guide</h1>
+  <div class="meta">February 22, 2026 · 10 min read</div>
+</div>
+
+<div class="article">
+  <a href="/blog/" class="back-link">← Back to Blog</a>
+
+  <p>Surface finish is one of the most misunderstood — and most consequential — specifications on a CNC machined part drawing. It affects everything from functional performance and fatigue life to appearance, corrosion resistance, and cost. Yet many engineers either over-specify surface finish (driving up cost) or under-specify it (leading to functional failures or rejected parts).</p>
+
+  <p>This guide demystifies CNC machining surface finishes. We'll explain how surface roughness is measured and specified, what finishes different CNC processes can achieve, the full range of post-machining surface treatments, and how to choose the right finish for your application.</p>
+
+  <h2>Understanding Surface Roughness: Ra Explained</h2>
+
+  <p>The most common surface roughness parameter is <strong>Ra (Roughness Average)</strong> — the arithmetic average of the surface profile deviations from the mean line, measured in micrometers (µm) or microinches (µin). Lower Ra values indicate smoother surfaces.</p>
+
+  <table>
+    <tr><th>Ra (µm)</th><th>Ra (µin)</th><th>Description</th><th>Typical Application</th></tr>
+    <tr><td>6.3</td><td>250</td><td>Rough machined</td><td>Non-contact surfaces, rough castings</td></tr>
+    <tr><td>3.2</td><td>125</td><td>Standard machined</td><td>General mechanical parts, structural components</td></tr>
+    <tr><td>1.6</td><td>63</td><td>Fine machined</td><td>Bearing housings, mating surfaces</td></tr>
+    <tr><td>0.8</td><td>32</td><td>Very fine machined</td><td>Precision fits, hydraulic valve surfaces</td></tr>
+    <tr><td>0.4</td><td>16</td><td>Ground / precision turned</td><td>Seal surfaces, precision shafts</td></tr>
+    <tr><td>0.2</td><td>8</td><td>Lapped / honed</td><td>Gage blocks, optical components</td></tr>
+    <tr><td>0.1</td><td>4</td><td>Mirror polished</td><td>Optical mirrors, mold surfaces</td></tr>
+  </table>
+
+  <h3>Other Roughness Parameters</h3>
+
+  <p>While Ra is the most commonly specified parameter, other measurements provide more complete surface characterization:</p>
+
+  <ul>
+    <li><strong>Rz (Average Maximum Height):</strong> The average of the five highest peak-to-valley measurements within the sampling length. Rz is more sensitive to occasional deep scratches or peaks than Ra. Common in European and Asian specifications.</li>
+    <li><strong>Rmax (Maximum Roughness Depth):</strong> The single largest peak-to-valley measurement. Useful for seal surfaces where even one high peak can cause leakage.</li>
+    <li><strong>Rt (Total Height):</strong> The total range from the highest peak to the deepest valley across the entire measurement length.</li>
+  </ul>
+
+  <p>As a rough conversion: Rz is typically 4–7× the Ra value for machined surfaces. So Ra 0.8 µm corresponds to roughly Rz 3.2–5.6 µm.</p>
+
+  <h2>Surface Finish Achievable by CNC Process</h2>
+
+  <p>Different CNC machining processes produce different surface finish ranges. Understanding these capabilities helps you specify achievable finishes and avoid unnecessary secondary operations.</p>
+
+  <h3>CNC Turning</h3>
+
+  <table>
+    <tr><th>Condition</th><th>Achievable Ra</th><th>Notes</th></tr>
+    <tr><td>Rough turning</td><td>3.2–6.3 µm</td><td>High feed rates, material removal priority</td></tr>
+    <tr><td>Finish turning (conventional)</td><td>1.6–3.2 µm</td><td>Standard finish pass parameters</td></tr>
+    <tr><td>Fine finish turning</td><td>0.8–1.6 µm</td><td>Optimized parameters, sharp tools</td></tr>
+    <tr><td>Swiss-type precision turning</td><td>0.4–0.8 µm</td><td>Guide bushing support eliminates vibration</td></tr>
+    <tr><td>Swiss-type with polishing</td><td>0.2–0.4 µm</td><td>Burnishing or roller polishing in-machine</td></tr>
+  </table>
+
+  <p><a href="/blog/swiss-type-vs-conventional-cnc.html">Swiss-type CNC lathes</a> consistently produce finer surface finishes than conventional lathes on small-diameter parts because the guide bushing virtually eliminates workpiece deflection and vibration — the primary sources of surface roughness in turning.</p>
+
+  <h3>CNC Milling</h3>
+
+  <table>
+    <tr><th>Condition</th><th>Achievable Ra</th><th>Notes</th></tr>
+    <tr><td>Rough milling</td><td>3.2–6.3 µm</td><td>Face mills, high material removal</td></tr>
+    <tr><td>Finish milling</td><td>1.6–3.2 µm</td><td>Ball nose or face mill finish pass</td></tr>
+    <tr><td>High-speed finish milling</td><td>0.8–1.6 µm</td><td>Small stepover, high RPM</td></tr>
+    <tr><td>Precision ball nose finishing</td><td>0.4–0.8 µm</td><td>Very small stepover, sharp PCD tools</td></tr>
+  </table>
+
+  <h3>Grinding</h3>
+
+  <table>
+    <tr><th>Condition</th><th>Achievable Ra</th><th>Notes</th></tr>
+    <tr><td>Cylindrical grinding</td><td>0.2–0.8 µm</td><td>Standard precision grinding</td></tr>
+    <tr><td>Surface grinding</td><td>0.2–0.8 µm</td><td>Flat surfaces</td></tr>
+    <tr><td>Fine grinding</td><td>0.05–0.2 µm</td><td>Superfinishing wheels, slow feed</td></tr>
+  </table>
+
+  <h2>Factors That Affect As-Machined Surface Finish</h2>
+
+  <p>Several machining parameters and conditions influence the resulting surface finish:</p>
+
+  <ul>
+    <li><strong>Feed rate:</strong> The single biggest factor. Lower feed rates produce finer finishes because tool marks are spaced more closely together. Halving the feed rate roughly halves the theoretical Ra value.</li>
+    <li><strong>Tool nose radius:</strong> Larger nose radii produce smoother surfaces for the same feed rate. This is why finishing tools typically have larger nose radii (0.4–0.8 mm) than roughing tools.</li>
+    <li><strong>Cutting speed:</strong> Higher speeds generally improve surface finish by reducing built-up edge formation and producing cleaner shearing action.</li>
+    <li><strong>Tool condition:</strong> Worn or chipped tools produce rough, inconsistent surfaces. Tool life management is critical for consistent finish quality.</li>
+    <li><strong>Machine rigidity:</strong> Vibration is the enemy of surface finish. Rigid machines, proper workholding, and stable cutting conditions are essential.</li>
+    <li><strong>Material:</strong> Free-machining materials (brass, 12L14 steel, 2011 aluminum) produce better surfaces than work-hardening or gummy materials.</li>
+    <li><strong>Coolant:</strong> Proper coolant application reduces friction and heat, improving surface finish and preventing built-up edge.</li>
+  </ul>
+
+  <h2>Post-Machining Surface Treatments</h2>
+
+  <p>When as-machined surface finish isn't sufficient for your application, a wide range of secondary treatments can modify the surface properties.</p>
+
+  <h3>Mechanical Finishing</h3>
+
+  <ul>
+    <li><strong>Bead blasting:</strong> Propels small glass or ceramic beads at the surface to create a uniform matte texture (typically Ra 1.0–3.0 µm). Popular for cosmetic aluminum parts before anodizing. Low cost.</li>
+    <li><strong>Tumble finishing (vibratory deburring):</strong> Parts are tumbled with abrasive media to remove burrs and smooth edges. Can improve Ra by 0.5–1.0 µm. Also rounds sharp edges uniformly.</li>
+    <li><strong>Polishing:</strong> Progressive abrasive polishing can achieve mirror finishes (Ra 0.025–0.1 µm). Labor-intensive and expensive, but necessary for optical or decorative applications.</li>
+    <li><strong>Burnishing/roller polishing:</strong> A hardened roller presses against the surface, plastically deforming peaks into valleys. Can improve Ra from 1.6 µm to 0.2 µm without material removal. Also increases surface hardness.</li>
+    <li><strong>Lapping:</strong> Ultra-precision flat surface finishing using loose abrasive between the part and a lap plate. Achieves Ra 0.01–0.1 µm and extreme flatness.</li>
+  </ul>
+
+  <h3>Chemical and Electrochemical Treatments</h3>
+
+  <ul>
+    <li><strong>Anodizing (aluminum):</strong> Electrochemical process that grows a hard oxide layer on aluminum surfaces. Type II anodize provides corrosion resistance and color. Type III hard anodize provides extreme wear resistance. See our <a href="/blog/aluminum-cnc-machining-guide.html">aluminum machining guide</a> for details.</li>
+    <li><strong>Passivation (stainless steel):</strong> Chemical treatment (nitric or citric acid) that removes free iron from stainless steel surfaces and enhances the protective chromium oxide layer. Essential for medical and food-contact applications. Specified per ASTM A967.</li>
+    <li><strong>Electropolishing:</strong> Electrochemical material removal that preferentially dissolves surface peaks, producing a smooth, bright, corrosion-resistant finish. Achieves Ra 0.1–0.4 µm. Standard for <a href="/blog/cnc-machining-medical-device-parts.html">medical device components</a> and semiconductor equipment.</li>
+    <li><strong>Chemical conversion coating (Alodine/Iridite):</strong> Applied to aluminum for corrosion protection and paint adhesion. Gold or clear color. Does not significantly change surface roughness.</li>
+    <li><strong>Black oxide:</strong> Chemical conversion coating for steel parts. Provides mild corrosion resistance, reduces light reflection, and provides an attractive black appearance. Minimal dimensional change.</li>
+  </ul>
+
+  <h3>Plating and Coating</h3>
+
+  <ul>
+    <li><strong>Nickel plating:</strong> Electroless nickel (EN) provides uniform coating thickness (±2 µm), hardness up to 70 HRC when heat-treated, and excellent corrosion resistance. Common for precision parts requiring both wear and corrosion protection.</li>
+    <li><strong>Chrome plating:</strong> Decorative chrome provides a bright, reflective finish. Hard chrome (industrial chrome) provides extreme wear resistance (up to 72 HRC). Used for hydraulic cylinders, mold surfaces, and wear parts.</li>
+    <li><strong>Zinc plating:</strong> Low-cost corrosion protection for steel parts. Available in clear, yellow, and black chromate finishes. Adds 5–25 µm per side.</li>
+    <li><strong>Gold plating:</strong> Used for electrical contacts and connectors where low contact resistance and corrosion immunity are critical. Very thin layers (0.5–5 µm).</li>
+    <li><strong>PVD coatings:</strong> Thin film coatings (TiN, TiAlN, CrN, DLC) applied by physical vapor deposition. Provide extreme hardness, low friction, and wear resistance in coatings just 1–5 µm thick. Ideal for precision parts where dimensional change must be minimal.</li>
+  </ul>
+
+  <h3>Thermal Treatments</h3>
+
+  <ul>
+    <li><strong>Powder coating:</strong> Electrostatically applied powder cured in an oven. Provides thick (50–100 µm), durable, UV-resistant coating in virtually any color. Common for enclosures and non-precision surfaces.</li>
+    <li><strong>Heat treatment:</strong> While primarily for mechanical properties, heat treatment affects surface finish. Case hardening, nitriding, and carburizing alter surface hardness and may require subsequent finish grinding.</li>
+  </ul>
+
+  <h2>How to Specify Surface Finish on Your Drawings</h2>
+
+  <p>Properly communicating surface finish requirements on your technical drawings prevents misunderstandings and unnecessary costs. Follow these best practices:</p>
+
+  <h3>Use Standard Symbols</h3>
+
+  <p>Surface finish is indicated on drawings using the standard surface finish symbol (per ISO 1302 or ASME Y14.36). The symbol includes:</p>
+
+  <ul>
+    <li>The roughness parameter (Ra, Rz, etc.)</li>
+    <li>The maximum value (and optionally minimum value)</li>
+    <li>The manufacturing process restriction (if required)</li>
+    <li>Lay direction (if critical)</li>
+  </ul>
+
+  <h3>Apply Finish Specifications Strategically</h3>
+
+  <ul>
+    <li><strong>Don't blanket-specify tight finishes.</strong> Apply Ra 0.8 µm only to surfaces that need it — seal faces, bearing bores, visible surfaces. Leave non-critical surfaces at Ra 3.2 µm (or unspecified).</li>
+    <li><strong>Note the general finish.</strong> Include a general note like "All surfaces Ra 3.2 µm unless otherwise specified" to establish the baseline.</li>
+    <li><strong>Call out post-processing.</strong> If specific surfaces need electropolishing, anodizing, or plating, note this clearly with the affected surfaces identified.</li>
+  </ul>
+
+  <p>The relationship between surface finish specifications and cost is significant. For details on how surface finish requirements affect your part pricing, see our <a href="/blog/cnc-machining-cost-breakdown.html">CNC machining cost breakdown</a>.</p>
+
+  <h2>Choosing the Right Surface Finish: Application Guide</h2>
+
+  <h3>Sealing Surfaces</h3>
+  <p>O-ring grooves and static seal faces typically require Ra 0.4–1.6 µm depending on seal type and pressure. Dynamic seal surfaces (shaft seals) generally need Ra 0.2–0.4 µm. Over-polishing dynamic seal surfaces can actually reduce sealing performance — the microscopic grooves help retain lubricant.</p>
+
+  <h3>Bearing Surfaces</h3>
+  <p>Journal bearings and sliding surfaces benefit from Ra 0.2–0.8 µm. Rolling element bearing seats typically require Ra 0.4–1.6 µm with tight roundness and cylindricity controls.</p>
+
+  <h3>Aesthetic / Cosmetic Surfaces</h3>
+  <p>Consumer products often require uniform, defect-free surfaces. Bead blasted + anodized aluminum (Ra 1.0–2.0 µm) provides a popular satin finish. Mirror-polished stainless steel (Ra &lt;0.1 µm) is used for premium products.</p>
+
+  <h3>Fatigue-Critical Parts</h3>
+  <p>Smoother surfaces generally improve fatigue life by eliminating stress concentrations at surface peaks. For fatigue-critical applications, specify Ra ≤0.8 µm and require burr-free, defect-free surfaces. Shot peening can further improve fatigue resistance by inducing compressive residual stresses.</p>
+
+  <h3>Corrosion Resistance</h3>
+  <p>Smoother surfaces resist corrosion better because there are fewer crevices for corrosive media to attack. For stainless steel in corrosive environments, Ra ≤0.8 µm combined with passivation or electropolishing provides the best protection.</p>
+
+  <h2>Common Mistakes to Avoid</h2>
+
+  <ol>
+    <li><strong>Specifying Ra 0.4 µm everywhere:</strong> This is expensive and usually unnecessary. Most surfaces work fine at Ra 1.6–3.2 µm.</li>
+    <li><strong>Ignoring the manufacturing process:</strong> A surface finish achievable by turning may not be achievable by milling on the same feature, and vice versa.</li>
+    <li><strong>Not accounting for coating thickness:</strong> Anodizing, plating, and painting add thickness. Tolerance critical features must account for this or be masked during treatment.</li>
+    <li><strong>Specifying finish without function:</strong> Always ask "why does this surface need to be this smooth?" If there's no functional reason, relax the specification.</li>
+    <li><strong>Confusing Ra with Rz:</strong> Ra 0.8 µm and Rz 0.8 µm are very different — Rz 0.8 µm is approximately 5× smoother than Ra 0.8 µm.</li>
+  </ol>
+
+  <div class="cta-box">
+    <h3>Need Help Specifying Surface Finish?</h3>
+    <p>Our engineering team can review your drawings and recommend the optimal surface finish and treatment for your application — balancing performance, appearance, and cost.</p>
+    <a href="/#contact">Talk to Our Engineers →</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 KING HAN Precision Industry Co., Ltd. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

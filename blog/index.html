@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | KING HAN Precision CNC Machining</title>
+<meta name="description" content="Expert articles on CNC machining, Swiss-type lathes, tolerances, and sourcing tips from KING HAN Precision Industry.">
+<meta name="keywords" content="CNC machining blog, Swiss-type lathe, precision machining, CNC tips">
+<link rel="icon" type="image/png" href="../logo.png">
+<style>
+  :root {
+    --bg-dark: #0d1117;
+    --bg-section: #161b22;
+    --bg-card: #1c2333;
+    --accent: #f0a500;
+    --accent-dim: #c48800;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --border: #30363d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Segoe UI', sans-serif; background: var(--bg-dark); color: var(--text); line-height: 1.7; }
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(13,17,23,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 2rem; height: 64px;
+  }
+  .logo { font-size: 1.1rem; font-weight: 700; color: var(--accent); letter-spacing: 1px; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo img { height: 36px; width: 36px; border-radius: 50%; }
+  .logo span { color: var(--text); font-weight: 400; }
+  nav ul { list-style: none; display: flex; gap: 1.5rem; }
+  nav a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  nav a:hover { color: var(--accent); }
+  .nav-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+  .page-header {
+    padding: 120px 2rem 60px; text-align: center;
+    background: linear-gradient(160deg, #0d1117 0%, #1a1f2e 50%, #0d1117 100%);
+  }
+  .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .page-header p { color: var(--text-dim); font-size: 1.1rem; }
+  .line { width: 50px; height: 3px; background: var(--accent); margin: 1rem auto 0; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; }
+  .post-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 2rem; margin-bottom: 1.5rem; transition: border-color 0.3s, transform 0.3s;
+  }
+  .post-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .post-card h2 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .post-card h2 a { color: var(--text); text-decoration: none; }
+  .post-card h2 a:hover { color: var(--accent); }
+  .post-card .meta { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 0.8rem; }
+  .post-card p { color: var(--text-dim); font-size: 0.95rem; }
+  .read-more { display: inline-block; margin-top: 1rem; color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+  .read-more:hover { text-decoration: underline; }
+
+  footer {
+    text-align: center; padding: 2rem; border-top: 1px solid var(--border);
+    color: var(--text-dim); font-size: 0.85rem;
+  }
+  @media (max-width: 768px) {
+    nav ul { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0;
+      background: rgba(13,17,23,0.98); padding: 1rem 2rem; gap: 1rem; }
+    nav ul.open { display: flex; }
+    .nav-toggle { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="../logo.png" alt="KH Logo">KING HAN <span>PRECISION</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sourcing-service.html">Sourcing Service</a></li>
+    <li><a href="/blog/" style="color:var(--accent);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <h1>Blog</h1>
+  <p>Insights on CNC machining, precision engineering, and sourcing</p>
+  <div class="line"></div>
+</div>
+
+<div class="container">
+  <div class="post-card">
+    <h2><a href="cnc-tolerances-guide.html">CNC Machining Tolerances Explained for Buyers: What You Need to Know</a></h2>
+    <div class="meta">March 1, 2026 · 12 min read</div>
+    <p>Everything buyers need to know about CNC machining tolerances — standard vs tight tolerances, cost impact, how to specify them correctly, and common mistakes to avoid.</p>
+    <a href="cnc-tolerances-guide.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="reduce-cnc-costs.html">How to Reduce CNC Machining Costs Without Sacrificing Quality</a></h2>
+    <div class="meta">March 1, 2026 · 11 min read</div>
+    <p>Practical strategies to lower your CNC machining costs — from design optimization and material selection to batch sizing, tolerances, and supplier relationships.</p>
+    <a href="reduce-cnc-costs.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="swiss-vs-conventional-cnc.html">Swiss-Type vs Conventional CNC Lathe: Complete Comparison Guide</a></h2>
+    <div class="meta">March 1, 2026 · 13 min read</div>
+    <p>Detailed comparison of Swiss-type and conventional CNC lathes — when to use each, cost differences, capabilities, and how to choose the right one for your parts.</p>
+    <a href="swiss-vs-conventional-cnc.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="cnc-design-for-manufacturing.html">Design for Manufacturing (DFM): How to Optimize CNC Parts for Cost & Quality</a></h2>
+    <div class="meta">February 27, 2026 · 14 min read</div>
+    <p>Practical DFM guide for CNC machined parts — learn how to reduce costs by 30-50% through smart design choices covering tolerances, radii, holes, threads, and material selection.</p>
+    <a href="cnc-design-for-manufacturing.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="cnc-thread-machining-guide.html">CNC Thread Machining Guide: Types, Standards & Specifications</a></h2>
+    <div class="meta">February 27, 2026 · 13 min read</div>
+    <p>Complete guide to CNC thread machining — metric, unified, pipe threads, and custom profiles. Learn thread cutting methods, tolerances, inspection, and how to specify threads correctly.</p>
+    <a href="cnc-thread-machining-guide.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="stainless-steel-cnc-machining.html">Stainless Steel CNC Machining: Grade Selection & Best Practices</a></h2>
+    <div class="meta">February 27, 2026 · 12 min read</div>
+    <p>Compare 303, 304, 316, 17-4PH, and 440C stainless steel grades for CNC machining. Learn machinability differences, cutting parameters, tolerances, and cost optimization strategies.</p>
+    <a href="stainless-steel-cnc-machining.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="cnc-rfq-guide.html">How to Write an Effective RFQ for CNC Machining Services</a></h2>
+    <div class="meta">February 27, 2026 · 11 min read</div>
+    <p>Learn how to write a clear, effective RFQ to get accurate CNC machining quotes faster. Includes the 10 essential elements, common mistakes, a checklist, and a sample email template.</p>
+    <a href="cnc-rfq-guide.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="reducing-cnc-manufacturing-costs-buyers-guide.html">Reducing CNC Manufacturing Costs: A Buyer's Guide to Smarter Sourcing</a></h2>
+    <div class="meta">February 27, 2026 · 11 min read</div>
+    <p>Practical strategies for buyers to reduce CNC manufacturing costs without sacrificing quality. Covers design optimization, supplier selection, volume strategies, and total cost management.</p>
+    <a href="reducing-cnc-manufacturing-costs-buyers-guide.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="swiss-type-cnc-lathe-capabilities-applications.html">Swiss-Type CNC Lathe Capabilities and Applications: What They Can Really Do</a></h2>
+    <div class="meta">February 27, 2026 · 10 min read</div>
+    <p>Explore the full capabilities of Swiss-type CNC lathes — from micro-machining and complex geometries to multi-axis operations. Learn which industries and applications benefit most.</p>
+    <a href="swiss-type-cnc-lathe-capabilities-applications.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="how-to-audit-cnc-factory.html">How to Audit a CNC Factory Before Placing Orders</a></h2>
+    <div class="meta">February 27, 2026 · 11 min read</div>
+    <p>Step-by-step guide to auditing a CNC machining factory — covering equipment verification, quality systems, capacity checks, and red flags to watch for before placing orders.</p>
+    <a href="how-to-audit-cnc-factory.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="cnc-machining-rfq-best-practices.html">CNC Machining RFQ Template and Best Practices for Better Quotes</a></h2>
+    <div class="meta">February 27, 2026 · 9 min read</div>
+    <p>Learn how to write a CNC machining RFQ that gets accurate, competitive quotes. Includes a complete RFQ template, common mistakes, and tips for faster supplier response.</p>
+    <a href="cnc-machining-rfq-best-practices.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="negotiate-pricing-cnc-machine-shops.html">How to Negotiate Pricing with CNC Machine Shops: Proven Strategies</a></h2>
+    <div class="meta">February 27, 2026 · 10 min read</div>
+    <p>Learn effective strategies to negotiate better pricing with CNC machine shops. From leveraging volume commitments to optimizing designs, get actionable tips to reduce your CNC part costs.</p>
+    <a href="negotiate-pricing-cnc-machine-shops.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="swiss-type-cnc-turning-guide.html">Swiss-Type CNC Turning: Complete Guide for Engineers & Buyers</a></h2>
+    <div class="meta">February 22, 2026 · 12 min read</div>
+    <p>Complete guide to Swiss-type CNC turning — how it works, when to use it, materials, tolerances, cost factors, and how to source Swiss-turned parts for your project.</p>
+    <a href="swiss-type-cnc-turning-guide.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="cnc-parts-from-taiwan.html">Why Source CNC Parts from Taiwan? Advantages Over China & Southeast Asia</a></h2>
+    <div class="meta">February 22, 2026 · 11 min read</div>
+    <p>Discover why Taiwan is the smart choice for sourcing CNC machined parts. Compare quality, IP protection, lead times, and costs vs China, Vietnam, and other alternatives.</p>
+    <a href="cnc-parts-from-taiwan.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="cnc-material-certifications.html">Material Certifications for CNC Parts: What You Need to Know (MTR, RoHS, REACH)</a></h2>
+    <div class="meta">February 22, 2026 · 11 min read</div>
+    <p>Understand material certifications for CNC machined parts — Mill Test Reports (MTR), RoHS, REACH, conflict minerals, and industry-specific compliance requirements.</p>
+    <a href="cnc-material-certifications.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="cnc-prototype-to-production.html">From Prototype to Mass Production: CNC Manufacturing Scaling Guide</a></h2>
+    <div class="meta">February 22, 2026 · 12 min read</div>
+    <p>Learn how to scale CNC machined parts from prototype to mass production — DFM optimization, tooling decisions, quality systems, and cost reduction strategies at each stage.</p>
+    <a href="cnc-prototype-to-production.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="cnc-quality-inspection.html">Quality Inspection Methods for CNC Machined Parts: CMM, Optical & More</a></h2>
+    <div class="meta">February 22, 2026 · 12 min read</div>
+    <p>Complete guide to quality inspection methods for CNC machined parts — CMM, optical measurement, surface profilometry, GD&T verification, and sampling strategies.</p>
+    <a href="cnc-quality-inspection.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="cnc-machining-cost-breakdown.html">CNC Machining Cost Breakdown: What Affects Your Part Price?</a></h2>
+    <div class="meta">February 22, 2026 · 10 min read</div>
+    <p>Understand what drives CNC machining costs — from material selection and tolerances to batch size and surface finish. Learn how to optimize your part design for better pricing.</p>
+    <a href="cnc-machining-cost-breakdown.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="cnc-machining-medical-device-parts.html">CNC Machining for Medical Device Components: Materials, Tolerances & Compliance</a></h2>
+    <div class="meta">February 22, 2026 · 11 min read</div>
+    <p>Expert guide to CNC machining medical device components — biocompatible materials, critical tolerances, surface finish requirements, and regulatory compliance for medical parts.</p>
+    <a href="cnc-machining-medical-device-parts.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="aluminum-cnc-machining-guide.html">Aluminum CNC Machining: Complete Alloy Selection Guide for Precision Parts</a></h2>
+    <div class="meta">February 22, 2026 · 10 min read</div>
+    <p>Compare 6061, 7075, 2024, 5052, and more — learn which aluminum alloy is best for your CNC machined parts based on strength, machinability, and surface treatment compatibility.</p>
+    <a href="aluminum-cnc-machining-guide.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="cnc-surface-finish-guide.html">CNC Machining Surface Finishes: Ra Values, Treatments & Selection Guide</a></h2>
+    <div class="meta">February 22, 2026 · 10 min read</div>
+    <p>Complete guide to surface finishes — understand Ra roughness values, what different CNC processes achieve, and the full range of post-machining surface treatments.</p>
+    <a href="cnc-surface-finish-guide.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="brass-cnc-turned-parts-guide.html">Brass CNC Turned Parts: Properties, Applications & Machining Tips</a></h2>
+    <div class="meta">February 22, 2026 · 9 min read</div>
+    <p>Everything about brass CNC turned parts — alloy selection (C36000, C26000, C46400), machining properties, applications in plumbing, electronics, automotive, and design tips.</p>
+    <a href="brass-cnc-turned-parts-guide.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="swiss-type-vs-conventional-cnc.html">Swiss-Type CNC Lathe vs Conventional CNC: Which Is Right for Your Parts?</a></h2>
+    <div class="meta">February 21, 2026 · 9 min read</div>
+    <p>A detailed side-by-side comparison of Swiss-type and conventional CNC lathes — covering precision, cycle time, cost, and ideal part geometries to help you choose the right technology.</p>
+    <a href="swiss-type-vs-conventional-cnc.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="choose-cnc-machining-partner-taiwan.html">How to Choose the Right CNC Machining Partner in Taiwan</a></h2>
+    <div class="meta">February 21, 2026 · 9 min read</div>
+    <p>A practical guide for international buyers on selecting a reliable CNC machining supplier in Taiwan. Learn what to evaluate, key questions to ask, and red flags to avoid.</p>
+    <a href="choose-cnc-machining-partner-taiwan.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="cnc-turned-parts-guide.html">Complete Guide to CNC Turned Parts: Materials, Tolerances, and Applications</a></h2>
+    <div class="meta">February 21, 2026 · 10 min read</div>
+    <p>Everything you need to know about CNC turned parts — from material selection and tolerance specifications to industry applications and design tips for manufacturability.</p>
+    <a href="cnc-turned-parts-guide.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="why-taiwan-precision-cnc-machining.html">Why Taiwan Is the Best Destination for Precision CNC Machining</a></h2>
+    <div class="meta">February 21, 2026 · 9 min read</div>
+    <p>Discover why Taiwan is a top global destination for precision CNC machining — from manufacturing heritage and quality culture to competitive pricing and supply chain advantages.</p>
+    <a href="why-taiwan-precision-cnc-machining.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="small-diameter-cnc-machining.html">Small Diameter CNC Machining: Capabilities and Considerations for Parts Under 25mm</a></h2>
+    <div class="meta">February 21, 2026 · 9 min read</div>
+    <p>Expert guide to small diameter CNC machining for parts under 25mm. Learn about capabilities, tolerances, materials, and why Swiss-type lathes are ideal for miniature precision components.</p>
+    <a href="small-diameter-cnc-machining.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="what-is-swiss-type-cnc-lathe.html">What Is Swiss-Type CNC Lathe? A Complete Guide for Engineers and Buyers</a></h2>
+    <div class="meta">February 18, 2026 · 8 min read</div>
+    <p>Swiss-type CNC lathes are the gold standard for producing small-diameter, high-precision turned parts. Learn how they work, when to use them, and what to look for when sourcing Swiss-turned components.</p>
+    <a href="what-is-swiss-type-cnc-lathe.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="cnc-machining-tolerance-guide.html">CNC Machining Tolerance Guide: What Precision Can You Really Expect?</a></h2>
+    <div class="meta">February 18, 2026 · 7 min read</div>
+    <p>Tolerances drive cost, lead time, and supplier selection. This guide breaks down standard vs. tight tolerances, what's achievable with different CNC processes, and how to specify them correctly on your drawings.</p>
+    <a href="cnc-machining-tolerance-guide.html" class="read-more">Read Article →</a>
+  </div>
+
+  <div class="post-card">
+    <h2><a href="how-to-choose-cnc-machine-shop.html">How to Choose the Right CNC Machine Shop: 7 Questions Every Buyer Should Ask</a></h2>
+    <div class="meta">February 18, 2026 · 7 min read</div>
+    <p>Finding a reliable CNC machining partner is critical for product quality and supply chain stability. Here are seven essential questions that separate great machine shops from mediocre ones.</p>
+    <a href="how-to-choose-cnc-machine-shop.html" class="read-more">Read Article →</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 KING HAN PRECISION INDUSTRY LTD. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

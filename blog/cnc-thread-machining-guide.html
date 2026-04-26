@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CNC Thread Machining Guide: Types, Standards & Specifications | KING HAN Blog</title>
+<meta name="description" content="Complete guide to CNC thread machining — metric, unified, pipe threads, and custom profiles. Learn thread cutting methods, tolerances, inspection, and how to specify threads on your drawings.">
+<meta name="keywords" content="CNC thread machining, thread cutting CNC, metric thread M series, UNC UNF thread, CNC threading, thread milling, single point threading, thread specifications">
+<link rel="icon" type="image/png" href="../logo.png">
+<link rel="canonical" href="https://kinghan-cnc.com/blog/cnc-thread-machining-guide.html">
+<style>
+  :root{--bg-dark:#0d1117;--bg-section:#161b22;--bg-card:#1c2333;--accent:#f0a500;--accent-dim:#c48800;--text:#e6edf3;--text-dim:#8b949e;--border:#30363d}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.8}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,17,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:0 2rem;height:64px}
+  .logo{font-size:1.1rem;font-weight:700;color:var(--accent);letter-spacing:1px;display:flex;align-items:center;gap:10px;text-decoration:none}
+  .logo img{height:36px;width:36px;border-radius:50%}.logo span{color:var(--text);font-weight:400}
+  nav ul{list-style:none;display:flex;gap:1.5rem}
+  nav a{color:var(--text-dim);text-decoration:none;font-size:0.9rem;transition:color 0.2s}nav a:hover{color:var(--accent)}
+  .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+  .article-header{padding:120px 2rem 40px;text-align:center;background:linear-gradient(160deg,#0d1117 0%,#1a1f2e 50%,#0d1117 100%)}
+  .article-header h1{font-size:clamp(1.8rem,4vw,2.5rem);max-width:800px;margin:0 auto 1rem}
+  .article-header .meta{color:var(--text-dim);font-size:0.9rem}
+  .article{max-width:760px;margin:0 auto;padding:3rem 2rem}
+  .article h2{font-size:1.5rem;margin:2.5rem 0 1rem;color:var(--accent)}
+  .article h3{font-size:1.2rem;margin:2rem 0 0.8rem}
+  .article p{color:var(--text-dim);margin-bottom:1.2rem;font-size:1.02rem}
+  .article ul,.article ol{color:var(--text-dim);margin:0 0 1.2rem 1.5rem;font-size:1.02rem}
+  .article li{margin-bottom:0.5rem}
+  .article strong{color:var(--text)}
+  .article a{color:var(--accent);text-decoration:none}.article a:hover{text-decoration:underline}
+  .back-link{display:inline-block;margin-bottom:2rem;color:var(--accent);text-decoration:none;font-size:0.9rem}
+  .back-link:hover{text-decoration:underline}
+  .cta-box{background:var(--bg-card);border:1px solid var(--accent);border-radius:8px;padding:2rem;margin-top:3rem;text-align:center}
+  .cta-box h3{color:var(--accent);margin-bottom:0.5rem;font-size:1.3rem}
+  .cta-box p{color:var(--text-dim);margin-bottom:1rem}
+  .cta-box a{display:inline-block;background:var(--accent);color:#0d1117;padding:0.7rem 2rem;border-radius:6px;font-weight:700;text-decoration:none;transition:background 0.3s}
+  .cta-box a:hover{background:var(--accent-dim)}
+  .resource-box{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.5rem 0}
+  .resource-box h4{color:var(--accent);margin-bottom:0.5rem}
+  .resource-box p{color:var(--text-dim);font-size:0.95rem;margin-bottom:0.5rem}
+  .resource-box a{color:var(--accent)}
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0}
+  th,td{border:1px solid var(--border);padding:0.6rem 1rem;text-align:left;font-size:0.95rem;color:var(--text-dim)}
+  th{background:var(--bg-card);color:var(--text);font-weight:600}
+  footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-dim);font-size:0.85rem}
+  @media(max-width:768px){nav ul{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(13,17,23,0.98);padding:1rem 2rem;gap:1rem}nav ul.open{display:flex}.nav-toggle{display:block}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "CNC Thread Machining Guide: Types, Standards & Specifications",
+  "description": "Complete guide to CNC thread machining — types, standards, methods, tolerances, and specifications.",
+  "author": {"@type": "Organization", "name": "KING HAN Precision Industry"},
+  "publisher": {"@type": "Organization", "name": "KING HAN Precision Industry", "url": "https://kinghan-cnc.com"},
+  "datePublished": "2026-02-27",
+  "mainEntityOfPage": "https://kinghan-cnc.com/blog/cnc-thread-machining-guide.html"
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="../logo.png" alt="KH Logo">KING HAN <span>PRECISION</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sourcing-service.html">Sourcing Service</a></li>
+    <li><a href="/blog/" style="color:var(--accent);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="article-header">
+  <h1>CNC Thread Machining Guide: Types, Standards & Specifications</h1>
+  <div class="meta">February 27, 2026 · 13 min read</div>
+</div>
+
+<div class="article">
+  <a href="/blog/" class="back-link">← Back to Blog</a>
+
+  <p>Threads are among the most common features on CNC machined parts — and among the most frequently mis-specified. A wrong thread callout, incorrect tolerance class, or poorly chosen thread cutting method can mean parts that don't assemble, leak under pressure, or fail in service. This guide covers everything engineers and buyers need to know about <strong>CNC thread machining</strong>: thread types, standards, production methods, tolerances, and how to specify them correctly.</p>
+
+  <p>At KING HAN, threading is a daily operation on our <a href="/blog/swiss-type-cnc-turning-guide.html">Swiss-type CNC lathes</a>. Small-diameter threaded components — from M1.6 medical screws to M20 hydraulic fittings — are our bread and butter. Here's our comprehensive guide to getting threads right.</p>
+
+  <h2>Thread Standards: Metric vs. Unified vs. Pipe</h2>
+
+  <h3>Metric Threads (ISO / JIS)</h3>
+  <p>The global standard for most engineering applications. Defined by ISO 261 (general purpose) and ISO 1502 (gauging). Designation format:</p>
+  <ul>
+    <li><strong>M8×1.25</strong> — M = metric, 8mm nominal diameter, 1.25mm pitch</li>
+    <li><strong>M8</strong> — coarse pitch implied (1.25mm for M8)</li>
+    <li><strong>M8×1</strong> — fine pitch variant</li>
+    <li><strong>M8×1-6g</strong> — includes tolerance class (6g for external thread)</li>
+  </ul>
+
+  <p>Common metric thread sizes for <a href="/blog/small-diameter-cnc-machining.html">small-diameter CNC parts</a>:</p>
+
+  <table>
+    <tr><th>Size</th><th>Coarse Pitch</th><th>Fine Pitch</th><th>Common Application</th></tr>
+    <tr><td>M2</td><td>0.4mm</td><td>0.25mm</td><td>Electronics, watch components</td></tr>
+    <tr><td>M3</td><td>0.5mm</td><td>0.35mm</td><td>Electronics, sensors</td></tr>
+    <tr><td>M4</td><td>0.7mm</td><td>0.5mm</td><td>Electronics, small mechanisms</td></tr>
+    <tr><td>M5</td><td>0.8mm</td><td>0.5mm</td><td>General fastening</td></tr>
+    <tr><td>M6</td><td>1.0mm</td><td>0.75mm</td><td>General fastening</td></tr>
+    <tr><td>M8</td><td>1.25mm</td><td>1.0mm</td><td>Structural, hydraulic</td></tr>
+    <tr><td>M10</td><td>1.5mm</td><td>1.25mm</td><td>Structural, automotive</td></tr>
+    <tr><td>M12</td><td>1.75mm</td><td>1.25mm</td><td>Heavy-duty fastening</td></tr>
+  </table>
+
+  <h3>Unified Threads (ANSI/ASME)</h3>
+  <p>Dominant in the United States and for products sold into the US market. Defined by ASME B1.1:</p>
+  <ul>
+    <li><strong>UNC (Unified Coarse)</strong> — #4-40, #6-32, #8-32, 1/4-20, 3/8-16, 1/2-13</li>
+    <li><strong>UNF (Unified Fine)</strong> — #4-48, #6-40, #8-36, 1/4-28, 3/8-24, 1/2-20</li>
+    <li><strong>UNEF (Unified Extra Fine)</strong> — for thin-wall applications and fine adjustment</li>
+  </ul>
+  <p>Format: <strong>1/4-20 UNC-2A</strong> (1/4" diameter, 20 TPI, Coarse, Class 2, external thread)</p>
+
+  <h3>Pipe Threads</h3>
+  <p>Used for fluid connections. Critical to specify whether <strong>sealing</strong> or <strong>mechanical joining</strong>:</p>
+  <ul>
+    <li><strong>NPT (National Pipe Taper)</strong> — tapered thread that seals by interference. Used extensively in US hydraulic and pneumatic systems</li>
+    <li><strong>BSPT (British Standard Pipe Taper)</strong> — tapered, sealing. Common outside North America</li>
+    <li><strong>BSPP / G (British Standard Pipe Parallel)</strong> — parallel thread, seals with an O-ring or gasket. Also called "G" thread per ISO 228</li>
+    <li><strong>NPS (National Pipe Straight)</strong> — parallel, mechanical joining only</li>
+  </ul>
+
+  <p><strong>Critical warning:</strong> NPT and BSPT threads are NOT interchangeable despite looking similar. NPT has a 60° thread angle; BSPT has a 55° thread angle. Mixing them causes leaks and potential safety hazards.</p>
+
+  <div class="resource-box">
+    <h4>📖 Thread Standards Quick Reference</h4>
+    <p>Keep all thread specs at your fingertips. The <a href="https://kinghancnc.gumroad.com/l/cnc-terminology-glossary">CNC Terminology Glossary ($6.99)</a> includes comprehensive thread standard references, pitch tables, and tolerance class explanations for metric, unified, and pipe threads.</p>
+  </div>
+
+  <h2>Thread Cutting Methods in CNC Machining</h2>
+
+  <h3>1. Single-Point Threading (CNC Lathe)</h3>
+  <p>The most versatile method. A single-point cutting tool traces the thread profile in multiple passes on a CNC lathe.</p>
+  <ul>
+    <li><strong>Best for:</strong> External and internal threads, custom pitches, large diameters, high-precision threads</li>
+    <li><strong>Advantages:</strong> Any pitch, any profile, excellent surface finish, tight tolerance control</li>
+    <li><strong>Limitations:</strong> Slower than other methods for high-volume production; requires spindle encoder synchronization</li>
+    <li><strong>Typical tolerance:</strong> 4h/4H to 6g/6H (ISO)</li>
+  </ul>
+
+  <p>On Swiss-type CNC lathes, single-point threading is the primary method for external threads. The guide bushing provides exceptional rigidity, making it ideal for long, thin threaded shafts that would deflect on a conventional lathe.</p>
+
+  <h3>2. Thread Milling (CNC Mill)</h3>
+  <p>A helical interpolation operation using a thread mill cutter on a 3-axis or higher CNC mill.</p>
+  <ul>
+    <li><strong>Best for:</strong> Large internal threads, blind holes with threads close to the bottom, interrupted cuts</li>
+    <li><strong>Advantages:</strong> One tool can cut multiple thread sizes (same pitch); better chip evacuation in blind holes; no axial force on workpiece</li>
+    <li><strong>Limitations:</strong> Requires 3-axis minimum; slightly lower production rate than tapping</li>
+    <li><strong>Typical tolerance:</strong> 6g/6H</li>
+  </ul>
+
+  <h3>3. Tapping (Internal Threads)</h3>
+  <p>The fastest method for internal threads. A tap — either cut tap or form tap — is driven into a pre-drilled hole.</p>
+  <ul>
+    <li><strong>Cut tapping:</strong> Creates threads by removing material. Works on all materials. Risk of tap breakage in deep holes</li>
+    <li><strong>Form tapping (roll tapping):</strong> Creates threads by displacing material (no chips). Stronger threads, better for ductile materials (aluminum, brass, low-carbon steel). Requires larger pilot hole</li>
+    <li><strong>Best for:</strong> Standard internal threads at high volume</li>
+    <li><strong>Typical tolerance:</strong> H5-H7 (depending on tap class)</li>
+  </ul>
+
+  <h3>4. Thread Rolling / Thread Whirling</h3>
+  <p><strong>Thread rolling:</strong> A cold-forming process that creates external threads by pressing the workpiece between hardened dies. Produces extremely strong threads (cold-worked grain flow follows the thread profile). Used for high-volume fastener production.</p>
+  <p><strong>Thread whirling:</strong> A specialized process for long, small-pitch threads (especially medical bone screws). A ring of cutting inserts rotates around the slowly turning workpiece. Produces excellent surface finish on materials like titanium and stainless steel. Common on Swiss-type CNC lathes equipped with whirling attachments.</p>
+
+  <h2>Thread Tolerance Classes Explained</h2>
+
+  <h3>ISO Metric Thread Tolerances</h3>
+  <p>Thread tolerances are defined by ISO 965 using a tolerance class system:</p>
+
+  <table>
+    <tr><th>Class</th><th>Type</th><th>Fit</th><th>Application</th></tr>
+    <tr><td><strong>6g / 6H</strong></td><td>External / Internal</td><td>Standard</td><td>General engineering, most common</td></tr>
+    <tr><td><strong>4g / 4H</strong></td><td>External / Internal</td><td>Close</td><td>Precision applications</td></tr>
+    <tr><td><strong>8g / 8H</strong></td><td>External / Internal</td><td>Loose</td><td>Coated threads, hot-dip galvanized</td></tr>
+    <tr><td><strong>6e</strong></td><td>External</td><td>With allowance</td><td>Plated threads (room for coating)</td></tr>
+  </table>
+
+  <p><strong>Key point:</strong> If your drawing says "M8×1.25" without a tolerance class, the supplier will default to 6g/6H. If you need tighter (4g/4H) or looser (8g) fits, specify explicitly. This is especially important for parts that will be plated or anodized after machining — the coating thickness can push threads out of tolerance.</p>
+
+  <h3>Unified Thread Classes</h3>
+  <table>
+    <tr><th>Class</th><th>Fit</th><th>Application</th></tr>
+    <tr><td><strong>1A / 1B</strong></td><td>Loose</td><td>Easy assembly, dirty environments</td></tr>
+    <tr><td><strong>2A / 2B</strong></td><td>Standard</td><td>Most commercial fasteners</td></tr>
+    <tr><td><strong>3A / 3B</strong></td><td>Close</td><td>Precision, aerospace, no allowance</td></tr>
+  </table>
+
+  <h2>Common Thread Specification Mistakes</h2>
+
+  <h3>Mistake #1: Not Specifying Coarse vs. Fine Pitch</h3>
+  <p>"M8 thread" is ambiguous in some contexts. While ISO convention treats "M8" as M8×1.25 (coarse), explicitly stating the pitch eliminates confusion — especially for international suppliers who may work across multiple standards.</p>
+
+  <h3>Mistake #2: Forgetting Thread Engagement Length</h3>
+  <p>The strength of a threaded joint depends on engagement length. General rule: <strong>engagement length should be at least 1× the nominal diameter</strong> (e.g., 8mm engagement for an M8 thread) for steel. For softer materials like aluminum, use 1.5-2× diameter.</p>
+
+  <h3>Mistake #3: Not Accounting for Plating Thickness</h3>
+  <p>If your thread will be plated (zinc, nickel, chrome), the coating adds material to the thread flanks. A 6g external thread may not fit into a 6H internal thread after 10-15µm of plating. Solution: specify 6e tolerance class for the external thread, or call out "thread tolerance after plating."</p>
+
+  <h3>Mistake #4: Mixing NPT and BSPT</h3>
+  <p>These tapered pipe threads look identical to the naked eye but have different thread angles (60° vs. 55°). They will screw together partially but won't seal properly. Always specify the exact standard on your drawing.</p>
+
+  <h3>Mistake #5: Unrealistic Minor Diameter Threads</h3>
+  <p>Internal threads in small holes are limited by tap availability and strength. An M2 internal thread in hardened stainless steel is extremely difficult — the tap is fragile and prone to breakage. Consider thread inserts (Helicoil) for small threads in hard or soft materials.</p>
+
+  <div class="resource-box">
+    <h4>📧 Communicate Thread Specs Clearly</h4>
+    <p>Avoid back-and-forth on thread specifications with your supplier. The <a href="https://kinghancnc.gumroad.com/l/cnc-email-templates">CNC Email Templates ($4.99)</a> include technical specification templates designed for clear communication of thread requirements, tolerances, and inspection criteria.</p>
+  </div>
+
+  <h2>Thread Inspection Methods</h2>
+
+  <h3>Go/No-Go Thread Gauges</h3>
+  <p>The primary inspection method for production threads. A thread ring gauge (for external threads) or thread plug gauge (for internal threads) checks both:</p>
+  <ul>
+    <li><strong>GO gauge</strong> — must screw on/in fully (verifies maximum material condition)</li>
+    <li><strong>NO-GO gauge</strong> — must NOT screw on more than 2 turns (verifies minimum material condition)</li>
+  </ul>
+  <p>For high-volume production, every batch should be checked with calibrated Go/No-Go gauges. See our <a href="/blog/cnc-quality-inspection.html">quality inspection guide</a> for more on inspection methods.</p>
+
+  <h3>Thread Pitch Measurement</h3>
+  <p>Optical comparators, tool maker's microscopes, or pitch micrometers can verify thread pitch accuracy. Critical for non-standard or custom threads.</p>
+
+  <h3>CMM Thread Measurement</h3>
+  <p>For high-precision applications (aerospace, medical), CMM with thread scanning software can measure pitch diameter, lead angle, taper, and profile deviations to sub-micron accuracy.</p>
+
+  <h3>Surface Finish in Threads</h3>
+  <p>Thread surface finish affects both sealing performance and fatigue life. For sealing threads (NPT, BSPT), aim for Ra 1.6 µm or better on thread flanks. For load-bearing threads in fatigue applications, rolled threads (Ra 0.4-0.8 µm) significantly outperform cut threads.</p>
+
+  <div class="resource-box">
+    <h4>🔍 Audit Your Supplier's Thread Capabilities</h4>
+    <p>Not all CNC shops have proper thread gauging equipment. The <a href="https://kinghancnc.gumroad.com/l/cnc-factory-audit-checklist">CNC Factory Audit Checklist ($7.99)</a> includes specific items for evaluating a supplier's threading capabilities, gauging equipment, and calibration practices.</p>
+  </div>
+
+  <h2>Special Thread Types</h2>
+
+  <h3>Acme Threads</h3>
+  <p>Trapezoidal profile (29° included angle). Used for lead screws, vises, and linear motion applications. Stronger than V-threads for power transmission. CNC single-point threading is the standard production method.</p>
+
+  <h3>Buttress Threads</h3>
+  <p>Asymmetric profile designed for high axial loads in one direction. Used in vise screws, press screws, and artillery breech mechanisms.</p>
+
+  <h3>Knurled Threads</h3>
+  <p>Technically not threads, but often specified alongside threading operations. Knurling provides grip for hand-tightened components. Can be straight or diamond pattern, produced by knurling tools on the CNC lathe.</p>
+
+  <h3>Miniature Threads</h3>
+  <p>Threads below M2 (M1, M1.2, M1.4, M1.6) require specialized tooling and <a href="/blog/swiss-type-cnc-turning-guide.html">Swiss-type CNC lathes</a> for reliable production. These tiny threads are common in medical devices, optical instruments, and micro-electronics.</p>
+
+  <h2>Design Tips for Threaded CNC Parts</h2>
+
+  <ol>
+    <li><strong>Add thread relief grooves</strong> — a small undercut at the end of the thread allows full thread engagement and simplifies machining</li>
+    <li><strong>Specify chamfer at thread start</strong> — typically 45° × 1 pitch for easy assembly</li>
+    <li><strong>Keep thread length reasonable</strong> — engagement beyond 1.5× diameter adds cost without proportional strength benefit</li>
+    <li><strong>Avoid threading into corners</strong> — provide clearance for tool runout</li>
+    <li><strong>Consider thread inserts for aluminum parts</strong> — Helicoil or KeySert inserts provide steel-grade thread strength in soft materials</li>
+    <li><strong>Specify coating-compatible tolerances</strong> — if the part will be plated, use 6e tolerance or specify "before plating" / "after plating" dimensions</li>
+  </ol>
+
+  <div class="resource-box">
+    <h4>📘 Master Swiss-Type Threading</h4>
+    <p>Swiss-type CNC lathes excel at producing small threaded components with exceptional precision. The <a href="https://kinghancnc.gumroad.com/l/swiss-type-cnc-lathe-guide">Swiss CNC Lathe Guide ($12.99)</a> covers threading operations, cycle time optimization, and tooling selection specific to Swiss-type machines.</p>
+  </div>
+
+  <h2>Key Takeaways</h2>
+
+  <ul>
+    <li><strong>Always specify thread standard, pitch, and tolerance class</strong> — "M8 thread" alone is not a complete specification</li>
+    <li><strong>Choose the right cutting method</strong> — single-point for precision, tapping for speed, milling for flexibility</li>
+    <li><strong>Account for plating thickness</strong> in thread tolerances (use 6e for plated external threads)</li>
+    <li><strong>Never mix NPT and BSPT</strong> — they are not interchangeable despite visual similarity</li>
+    <li><strong>Inspect with calibrated Go/No-Go gauges</strong> — the most reliable and cost-effective inspection method</li>
+    <li><strong>Thread engagement length matters</strong> — at least 1× diameter for steel, 1.5× for aluminum</li>
+  </ul>
+
+  <p>Properly specified and machined threads are the foundation of reliable mechanical assemblies. Taking the time to get your thread specifications right in the design phase saves costly rework, delays, and field failures down the line.</p>
+
+  <div class="cta-box">
+    <h3>Precision Threading on 26 Swiss-Type CNC Lathes</h3>
+    <p>From M1.6 medical screws to M25 hydraulic fittings, KING HAN produces millions of threaded components annually. Our Swiss-type lathes with live tooling handle single-point threading, whirling, and tapping in one setup.</p>
+    <a href="/#contact">Get a Free Quote →</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 KING HAN PRECISION INDUSTRY LTD. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

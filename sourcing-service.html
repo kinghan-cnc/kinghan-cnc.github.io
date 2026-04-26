@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CNC Sourcing Service | Your CNC Sourcing Partner in Taiwan | KING HAN</title>
+<meta name="description" content="Professional CNC parts sourcing from Taiwan. We handle supplier selection, quoting, quality control, and logistics — backed by our own 26 Swiss-type lathe factory.">
+<meta name="keywords" content="CNC sourcing Taiwan, CNC parts procurement, Taiwan manufacturing agent, Swiss-type CNC sourcing, precision parts sourcing">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="canonical" href="https://kinghan-cnc.com/sourcing-service.html">
+<style>
+  :root {
+    --bg-dark: #0d1117;
+    --bg-section: #161b22;
+    --bg-card: #1c2333;
+    --accent: #f0a500;
+    --accent-dim: #c48800;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --border: #30363d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, 'Segoe UI', sans-serif; background: var(--bg-dark); color: var(--text); line-height: 1.7; }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(13,17,23,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 2rem; height: 64px;
+  }
+  .logo { font-size: 1.1rem; font-weight: 700; color: var(--accent); letter-spacing: 1px; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo img { height: 36px; width: 36px; border-radius: 50%; }
+  .logo span { color: var(--text); font-weight: 400; }
+  nav ul { list-style: none; display: flex; gap: 1.5rem; }
+  nav a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  nav a:hover { color: var(--accent); }
+  .nav-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 120px 2rem 80px;
+    background: linear-gradient(160deg, #0d1117 0%, #1a1f2e 50%, #0d1117 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 40%, rgba(240,165,0,0.06) 0%, transparent 60%),
+                radial-gradient(circle at 70% 60%, rgba(240,165,0,0.04) 0%, transparent 50%);
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero-tag { color: var(--accent); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1rem; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p { color: var(--text-dim); font-size: clamp(1rem, 2vw, 1.25rem); max-width: 700px; margin-bottom: 2.5rem; }
+  .btn {
+    display: inline-block; padding: 14px 36px; background: var(--accent); color: #000;
+    font-weight: 700; text-decoration: none; border-radius: 4px; font-size: 1rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn:hover { background: var(--accent-dim); transform: translateY(-2px); }
+  .btn-outline {
+    display: inline-block; padding: 14px 36px; background: transparent; color: var(--accent);
+    font-weight: 700; text-decoration: none; border-radius: 4px; font-size: 1rem;
+    border: 2px solid var(--accent); transition: background 0.2s, transform 0.2s;
+  }
+  .btn-outline:hover { background: rgba(240,165,0,0.1); transform: translateY(-2px); }
+  .btn-whatsapp {
+    display: inline-block; padding: 14px 36px; background: #25d366; color: #fff;
+    font-weight: 700; text-decoration: none; border-radius: 4px; font-size: 1rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-whatsapp:hover { background: #1da851; transform: translateY(-2px); }
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+  section { padding: 80px 2rem; }
+  .section-alt { background: var(--bg-section); }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-title { text-align: center; margin-bottom: 3rem; }
+  .section-title h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+  .section-title p { color: var(--text-dim); }
+  .section-title .line { width: 50px; height: 3px; background: var(--accent); margin: 1rem auto 0; }
+
+  .about-text { max-width: 800px; margin: 0 auto; text-align: center; }
+  .about-text p { margin-bottom: 1rem; color: var(--text-dim); font-size: 1.05rem; }
+
+  .adv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .adv-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 2rem; text-align: center; transition: border-color 0.3s, transform 0.3s;
+  }
+  .adv-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .adv-card .emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+  .adv-card h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+  .adv-card p { color: var(--text-dim); font-size: 0.9rem; }
+
+  .eq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .eq-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .eq-card .icon { font-size: 1.8rem; flex-shrink: 0; width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(240,165,0,0.1); border-radius: 8px;
+  }
+  .eq-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+  .eq-card p { color: var(--text-dim); font-size: 0.9rem; }
+
+  /* PROCESS STEPS */
+  .process-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+  .process-step {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 2rem 1.5rem; text-align: center; flex: 1 1 180px; max-width: 200px;
+    position: relative; transition: border-color 0.3s, transform 0.3s;
+  }
+  .process-step:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .process-step .step-num {
+    display: inline-block; width: 40px; height: 40px; line-height: 40px;
+    background: var(--accent); color: #000; font-weight: 800; border-radius: 50%;
+    font-size: 1.1rem; margin-bottom: 1rem;
+  }
+  .process-step h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .process-step p { color: var(--text-dim); font-size: 0.82rem; }
+
+  /* TAGS */
+  .tag-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
+  .tag {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 0.5rem 1.2rem; font-size: 0.9rem; color: var(--text-dim);
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .tag:hover { border-color: var(--accent); color: var(--accent); }
+
+  .cta-section {
+    text-align: center; padding: 80px 2rem;
+    background: linear-gradient(160deg, var(--bg-section), var(--bg-dark));
+  }
+  .cta-section h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+  .cta-section p { color: var(--text-dim); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+  footer {
+    text-align: center; padding: 2rem; border-top: 1px solid var(--border);
+    color: var(--text-dim); font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    nav ul { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0;
+      background: rgba(13,17,23,0.98); padding: 1rem 2rem; gap: 1rem; }
+    nav ul.open { display: flex; }
+    .nav-toggle { display: block; }
+    .process-step { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="logo.png" alt="KH Logo">KING HAN <span>PRECISION</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sourcing-service.html" style="color:var(--accent);">Sourcing Service</a></li>
+    <li><a href="/quote-calculator/">💰 Quote Calculator</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">CNC Sourcing Agent</div>
+  <h1>Your CNC Sourcing <em>Partner in Taiwan</em></h1>
+  <p>We help international buyers source precision CNC parts from Taiwan's best factories — handling quoting, quality control, production oversight, and logistics so you don't have to.</p>
+  <div class="hero-buttons">
+    <a href="mailto:pololkj27@gmail.com?subject=CNC%20Sourcing%20RFQ" class="btn">Get a Free Quote ➜</a>
+    <a href="https://wa.me/886928371613?text=Hi%2C%20I%27d%20like%20to%20inquire%20about%20CNC%20sourcing%20services." class="btn-whatsapp">💬 WhatsApp Us</a>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="section-alt">
+  <div class="container">
+    <div class="section-title">
+      <h2>What We Do</h2>
+      <p>Your full-service CNC procurement partner</p>
+      <div class="line"></div>
+    </div>
+    <div class="about-text">
+      <p>Sourcing precision CNC parts from Asia shouldn't be a guessing game. We act as your <strong style="color:var(--text)">on-the-ground sourcing agent in Taiwan</strong>, connecting you with the right factories, negotiating the best prices, and ensuring every part meets your specifications.</p>
+      <p>From RFQ to delivery, we manage the entire supply chain — supplier vetting, technical drawing review, production monitoring, in-process quality inspection, and international shipping coordination.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY TAIWAN -->
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>Why Source from Taiwan?</h2>
+      <p>The smart alternative to mainland China</p>
+      <div class="line"></div>
+    </div>
+    <div class="adv-grid">
+      <div class="adv-card">
+        <div class="emoji">🏆</div>
+        <h3>World-Class Quality</h3>
+        <p>Taiwan's CNC industry is known for tight tolerances, excellent surface finishes, and consistent batch quality.</p>
+      </div>
+      <div class="adv-card">
+        <div class="emoji">💰</div>
+        <h3>Competitive Pricing</h3>
+        <p>High-quality parts at fair prices — better value than Japan or Europe, more reliable than low-cost alternatives.</p>
+      </div>
+      <div class="adv-card">
+        <div class="emoji">⏱️</div>
+        <h3>Reliable Lead Times</h3>
+        <p>Taiwanese factories honor delivery schedules. No surprise delays or communication blackouts.</p>
+      </div>
+      <div class="adv-card">
+        <div class="emoji">🔒</div>
+        <h3>Strong IP Protection</h3>
+        <p>Robust legal framework and business culture that respects intellectual property and NDAs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section-alt">
+  <div class="container">
+    <div class="section-title">
+      <h2>How It Works</h2>
+      <p>Simple 5-step sourcing process</p>
+      <div class="line"></div>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h3>Send RFQ</h3>
+        <p>Share your drawings, specs, and quantities</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h3>We Quote</h3>
+        <p>We source the best factory and provide a competitive quote</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h3>You Approve</h3>
+        <p>Review pricing, lead time, and confirm the order</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h3>Produce & QC</h3>
+        <p>We oversee production and run quality inspections</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <h3>Ship to You</h3>
+        <p>Parts packed, documented, and shipped worldwide</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR EDGE -->
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>Why Work With Us</h2>
+      <p>Not just a middleman — we are manufacturers</p>
+      <div class="line"></div>
+    </div>
+    <div class="adv-grid">
+      <div class="adv-card">
+        <div class="emoji">🏭</div>
+        <h3>Own Factory: 26 Swiss-Type Lathes</h3>
+        <p>We run our own production facility with 26 Swiss-type CNC lathes. We're not just agents — we manufacture.</p>
+      </div>
+      <div class="adv-card">
+        <div class="emoji">🌐</div>
+        <h3>Partner Factory Network</h3>
+        <p>Beyond our own shop, we've built a vetted network of CNC milling, turning, and finishing factories across Taiwan.</p>
+      </div>
+      <div class="adv-card">
+        <div class="emoji">📐</div>
+        <h3>Technical Expertise</h3>
+        <p>We read and review engineering drawings. We catch DFM issues before production starts, saving you time and money.</p>
+      </div>
+      <div class="adv-card">
+        <div class="emoji">🔍</div>
+        <h3>Rigorous Quality Control</h3>
+        <p>In-process inspection, first article reports, dimensional checks, and material certifications — every order, every time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="section-alt">
+  <div class="container">
+    <div class="section-title">
+      <h2>Capabilities</h2>
+      <p>What we can source for you</p>
+      <div class="line"></div>
+    </div>
+    <div class="eq-grid">
+      <div class="eq-card">
+        <div class="icon">⚙️</div>
+        <div><h3>CNC Turning</h3><p>Swiss-type specialty, ø3–40mm. Our core strength with in-house production capability.</p></div>
+      </div>
+      <div class="eq-card">
+        <div class="icon">🔧</div>
+        <div><h3>CNC Milling</h3><p>3-axis, 4-axis, and 5-axis milling through our partner factory network.</p></div>
+      </div>
+      <div class="eq-card">
+        <div class="icon">✨</div>
+        <div><h3>Surface Treatment</h3><p>Anodizing, plating, passivation, heat treatment, polishing, and more.</p></div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:3rem;">
+      <h2>Materials</h2>
+      <div class="line"></div>
+    </div>
+    <div class="tag-grid">
+      <div class="tag">Stainless Steel (303, 304, 316)</div>
+      <div class="tag">Aluminum (6061, 7075)</div>
+      <div class="tag">Brass (C360, C260)</div>
+      <div class="tag">Titanium (Grade 2, Grade 5)</div>
+      <div class="tag">Carbon Steel</div>
+      <div class="tag">Copper</div>
+      <div class="tag">Engineering Plastics (PEEK, POM, Nylon)</div>
+    </div>
+
+    <div class="section-title" style="margin-top:3rem;">
+      <h2>Industries We Serve</h2>
+      <div class="line"></div>
+    </div>
+    <div class="tag-grid">
+      <div class="tag">🏥 Medical Devices</div>
+      <div class="tag">🚗 Automotive</div>
+      <div class="tag">📱 Electronics & Connectors</div>
+      <div class="tag">✈️ Aerospace</div>
+      <div class="tag">🔦 EDC & Consumer Products</div>
+      <div class="tag">🔬 Industrial & Scientific</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to Source CNC Parts from Taiwan?</h2>
+  <p>Send us your drawings and requirements. We'll get back to you with a competitive quote within 24–48 hours.</p>
+  <div class="hero-buttons">
+    <a href="mailto:pololkj27@gmail.com?subject=CNC%20Sourcing%20RFQ" class="btn">Get a Free Quote ➜</a>
+    <a href="https://wa.me/886928371613?text=Hi%2C%20I%27d%20like%20to%20inquire%20about%20CNC%20sourcing%20services." class="btn-whatsapp">💬 WhatsApp Us</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 KING HAN PRECISION INDUSTRY LTD. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

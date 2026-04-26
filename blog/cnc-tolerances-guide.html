@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CNC Machining Tolerances Explained for Buyers: What You Need to Know | KING HAN Blog</title>
+<meta name="description" content="CNC machining tolerances explained for buyers. Learn standard vs tight tolerances, how to read tolerance specs, avoid over-tolerancing, and reduce costs on precision parts.">
+<meta name="keywords" content="CNC machining tolerances explained, CNC tolerance guide for buyers, machining tolerance chart, tight tolerance CNC parts, precision machining tolerances">
+<link rel="icon" type="image/png" href="../logo.png">
+<link rel="canonical" href="https://kinghan-cnc.com/blog/cnc-tolerances-guide.html">
+<style>
+  :root{--bg-dark:#0d1117;--bg-section:#161b22;--bg-card:#1c2333;--accent:#f0a500;--accent-dim:#c48800;--text:#e6edf3;--text-dim:#8b949e;--border:#30363d}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.8}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,17,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:0 2rem;height:64px}
+  .logo{font-size:1.1rem;font-weight:700;color:var(--accent);letter-spacing:1px;display:flex;align-items:center;gap:10px;text-decoration:none}
+  .logo img{height:36px;width:36px;border-radius:50%}.logo span{color:var(--text);font-weight:400}
+  nav ul{list-style:none;display:flex;gap:1.5rem}
+  nav a{color:var(--text-dim);text-decoration:none;font-size:0.9rem;transition:color 0.2s}nav a:hover{color:var(--accent)}
+  .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+  .article-header{padding:120px 2rem 40px;text-align:center;background:linear-gradient(160deg,#0d1117 0%,#1a1f2e 50%,#0d1117 100%)}
+  .article-header h1{font-size:clamp(1.8rem,4vw,2.5rem);max-width:800px;margin:0 auto 1rem}
+  .article-header .meta{color:var(--text-dim);font-size:0.9rem}
+  .article{max-width:760px;margin:0 auto;padding:3rem 2rem}
+  .article h2{font-size:1.5rem;margin:2.5rem 0 1rem;color:var(--accent)}
+  .article h3{font-size:1.2rem;margin:2rem 0 0.8rem}
+  .article p{color:var(--text-dim);margin-bottom:1.2rem;font-size:1.02rem}
+  .article ul,.article ol{color:var(--text-dim);margin:0 0 1.2rem 1.5rem;font-size:1.02rem}
+  .article li{margin-bottom:0.5rem}
+  .article strong{color:var(--text)}
+  .article a{color:var(--accent);text-decoration:none}.article a:hover{text-decoration:underline}
+  .back-link{display:inline-block;margin-bottom:2rem;color:var(--accent);text-decoration:none;font-size:0.9rem}
+  .back-link:hover{text-decoration:underline}
+  .cta-box{background:var(--bg-card);border:1px solid var(--accent);border-radius:8px;padding:2rem;margin-top:3rem;text-align:center}
+  .cta-box h3{color:var(--accent);margin-bottom:0.5rem;font-size:1.3rem}
+  .cta-box p{color:var(--text-dim);margin-bottom:1rem}
+  .cta-box a{display:inline-block;background:var(--accent);color:#0d1117;padding:0.7rem 2rem;border-radius:6px;font-weight:700;text-decoration:none;transition:background 0.3s}
+  .cta-box a:hover{background:var(--accent-dim)}
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0}
+  th,td{border:1px solid var(--border);padding:0.6rem 1rem;text-align:left;font-size:0.95rem;color:var(--text-dim)}
+  th{background:var(--bg-card);color:var(--text);font-weight:600}
+  footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-dim);font-size:0.85rem}
+  @media(max-width:768px){nav ul{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(13,17,23,0.98);padding:1rem 2rem;gap:1rem}nav ul.open{display:flex}.nav-toggle{display:block}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="../logo.png" alt="KH Logo">KING HAN <span>PRECISION</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sourcing-service.html">Sourcing Service</a></li>
+    <li><a href="/blog/" style="color:var(--accent);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="article-header">
+  <h1>CNC Machining Tolerances Explained for Buyers</h1>
+  <div class="meta">March 1, 2026 · 9 min read</div>
+</div>
+
+<div class="article">
+  <a href="/blog/" class="back-link">← Back to Blog</a>
+
+  <p>If you're sourcing CNC machined parts — whether for a prototype or a 10,000-piece production run — tolerances are the single most important specification on your drawing. They determine how precisely each feature must be manufactured, and they directly impact cost, lead time, and supplier selection.</p>
+
+  <p>Yet tolerances remain one of the most misunderstood aspects of CNC procurement. Over-tolerancing drives up costs unnecessarily. Under-tolerancing leads to parts that don't assemble or function correctly. As a factory owner who reviews hundreds of customer drawings every year, I see both mistakes daily. This guide will help you get tolerances right.</p>
+
+  <h2>What Are CNC Machining Tolerances?</h2>
+
+  <p>A tolerance defines the acceptable range of variation for a dimension. No manufacturing process produces a part at exactly the nominal dimension — there's always some deviation. Tolerances acknowledge this reality and define how much deviation is acceptable for the part to function correctly.</p>
+
+  <p>For example, a dimension of <strong>25.00 mm ±0.05 mm</strong> means the actual part can measure anywhere between 24.95 mm and 25.05 mm and still be considered acceptable. That 0.10 mm total range is the tolerance band.</p>
+
+  <h3>Why Tolerances Matter for Buyers</h3>
+
+  <ul>
+    <li><strong>Fit and assembly:</strong> Mating parts need compatible tolerances to assemble correctly. A shaft that's too large won't fit its bore; one that's too small will be loose.</li>
+    <li><strong>Function:</strong> Sealing surfaces, bearing fits, and sliding mechanisms all depend on precise dimensional control.</li>
+    <li><strong>Cost:</strong> Tighter tolerances require slower machining, more inspection, and higher reject rates — all of which increase per-part cost.</li>
+    <li><strong>Supplier capability:</strong> Not every shop can hold ±0.005 mm. Specifying tolerances beyond a supplier's capability leads to delays or quality issues.</li>
+  </ul>
+
+  <h2>Standard CNC Machining Tolerance Ranges</h2>
+
+  <p>Here's a practical reference for what CNC machining can achieve across different tolerance classes:</p>
+
+  <table>
+    <tr><th>Tolerance Class</th><th>Typical Range</th><th>When to Use</th><th>Cost Impact</th></tr>
+    <tr><td>Commercial / Standard</td><td>±0.10 mm (±0.004")</td><td>Non-critical dimensions, clearance holes, general features</td><td>Baseline</td></tr>
+    <tr><td>Precision</td><td>±0.05 mm (±0.002")</td><td>Fits, alignment features, functional surfaces</td><td>1.2–1.5× baseline</td></tr>
+    <tr><td>High Precision</td><td>±0.025 mm (±0.001")</td><td>Bearing bores, sealing surfaces, critical assemblies</td><td>1.5–2.5× baseline</td></tr>
+    <tr><td>Ultra Precision</td><td>±0.010 mm (±0.0004")</td><td>Instrument-grade, optical, medical implants</td><td>3–5× baseline</td></tr>
+    <tr><td>Grinding / Lapping</td><td>±0.005 mm or tighter</td><td>Gauge blocks, spindle components, semiconductor</td><td>5–10× baseline</td></tr>
+  </table>
+
+  <p>For most commercial CNC machined parts, <strong>±0.05 mm is the sweet spot</strong> — achievable on any competent CNC machine without special setups, yet precise enough for most functional requirements.</p>
+
+  <h2>Types of Tolerances You'll Encounter</h2>
+
+  <h3>Dimensional Tolerances</h3>
+
+  <p>The most straightforward type — they control the size of a feature. Examples include hole diameters, shaft diameters, lengths, and depths. Expressed as bilateral (±0.05) or unilateral (+0.00/−0.10) tolerances.</p>
+
+  <h3>Geometric Tolerances (GD&T)</h3>
+
+  <p>Geometric Dimensioning and Tolerancing controls the <em>shape, orientation, and location</em> of features relative to datums. Common GD&T callouts include:</p>
+
+  <ul>
+    <li><strong>Flatness:</strong> How flat a surface must be (e.g., ◇ 0.02 mm)</li>
+    <li><strong>Cylindricity:</strong> How perfectly round and straight a bore or shaft must be</li>
+    <li><strong>Concentricity / Runout:</strong> How well two cylindrical features share a common axis</li>
+    <li><strong>True Position:</strong> How accurately a hole or feature is located relative to datums</li>
+    <li><strong>Perpendicularity / Parallelism:</strong> Angular relationship between features</li>
+  </ul>
+
+  <p>GD&T is more precise than basic dimensional tolerancing because it controls not just size, but the geometric relationship between features. If your parts require critical fits or assemblies, GD&T is worth learning — it communicates your intent much more clearly than ± dimensions alone.</p>
+
+  <h3>Surface Finish Tolerances</h3>
+
+  <p>Surface roughness (Ra) is technically a tolerance on surface texture. Standard CNC machining produces Ra 1.6–3.2 µm. Ground surfaces achieve Ra 0.4–0.8 µm. Polished surfaces can reach Ra 0.1 µm or better. Surface finish specifications directly affect machining strategy, cycle time, and cost.</p>
+
+  <h2>The Hidden Cost of Over-Tolerancing</h2>
+
+  <p>This is the most expensive mistake buyers make, and I see it constantly. A drawing comes in with ±0.01 mm on every dimension — including non-functional features like overall length, chamfer sizes, and clearance hole positions. The result?</p>
+
+  <ul>
+    <li><strong>Higher quotes:</strong> Every tight tolerance adds inspection time, slower feeds and speeds, and potential secondary operations.</li>
+    <li><strong>Longer lead times:</strong> Precision work takes longer. A part that could be machined in 3 minutes at standard tolerances might take 8 minutes at ultra-precision specs.</li>
+    <li><strong>Higher reject rates:</strong> Tighter tolerances mean more parts fall outside specification. Those rejects are built into your price.</li>
+    <li><strong>Fewer qualified suppliers:</strong> Not every shop can hold ±0.01 mm reliably. Over-tolerancing limits your supply base and eliminates competitive pricing pressure.</li>
+  </ul>
+
+  <p><strong>The rule of thumb:</strong> Only apply tight tolerances to features that actually require them for function or assembly. Everything else should default to standard machining tolerances (±0.10 mm or whatever your general tolerance block specifies).</p>
+
+  <h2>How to Specify Tolerances on Your Drawings</h2>
+
+  <h3>Use a General Tolerance Block</h3>
+
+  <p>Every drawing should include a general tolerance block in the title block area. This sets the default tolerance for any dimension not explicitly toleranced. A typical block might read:</p>
+
+  <ul>
+    <li>Linear dimensions: ±0.10 mm</li>
+    <li>Angular dimensions: ±0.5°</li>
+    <li>Hole diameters: H7 (or ±0.025 mm)</li>
+  </ul>
+
+  <p>This way, you only need to call out specific tolerances on the critical features — everything else falls under the general tolerance.</p>
+
+  <h3>Call Out Critical Features Explicitly</h3>
+
+  <p>For features that require tighter control, add the tolerance directly to the dimension. For example:</p>
+
+  <ul>
+    <li>Bearing bore: Ø25.000 +0.021/+0.000 mm (H7 fit)</li>
+    <li>Sealing surface flatness: ◇ 0.02 mm</li>
+    <li>Mounting hole true position: ⊕ Ø0.10 mm to datum A/B</li>
+  </ul>
+
+  <h3>Communicate Fit Requirements</h3>
+
+  <p>If your part mates with another component, tell your supplier. Sharing the mating part drawing or at least the mating dimensions helps us understand the <em>intent</em> behind the tolerance. We can often suggest tolerance combinations that are easier to manufacture while still ensuring proper fit.</p>
+
+  <h2>Material Impact on Achievable Tolerances</h2>
+
+  <p>Not all materials hold tolerances equally well. Material properties significantly affect what's practically achievable:</p>
+
+  <table>
+    <tr><th>Material</th><th>Practical Tight Tolerance</th><th>Notes</th></tr>
+    <tr><td>Aluminum (6061)</td><td>±0.010 mm</td><td>Excellent machinability, watch for thermal expansion</td></tr>
+    <tr><td>Stainless Steel (304/316)</td><td>±0.015 mm</td><td>Work-hardens; may need stress relief between ops</td></tr>
+    <tr><td>Brass (C360)</td><td>±0.008 mm</td><td>Best machinability, excellent for tight tolerance parts</td></tr>
+    <tr><td>Titanium (Ti-6Al-4V)</td><td>±0.020 mm</td><td>Springback and heat issues; requires experienced setup</td></tr>
+    <tr><td>Plastics (Delrin, PEEK)</td><td>±0.025 mm</td><td>Thermal expansion and moisture absorption are concerns</td></tr>
+  </table>
+
+  <p>For more on material selection and how it affects your CNC project, see our <a href="/blog/aluminum-cnc-machining-guide.html">aluminum alloy selection guide</a> and <a href="/blog/stainless-steel-cnc-machining.html">stainless steel machining guide</a>.</p>
+
+  <h2>Practical Tips from a Factory Owner</h2>
+
+  <p>After running a CNC shop for years, here's what I wish every buyer knew about tolerances:</p>
+
+  <ol>
+    <li><strong>Start loose, tighten only where needed.</strong> Design with standard tolerances first. Then review each feature: does it mate with another part? Does it seal? Does it locate a bearing? Only those features need tighter control.</li>
+    <li><strong>Talk to your supplier early.</strong> A five-minute conversation about critical features can save thousands of dollars. We can often suggest design changes that dramatically improve manufacturability without compromising function.</li>
+    <li><strong>Understand inspection methods.</strong> Tolerances below ±0.01 mm typically require CMM (coordinate measuring machine) inspection, which adds cost. If you specify it, be prepared to pay for the verification.</li>
+    <li><strong>Consider process capability, not just machine capability.</strong> A machine might be capable of ±0.005 mm positioning, but thermal drift, tool wear, and fixture repeatability mean real-world process capability is wider.</li>
+    <li><strong>Use ISO fits for cylindrical features.</strong> Instead of arbitrary tolerances on shafts and holes, use the ISO fit system (H7/g6, H7/p6, etc.). It's universally understood and gives your supplier clear guidance on the intended fit.</li>
+  </ol>
+
+  <p>Getting tolerances right is one of the most impactful things you can do to reduce costs and improve part quality. For a deeper dive into cost optimization, read our guide on <a href="/blog/reduce-cnc-costs.html">how to reduce CNC machining costs without sacrificing quality</a>, and for RFQ best practices, check out our <a href="/blog/cnc-machining-rfq-best-practices.html">CNC RFQ guide</a>.</p>
+
+  <div class="cta-box">
+    <h3>Download Our CNC Sourcing Toolkit</h3>
+    <p>Get our complete guide to sourcing precision CNC parts — including tolerance specification templates, RFQ checklists, and supplier evaluation frameworks.</p>
+    <a href="https://kinghancnc.gumroad.com" target="_blank">Get the Toolkit →</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 KING HAN Precision Industry Co., Ltd. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

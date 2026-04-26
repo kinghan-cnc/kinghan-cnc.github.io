@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Small Diameter CNC Machining: Capabilities and Considerations for Parts Under 25mm | KING HAN Blog</title>
+<meta name="description" content="Expert guide to small diameter CNC machining for parts under 25mm. Learn about capabilities, tolerances, materials, and why Swiss-type lathes are ideal for miniature precision components.">
+<meta name="keywords" content="small diameter CNC machining, miniature CNC parts, Swiss-type turning, parts under 25mm, micro machining, small precision parts">
+<link rel="icon" type="image/png" href="../logo.png">
+<link rel="canonical" href="https://kinghan-cnc.com/blog/small-diameter-cnc-machining.html">
+<style>
+  :root{--bg-dark:#0d1117;--bg-section:#161b22;--bg-card:#1c2333;--accent:#f0a500;--accent-dim:#c48800;--text:#e6edf3;--text-dim:#8b949e;--border:#30363d}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.8}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,17,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:0 2rem;height:64px}
+  .logo{font-size:1.1rem;font-weight:700;color:var(--accent);letter-spacing:1px;display:flex;align-items:center;gap:10px;text-decoration:none}
+  .logo img{height:36px;width:36px;border-radius:50%}.logo span{color:var(--text);font-weight:400}
+  nav ul{list-style:none;display:flex;gap:1.5rem}
+  nav a{color:var(--text-dim);text-decoration:none;font-size:0.9rem;transition:color 0.2s}nav a:hover{color:var(--accent)}
+  .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+  .article-header{padding:120px 2rem 40px;text-align:center;background:linear-gradient(160deg,#0d1117 0%,#1a1f2e 50%,#0d1117 100%)}
+  .article-header h1{font-size:clamp(1.8rem,4vw,2.5rem);max-width:800px;margin:0 auto 1rem}
+  .article-header .meta{color:var(--text-dim);font-size:0.9rem}
+  .article{max-width:760px;margin:0 auto;padding:3rem 2rem}
+  .article h2{font-size:1.5rem;margin:2.5rem 0 1rem;color:var(--accent)}
+  .article h3{font-size:1.2rem;margin:2rem 0 0.8rem}
+  .article p{color:var(--text-dim);margin-bottom:1.2rem;font-size:1.02rem}
+  .article ul,.article ol{color:var(--text-dim);margin:0 0 1.2rem 1.5rem;font-size:1.02rem}
+  .article li{margin-bottom:0.5rem}
+  .article strong{color:var(--text)}
+  .article a{color:var(--accent);text-decoration:none}.article a:hover{text-decoration:underline}
+  .back-link{display:inline-block;margin-bottom:2rem;color:var(--accent);text-decoration:none;font-size:0.9rem}
+  .back-link:hover{text-decoration:underline}
+  .cta-box{background:var(--bg-card);border:1px solid var(--accent);border-radius:8px;padding:2rem;margin-top:3rem;text-align:center}
+  .cta-box h3{color:var(--accent);margin-bottom:0.5rem;font-size:1.3rem}
+  .cta-box p{color:var(--text-dim);margin-bottom:1rem}
+  .cta-box a{display:inline-block;background:var(--accent);color:#0d1117;padding:0.7rem 2rem;border-radius:6px;font-weight:700;text-decoration:none;transition:background 0.3s}
+  .cta-box a:hover{background:var(--accent-dim)}
+  footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-dim);font-size:0.85rem}
+  @media(max-width:768px){nav ul{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(13,17,23,0.98);padding:1rem 2rem;gap:1rem}nav ul.open{display:flex}.nav-toggle{display:block}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="../logo.png" alt="KH Logo">KING HAN <span>PRECISION</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sourcing-service.html">Sourcing Service</a></li>
+    <li><a href="/blog/" style="color:var(--accent);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="article-header">
+  <h1>Small Diameter CNC Machining: Capabilities and Considerations for Parts Under 25mm</h1>
+  <div class="meta">February 21, 2026 · 9 min read</div>
+</div>
+
+<div class="article">
+  <a href="/blog/" class="back-link">← Back to Blog</a>
+
+  <p>The trend in manufacturing is clear: parts are getting smaller. As products become more compact, more integrated, and more sophisticated, the components inside them shrink accordingly. Smartphones, medical implants, miniature sensors, fiber optic networks, electric vehicle systems — all depend on precision machined parts with diameters measured in single-digit millimeters.</p>
+
+  <p>Small diameter CNC machining — generally defined as work on parts with diameters under 25 mm — presents unique challenges and requires specialized equipment, tooling, and expertise. This article explores the capabilities, considerations, and best practices for manufacturing small-diameter precision components.</p>
+
+  <h2>Why Small Diameter Machining Is Different</h2>
+
+  <p>Machining a ø5 mm pin is fundamentally different from machining a ø50 mm shaft. While the basic physics of metal cutting remain the same, the scale changes everything:</p>
+
+  <ul>
+    <li><strong>Deflection becomes critical.</strong> A ø5 mm × 30 mm long workpiece is far more susceptible to bending under cutting forces than a larger part. Even modest cutting pressure can deflect the part enough to cause dimensional errors and poor surface finish.</li>
+    <li><strong>Tolerances are proportionally tighter.</strong> A ±0.01 mm tolerance on a ø5 mm shaft represents 0.2% of the diameter. The same absolute tolerance on a ø50 mm shaft is only 0.02% — ten times more forgiving relative to part size.</li>
+    <li><strong>Tool size limitations.</strong> Smaller parts require smaller cutting tools, which are less rigid, more prone to breakage, and have shorter tool life.</li>
+    <li><strong>Chip evacuation challenges.</strong> In deep holes or narrow grooves on small parts, removing chips becomes more difficult, increasing the risk of re-cutting chips (which damages surface finish) or tool breakage.</li>
+    <li><strong>Handling and inspection.</strong> Small parts are difficult to handle without damage and require precision inspection equipment (optical comparators, video measuring systems) rather than standard calipers.</li>
+  </ul>
+
+  <h2>Swiss-Type CNC Lathes: The Ideal Platform</h2>
+
+  <p><a href="/blog/what-is-swiss-type-cnc-lathe.html">Swiss-type CNC lathes</a> were literally invented for small diameter machining. Their defining feature — the guide bushing that supports the workpiece millimeters from the cutting point — directly addresses the biggest challenge of small-part turning: deflection.</p>
+
+  <p>Here's why Swiss-type machines dominate small diameter production:</p>
+
+  <ul>
+    <li><strong>Guide bushing support:</strong> The workpiece is always supported at the cutting zone, regardless of part length. This enables machining of parts with length-to-diameter ratios of 10:1, 15:1, or even 20:1 without vibration.</li>
+    <li><strong>High spindle speeds:</strong> Swiss lathes typically run at 8,000–12,000 RPM (some up to 15,000 RPM), essential for maintaining proper cutting speeds on small diameters where circumference is limited.</li>
+    <li><strong>Multi-tool capability:</strong> With 10–20+ tool stations, Swiss lathes can complete complex parts in one cycle — eliminating the handling risks that come with transferring tiny parts between machines.</li>
+    <li><strong>Sub-spindle machining:</strong> The back spindle picks up the part after cutoff, enabling machining of both ends without human handling of the tiny workpiece.</li>
+    <li><strong>Bar feed automation:</strong> Parts are produced from continuous bar stock, enabling unattended production of thousands of pieces with minimal operator intervention.</li>
+  </ul>
+
+  <p>For a detailed comparison of Swiss-type and conventional CNC lathes, see our article on <a href="/blog/swiss-type-vs-conventional-cnc.html">Swiss-type CNC vs conventional CNC turning</a>.</p>
+
+  <h2>Achievable Tolerances for Small Diameter Parts</h2>
+
+  <p>With the right equipment and expertise, small diameter parts can be machined to remarkably tight tolerances:</p>
+
+  <h3>Diameter Tolerances</h3>
+  <ul>
+    <li><strong>Standard:</strong> ±0.025 mm (±0.001") — achievable on any competent CNC lathe</li>
+    <li><strong>Precision:</strong> ±0.01 mm (±0.0004") — standard for Swiss-type production</li>
+    <li><strong>High precision:</strong> ±0.005 mm (±0.0002") — achievable on Swiss-type lathes with careful process control</li>
+    <li><strong>Ultra-precision:</strong> ±0.002–0.003 mm — possible but requires controlled environment, premium tooling, and frequent in-process measurement</li>
+  </ul>
+
+  <h3>Length and Position Tolerances</h3>
+  <ul>
+    <li><strong>Standard:</strong> ±0.05 mm</li>
+    <li><strong>Precision:</strong> ±0.02 mm</li>
+    <li><strong>High precision:</strong> ±0.01 mm</li>
+  </ul>
+
+  <h3>Concentricity and Runout</h3>
+  <ul>
+    <li><strong>Standard:</strong> 0.02 mm TIR (Total Indicated Runout)</li>
+    <li><strong>Precision:</strong> 0.01 mm TIR</li>
+    <li><strong>High precision:</strong> 0.005 mm TIR</li>
+  </ul>
+
+  <p>For comprehensive tolerance specifications, refer to our <a href="/blog/cnc-machining-tolerance-guide.html">CNC Machining Tolerance Guide</a>.</p>
+
+  <h2>Material Considerations for Small Parts</h2>
+
+  <p>Material selection impacts machinability significantly at small diameters. Some materials that machine easily at larger sizes become problematic at ø3–10 mm:</p>
+
+  <h3>Best Materials for Small Diameter Turning</h3>
+  <ul>
+    <li><strong>Free-cutting brass (C36000):</strong> Excellent machinability, clean chip formation, long tool life. The ideal material when mechanical and corrosion requirements allow it.</li>
+    <li><strong>Free-machining stainless (303):</strong> Good corrosion resistance with significantly better machinability than 304 or 316. Preferred for small stainless steel components.</li>
+    <li><strong>Aluminum 2011/6061:</strong> Light weight, good machinability, excellent surface finish. 2011 (free-machining) is preferred for highest throughput.</li>
+    <li><strong>12L14 steel:</strong> The easiest steel to machine. Outstanding for pins, shafts, and fasteners where corrosion resistance isn't critical.</li>
+  </ul>
+
+  <h3>More Challenging Materials</h3>
+  <ul>
+    <li><strong>Titanium (Grade 5):</strong> Excellent properties but generates heat during cutting, causes rapid tool wear, and tends to gall. Requires experienced operators, appropriate coolant strategies, and premium carbide or PCD tooling.</li>
+    <li><strong>316L Stainless Steel:</strong> Work-hardens during cutting, which is particularly problematic at small diameters where multiple passes on the same surface are sometimes needed. Requires sharp tools and aggressive feeds.</li>
+    <li><strong>Inconel and nickel alloys:</strong> Extremely demanding to machine at any size. At small diameters, the combination of material difficulty and tool size limitations requires specialized expertise.</li>
+    <li><strong>PEEK:</strong> Machines well but requires careful temperature management. The material's high cost means scrap reduction is critical.</li>
+  </ul>
+
+  <p>For detailed material information, see our <a href="/blog/cnc-turned-parts-guide.html">Complete Guide to CNC Turned Parts</a>.</p>
+
+  <h2>Common Small Diameter Part Types</h2>
+
+  <p>The range of small-diameter turned components is vast. Here are the most common categories:</p>
+
+  <h3>Pins and Shafts</h3>
+  <p>Simple in concept but demanding in execution. Dowel pins, spring pins, pivot shafts, and alignment pins require tight diameter tolerances, consistent straightness, and clean surface finishes. Diameters range from ø1 mm to ø25 mm with lengths up to 100 mm or more.</p>
+
+  <h3>Contacts and Connectors</h3>
+  <p>Electrical contact pins, socket contacts, and RF connector components are among the most demanding small-diameter parts. They often feature multiple diameters, cross-holes, flats, and knurling — all within a total length of 5–15 mm. Materials are typically brass or beryllium copper for conductivity.</p>
+
+  <h3>Medical Components</h3>
+  <p>Bone screws (ø1.5–6.5 mm), dental implant components, cannulas, and micro-surgical instrument parts. These demand biocompatible materials (titanium, 316L), tight tolerances, and impeccable surface quality. Traceability and documentation requirements are stringent.</p>
+
+  <h3>Fasteners and Threaded Components</h3>
+  <p>Miniature screws, standoffs, threaded inserts, and custom fasteners. Thread quality at small diameters requires precise synchronization between spindle speed and thread-cutting feed. Both external and internal threads (down to M1.6 or smaller) can be cut on Swiss-type lathes.</p>
+
+  <h3>Valve and Flow Control Components</h3>
+  <p>Valve stems, needle valves, orifice inserts, and flow restrictor pins. These parts often have critical sealing surfaces that require superior surface finish and geometric accuracy.</p>
+
+  <h2>Production Volume Considerations</h2>
+
+  <p>Small diameter parts are typically produced in medium to high volumes. The economics work like this:</p>
+
+  <ul>
+    <li><strong>Setup costs:</strong> Programming and setting up a Swiss-type lathe for a small-diameter part can take 2–8 hours depending on complexity. This cost is amortized across the production run.</li>
+    <li><strong>Sweet spot:</strong> 500–500,000+ pieces per order. This is where Swiss-type turning delivers the best cost-per-part economics.</li>
+    <li><strong>Cycle times:</strong> Typical small-diameter parts run 8–45 seconds per piece, depending on complexity. A single machine running two shifts can produce 2,000–10,000+ parts per day.</li>
+    <li><strong>Multi-machine scaling:</strong> Shops with many Swiss lathes can run the same program on multiple machines simultaneously. At KING HAN, our 26 machines mean we can scale production rapidly for urgent orders or high-volume requirements.</li>
+  </ul>
+
+  <h2>Quality Control for Small Parts</h2>
+
+  <p>Inspecting parts that are 3–25 mm in diameter requires appropriate metrology equipment and techniques:</p>
+
+  <ul>
+    <li><strong>Optical comparators:</strong> Project a magnified shadow of the part for visual comparison against a tolerance overlay. Fast for first-piece verification.</li>
+    <li><strong>Video measuring systems:</strong> Automated optical measurement that captures dimensions from a camera image. Good for 2D feature measurement.</li>
+    <li><strong>CMM (Coordinate Measuring Machine):</strong> For parts with 3D features or tight GD&T requirements. Probe tips sized for small features (ø0.5–1.0 mm styli) are essential.</li>
+    <li><strong>Surface roughness testers:</strong> Portable and bench-top instruments that measure Ra, Rz, and other surface parameters.</li>
+    <li><strong>Pin gauges and ring gauges:</strong> For go/no-go diameter verification in production. Fast and reliable for high-volume inspection.</li>
+    <li><strong>Thread gauges:</strong> Go/no-go gauges for verifying thread fit. Essential for threaded components.</li>
+  </ul>
+
+  <p>Statistical process control (SPC) is particularly important for small-diameter production. By tracking key dimensions across a production run, you can detect trends (tool wear, thermal drift) before they cause out-of-tolerance parts.</p>
+
+  <h2>Design Tips for Small Diameter Parts</h2>
+
+  <ul>
+    <li><strong>Minimize wall thickness.</strong> Very thin walls on small-diameter parts (below 0.3 mm) are prone to distortion during machining and handling. Design wall thicknesses of 0.5 mm or more when possible.</li>
+    <li><strong>Avoid excessively deep features.</strong> A cross-hole on a ø4 mm part is drilled with a tiny drill bit (ø0.5–1.5 mm). Keep hole depth reasonable relative to drill diameter.</li>
+    <li><strong>Specify realistic surface finishes.</strong> Ra 0.4–0.8 µm is readily achievable on Swiss-type lathes. Specifying Ra 0.1 µm may require secondary polishing.</li>
+    <li><strong>Use symmetrical features when possible.</strong> Asymmetric features on small parts can create uneven cutting forces that affect precision.</li>
+    <li><strong>Consider the barstock diameter.</strong> Your part's maximum OD determines the bar size needed. Standard bar diameters (ø3, 4, 5, 6, 8, 10, 12, 16, 20, 25 mm) are most readily available and economical.</li>
+    <li><strong>Consult your machinist early.</strong> DFM (Design for Manufacturability) input from your machining partner can prevent costly redesigns and improve part quality.</li>
+  </ul>
+
+  <h2>Choosing a Small Diameter Machining Partner</h2>
+
+  <p>Not every CNC shop is equipped for small diameter work. When evaluating potential suppliers, look for:</p>
+
+  <ul>
+    <li><strong>Dedicated Swiss-type equipment:</strong> Multiple machines in your diameter range, not just one or two.</li>
+    <li><strong>Proven experience:</strong> Ask for examples of similar parts they've produced. Request sample parts if possible.</li>
+    <li><strong>Appropriate inspection equipment:</strong> They should have optical and tactile measurement systems suitable for small-part inspection.</li>
+    <li><strong>Material expertise:</strong> Experience with your specific material at small diameters. This is critical — machining titanium at ø5 mm is a very different challenge than machining brass at ø5 mm.</li>
+    <li><strong>Capacity for your volumes:</strong> Ensure they can handle your production quantities without overloading their shop.</li>
+  </ul>
+
+  <p>For more guidance on supplier evaluation, read our article on <a href="/blog/choose-cnc-machining-partner-taiwan.html">how to choose the right CNC machining partner in Taiwan</a>.</p>
+
+  <h2>Conclusion</h2>
+
+  <p>Small diameter CNC machining is a specialized discipline that requires purpose-built equipment, deep expertise, and meticulous attention to detail. Swiss-type CNC lathes remain the gold standard for this type of work, offering the combination of support, precision, and multi-operation capability that small parts demand.</p>
+
+  <p>As products continue to miniaturize across every industry, the ability to reliably produce precision components under 25 mm in diameter becomes increasingly valuable. Whether you're designing consumer electronics, medical devices, automotive sensors, or industrial controls, partnering with a shop that specializes in small-diameter work ensures you get parts that meet your specifications — consistently, efficiently, and cost-effectively.</p>
+
+  <div class="cta-box">
+    <h3>Need Small Diameter Precision Parts?</h3>
+    <p>KING HAN Precision operates 26 Swiss-type CNC lathes optimized for the ø3–25 mm range. From prototype evaluation to high-volume production, we deliver consistent quality on small-diameter components. Send us your specifications today.</p>
+    <a href="/#contact">Contact Us for a Free Quote →</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 KING HAN PRECISION INDUSTRY LTD. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

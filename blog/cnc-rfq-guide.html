@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Write an Effective RFQ for CNC Machining Services | KING HAN Blog</title>
+<meta name="description" content="Learn how to write a clear, effective RFQ (Request for Quote) for CNC machining services. Includes what information to provide, common mistakes, and a free checklist to get accurate quotes faster.">
+<meta name="keywords" content="CNC RFQ, request for quote CNC machining, CNC machining quote, how to get CNC quote, RFQ template CNC, CNC sourcing">
+<link rel="icon" type="image/png" href="../logo.png">
+<link rel="canonical" href="https://kinghan-cnc.com/blog/cnc-rfq-guide.html">
+<style>
+  :root{--bg-dark:#0d1117;--bg-section:#161b22;--bg-card:#1c2333;--accent:#f0a500;--accent-dim:#c48800;--text:#e6edf3;--text-dim:#8b949e;--border:#30363d}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.8}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,17,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:0 2rem;height:64px}
+  .logo{font-size:1.1rem;font-weight:700;color:var(--accent);letter-spacing:1px;display:flex;align-items:center;gap:10px;text-decoration:none}
+  .logo img{height:36px;width:36px;border-radius:50%}.logo span{color:var(--text);font-weight:400}
+  nav ul{list-style:none;display:flex;gap:1.5rem}
+  nav a{color:var(--text-dim);text-decoration:none;font-size:0.9rem;transition:color 0.2s}nav a:hover{color:var(--accent)}
+  .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+  .article-header{padding:120px 2rem 40px;text-align:center;background:linear-gradient(160deg,#0d1117 0%,#1a1f2e 50%,#0d1117 100%)}
+  .article-header h1{font-size:clamp(1.8rem,4vw,2.5rem);max-width:800px;margin:0 auto 1rem}
+  .article-header .meta{color:var(--text-dim);font-size:0.9rem}
+  .article{max-width:760px;margin:0 auto;padding:3rem 2rem}
+  .article h2{font-size:1.5rem;margin:2.5rem 0 1rem;color:var(--accent)}
+  .article h3{font-size:1.2rem;margin:2rem 0 0.8rem}
+  .article p{color:var(--text-dim);margin-bottom:1.2rem;font-size:1.02rem}
+  .article ul,.article ol{color:var(--text-dim);margin:0 0 1.2rem 1.5rem;font-size:1.02rem}
+  .article li{margin-bottom:0.5rem}
+  .article strong{color:var(--text)}
+  .article a{color:var(--accent);text-decoration:none}.article a:hover{text-decoration:underline}
+  .back-link{display:inline-block;margin-bottom:2rem;color:var(--accent);text-decoration:none;font-size:0.9rem}
+  .back-link:hover{text-decoration:underline}
+  .cta-box{background:var(--bg-card);border:1px solid var(--accent);border-radius:8px;padding:2rem;margin-top:3rem;text-align:center}
+  .cta-box h3{color:var(--accent);margin-bottom:0.5rem;font-size:1.3rem}
+  .cta-box p{color:var(--text-dim);margin-bottom:1rem}
+  .cta-box a{display:inline-block;background:var(--accent);color:#0d1117;padding:0.7rem 2rem;border-radius:6px;font-weight:700;text-decoration:none;transition:background 0.3s}
+  .cta-box a:hover{background:var(--accent-dim)}
+  .resource-box{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.5rem 0}
+  .resource-box h4{color:var(--accent);margin-bottom:0.5rem}
+  .resource-box p{color:var(--text-dim);font-size:0.95rem;margin-bottom:0.5rem}
+  .resource-box a{color:var(--accent)}
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0}
+  th,td{border:1px solid var(--border);padding:0.6rem 1rem;text-align:left;font-size:0.95rem;color:var(--text-dim)}
+  th{background:var(--bg-card);color:var(--text);font-weight:600}
+  footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-dim);font-size:0.85rem}
+  @media(max-width:768px){nav ul{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(13,17,23,0.98);padding:1rem 2rem;gap:1rem}nav ul.open{display:flex}.nav-toggle{display:block}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Write an Effective RFQ for CNC Machining Services",
+  "description": "Learn how to write a clear, effective RFQ for CNC machining services to get accurate quotes faster.",
+  "author": {"@type": "Organization", "name": "KING HAN Precision Industry"},
+  "publisher": {"@type": "Organization", "name": "KING HAN Precision Industry", "url": "https://kinghan-cnc.com"},
+  "datePublished": "2026-02-27",
+  "mainEntityOfPage": "https://kinghan-cnc.com/blog/cnc-rfq-guide.html"
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="../logo.png" alt="KH Logo">KING HAN <span>PRECISION</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sourcing-service.html">Sourcing Service</a></li>
+    <li><a href="/blog/" style="color:var(--accent);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="article-header">
+  <h1>How to Write an Effective RFQ for CNC Machining Services</h1>
+  <div class="meta">February 27, 2026 · 11 min read</div>
+</div>
+
+<div class="article">
+  <a href="/blog/" class="back-link">← Back to Blog</a>
+
+  <p>The quality of your Request for Quote (RFQ) directly determines the quality of the quotes you receive. A vague or incomplete RFQ leads to inflated pricing, misunderstood requirements, and wasted time for both you and the supplier. A well-structured RFQ, on the other hand, gets you <strong>accurate pricing, realistic lead times, and confident suppliers</strong> who understand exactly what you need.</p>
+
+  <p>Whether you're sourcing CNC turned parts, milled components, or complex Swiss-type machined pieces, this guide will show you exactly what to include in your RFQ to get the best possible response from machine shops — especially when working with international suppliers in <a href="/blog/cnc-parts-from-taiwan.html">Taiwan</a> or other Asian manufacturing hubs.</p>
+
+  <h2>Why Your RFQ Matters More Than You Think</h2>
+
+  <p>Most buyers underestimate how much their RFQ quality affects the quote they receive. Here's the reality: when a machine shop receives an incomplete RFQ, they have two choices — ask clarifying questions (which delays everything) or add a <strong>"risk premium"</strong> to their pricing to cover unknowns.</p>
+
+  <p>A survey of CNC shop owners found that <strong>60-70% of initial RFQs</strong> are missing critical information. The shops that receive better-structured RFQs consistently provide more competitive pricing because they can accurately estimate costs without padding for uncertainty.</p>
+
+  <p>Think of it this way: you're not just asking for a price — you're giving the supplier enough information to make a confident commitment. The more confidence they have in understanding your requirements, the tighter they can price the job.</p>
+
+  <h2>The 10 Essential Elements of a CNC Machining RFQ</h2>
+
+  <h3>1. Technical Drawings (2D and/or 3D)</h3>
+
+  <p>This is the single most important element. Your drawing is the legal document that defines what you're buying. At minimum, include:</p>
+  <ul>
+    <li><strong>2D engineering drawing (PDF)</strong> — with all dimensions, tolerances, and GD&T callouts clearly marked</li>
+    <li><strong>3D CAD model (STEP or IGES format)</strong> — for programming and visualization</li>
+    <li><strong>Drawing revision number and date</strong> — to avoid quoting obsolete designs</li>
+  </ul>
+
+  <p>If you don't have formal engineering drawings, at the very least provide a dimensioned sketch with critical tolerances called out. But be aware that informal sketches often lead to misinterpretation — especially across language barriers. For guidance on specifying tolerances correctly, see our <a href="/blog/cnc-machining-tolerance-guide.html">CNC machining tolerance guide</a>.</p>
+
+  <h3>2. Material Specification</h3>
+
+  <p>Don't just say "stainless steel" or "aluminum." Specify the <strong>exact grade</strong>:</p>
+  <ul>
+    <li>✅ "SUS 303 (ASTM A582)" or "6061-T6 aluminum"</li>
+    <li>❌ "stainless steel" or "some kind of aluminum"</li>
+  </ul>
+
+  <p>If you need a <a href="/blog/cnc-material-certifications.html">material certification (MTR/mill cert)</a>, state this explicitly. Also mention if you have flexibility on material grade — this gives the supplier room to suggest a more cost-effective or readily available alternative.</p>
+
+  <h3>3. Quantity and Lot Sizes</h3>
+
+  <p>Pricing varies dramatically with quantity. Always specify:</p>
+  <ul>
+    <li><strong>Initial order quantity</strong> (e.g., 500 pcs)</li>
+    <li><strong>Estimated annual usage</strong> (e.g., 5,000 pcs/year)</li>
+    <li><strong>Request pricing at multiple quantities</strong> (e.g., quote for 100 / 500 / 1,000 / 5,000 pcs)</li>
+  </ul>
+
+  <p>This helps the supplier optimize their quoting — they may use different tooling strategies, batch approaches, or machine selections depending on volume. For more on how quantity affects pricing, read our <a href="/blog/cnc-machining-cost-breakdown.html">CNC machining cost breakdown</a>.</p>
+
+  <h3>4. Tolerances and Critical Dimensions</h3>
+
+  <p>Clearly distinguish between:</p>
+  <ul>
+    <li><strong>Critical dimensions</strong> — tight tolerances that must be held (e.g., ±0.01mm)</li>
+    <li><strong>General tolerances</strong> — standard machining tolerances (e.g., ±0.05mm per ISO 2768-m)</li>
+    <li><strong>Reference dimensions</strong> — non-critical, for information only</li>
+  </ul>
+
+  <p>Over-tolerancing is the #1 cost driver in CNC machining. If every dimension on your drawing has ±0.01mm tolerance, either you genuinely need that (expensive) or your drawing doesn't reflect actual functional requirements. Good suppliers will ask about this — great ones will suggest where tolerances can be relaxed to save cost.</p>
+
+  <h3>5. Surface Finish Requirements</h3>
+
+  <p>Specify the required <a href="/blog/cnc-surface-finish-guide.html">surface finish</a> using Ra values:</p>
+  <ul>
+    <li><strong>Ra 3.2 µm</strong> — standard machined finish (most economical)</li>
+    <li><strong>Ra 1.6 µm</strong> — fine machined finish</li>
+    <li><strong>Ra 0.8 µm</strong> — very fine finish (may require grinding)</li>
+    <li><strong>Ra 0.4 µm</strong> — mirror-like finish (grinding or polishing required)</li>
+  </ul>
+
+  <p>Also specify any post-machining treatments: anodizing, plating, heat treatment, passivation, etc. These significantly affect cost and lead time.</p>
+
+  <h3>6. Quality and Inspection Requirements</h3>
+
+  <p>Define what quality documentation you need:</p>
+  <ul>
+    <li><strong>First Article Inspection Report (FAIR)</strong> — typically AS9102 format for aerospace</li>
+    <li><strong>Dimensional inspection report</strong> — for critical dimensions</li>
+    <li><strong>Material certifications</strong> — MTR, RoHS, REACH compliance</li>
+    <li><strong>Certificate of Conformance (CoC)</strong></li>
+  </ul>
+
+  <p>If you require specific <a href="/blog/cnc-quality-inspection.html">inspection methods</a> (e.g., CMM measurement, optical inspection), state this upfront. Some shops charge extra for comprehensive inspection reports, and it's better to know this before committing.</p>
+
+  <div class="resource-box">
+    <h4>📋 Recommended Resource</h4>
+    <p>Struggling to organize your quality requirements? The <a href="https://kinghancnc.gumroad.com/l/cnc-factory-audit-checklist">CNC Factory Audit Checklist ($7.99)</a> helps you systematically evaluate supplier quality capabilities before placing orders.</p>
+  </div>
+
+  <h3>7. Delivery Requirements</h3>
+
+  <p>Be specific about:</p>
+  <ul>
+    <li><strong>Required delivery date</strong> or lead time expectation</li>
+    <li><strong>Shipping method</strong> — air freight, sea freight, express courier</li>
+    <li><strong>Delivery terms</strong> — FOB, CIF, DDP, etc.</li>
+    <li><strong>Packaging requirements</strong> — especially for delicate or high-precision parts</li>
+  </ul>
+
+  <h3>8. Industry Standards and Certifications</h3>
+
+  <p>If your parts need to comply with specific industry standards, list them:</p>
+  <ul>
+    <li>ISO 9001 quality management</li>
+    <li>IATF 16949 (automotive)</li>
+    <li>AS9100 (aerospace)</li>
+    <li>ISO 13485 (medical devices)</li>
+    <li>RoHS / REACH compliance</li>
+  </ul>
+
+  <h3>9. Commercial Terms</h3>
+
+  <p>Include your expectations for:</p>
+  <ul>
+    <li><strong>Payment terms</strong> — Net 30, 50% deposit, etc.</li>
+    <li><strong>Incoterms</strong> — who pays for shipping and insurance</li>
+    <li><strong>Quote validity period</strong> — how long should the quote be valid</li>
+    <li><strong>NDA requirement</strong> — if the design is confidential</li>
+  </ul>
+
+  <h3>10. Contact Information and Timeline</h3>
+
+  <p>This seems obvious, but many RFQs lack:</p>
+  <ul>
+    <li>Name and title of the decision-maker</li>
+    <li>Preferred communication method (email, phone, WeChat, LINE)</li>
+    <li><strong>Quote deadline</strong> — when you need the quote back by</li>
+    <li><strong>Decision timeline</strong> — when you plan to award the order</li>
+  </ul>
+
+  <div class="resource-box">
+    <h4>📧 Save Time on RFQ Communication</h4>
+    <p>The <a href="https://kinghancnc.gumroad.com/l/cnc-email-templates">CNC Email Templates ($4.99)</a> pack includes ready-to-use RFQ emails, follow-up templates, and negotiation scripts that work especially well with Asian CNC suppliers.</p>
+  </div>
+
+  <h2>Common RFQ Mistakes That Cost You Money</h2>
+
+  <h3>Mistake #1: Sending Only a 3D Model Without Drawings</h3>
+  <p>A 3D model shows geometry but doesn't communicate tolerances, surface finish, thread specifications, or material requirements. Without a 2D drawing, the supplier has to guess — and they'll guess conservatively (expensive).</p>
+
+  <h3>Mistake #2: Not Specifying General Tolerances</h3>
+  <p>If your drawing doesn't call out a general tolerance standard (like ISO 2768-m), the supplier doesn't know what precision level to target for un-dimensioned features. This leads to inconsistent quoting between suppliers.</p>
+
+  <h3>Mistake #3: Requesting Quotes at a Single Quantity</h3>
+  <p>Always ask for pricing at 2-3 quantity levels. This reveals the <strong>setup cost vs. per-piece cost</strong> structure and helps you plan economically. A part that costs $15 each at 100 pieces might drop to $4 each at 5,000 pieces.</p>
+
+  <h3>Mistake #4: Ignoring Secondary Operations</h3>
+  <p>Heat treatment, plating, anodizing, laser marking, assembly — if these are needed, include them in the RFQ. Finding out after the fact that your supplier doesn't offer anodizing means extra logistics, cost, and lead time.</p>
+
+  <h3>Mistake #5: Being Vague About Timeline</h3>
+  <p>"ASAP" is not a delivery requirement. Specify actual dates. Suppliers prioritize jobs with clear, firm deadlines. Vague timelines get vague priority.</p>
+
+  <h2>RFQ Checklist: Everything in One Place</h2>
+
+  <table>
+    <tr><th>Category</th><th>Item</th><th>Included?</th></tr>
+    <tr><td>Technical</td><td>2D drawing (PDF) with dimensions & tolerances</td><td>☐</td></tr>
+    <tr><td>Technical</td><td>3D model (STEP/IGES)</td><td>☐</td></tr>
+    <tr><td>Technical</td><td>Material grade specified</td><td>☐</td></tr>
+    <tr><td>Technical</td><td>Surface finish (Ra value)</td><td>☐</td></tr>
+    <tr><td>Technical</td><td>Secondary operations listed</td><td>☐</td></tr>
+    <tr><td>Technical</td><td>Thread specifications</td><td>☐</td></tr>
+    <tr><td>Technical</td><td>General tolerance standard noted</td><td>☐</td></tr>
+    <tr><td>Commercial</td><td>Quantity (multiple levels)</td><td>☐</td></tr>
+    <tr><td>Commercial</td><td>Annual usage estimate</td><td>☐</td></tr>
+    <tr><td>Commercial</td><td>Target delivery date</td><td>☐</td></tr>
+    <tr><td>Commercial</td><td>Shipping/Incoterms</td><td>☐</td></tr>
+    <tr><td>Commercial</td><td>Payment terms</td><td>☐</td></tr>
+    <tr><td>Quality</td><td>Inspection requirements</td><td>☐</td></tr>
+    <tr><td>Quality</td><td>Certifications needed</td><td>☐</td></tr>
+    <tr><td>Quality</td><td>Material cert required (MTR)</td><td>☐</td></tr>
+    <tr><td>Admin</td><td>Contact info & decision timeline</td><td>☐</td></tr>
+    <tr><td>Admin</td><td>NDA if applicable</td><td>☐</td></tr>
+  </table>
+
+  <div class="resource-box">
+    <h4>🧰 Complete Sourcing Toolkit</h4>
+    <p>Want all the templates, checklists, and calculators in one package? The <a href="https://kinghancnc.gumroad.com/l/cnc-buyers-toolkit">CNC Buyers Toolkit Bundle ($24.99)</a> includes RFQ templates, supplier scorecards, cost calculators, negotiation scripts, and more — everything you need to source CNC parts like a pro.</p>
+  </div>
+
+  <h2>How to Send Your RFQ for Maximum Response</h2>
+
+  <h3>Format Your Files Properly</h3>
+  <ul>
+    <li>Name files clearly: <code>PartNumber_RevB_Drawing.pdf</code>, <code>PartNumber_RevB.step</code></li>
+    <li>Combine related documents into a single ZIP if sending multiple parts</li>
+    <li>Use PDF for drawings (not native CAD formats that the supplier may not have software for)</li>
+    <li>Keep file sizes reasonable — compress large 3D models if needed</li>
+  </ul>
+
+  <h3>Write a Clear Cover Email</h3>
+  <p>Your cover email should summarize the key points without requiring the supplier to open every attachment just to understand the scope. Include: number of parts, materials, approximate quantities, and timeline. This helps the supplier's sales team route your RFQ to the right engineer quickly.</p>
+
+  <h3>Send to Multiple Suppliers — But Not Too Many</h3>
+  <p>A good practice is to send your RFQ to <strong>3-5 qualified suppliers</strong>. Fewer than 3 and you lack comparison data. More than 5 and you're creating unnecessary work for yourself (and the suppliers). If you're evaluating CNC shops for the first time, our guide on <a href="/blog/how-to-choose-cnc-machine-shop.html">how to choose a CNC machine shop</a> can help you build your shortlist.</p>
+
+  <h2>Evaluating Quotes: What to Compare Beyond Price</h2>
+
+  <p>When quotes come back, resist the urge to simply pick the lowest number. Compare:</p>
+
+  <ul>
+    <li><strong>Price per piece</strong> — at each quoted quantity</li>
+    <li><strong>Tooling costs</strong> — one-time NRE (Non-Recurring Engineering) charges</li>
+    <li><strong>Lead time</strong> — production time plus shipping</li>
+    <li><strong>What's included</strong> — inspection reports, packaging, certifications</li>
+    <li><strong>What's excluded</strong> — shipping, customs, secondary operations</li>
+    <li><strong>Payment terms</strong> — 100% upfront vs. Net 30 has real cost implications</li>
+  </ul>
+
+  <div class="resource-box">
+    <h4>📊 Compare Suppliers Objectively</h4>
+    <p>Use the <a href="https://kinghancnc.gumroad.com/l/cnc-supplier-scorecard">CNC Supplier Scorecard ($5.99)</a> to systematically compare quotes across multiple criteria — price, quality capability, lead time, communication, and certifications — so you can make data-driven supplier decisions.</p>
+  </div>
+
+  <h2>Special Considerations for International RFQs</h2>
+
+  <p>When sending RFQs to overseas CNC suppliers — particularly in <a href="/blog/why-taiwan-precision-cnc-machining.html">Taiwan</a>, China, or other Asian manufacturing countries — keep these additional points in mind:</p>
+
+  <ul>
+    <li><strong>Use metric units</strong> — or clearly specify if dimensions are in inches</li>
+    <li><strong>Specify material standards</strong> — JIS, ASTM, DIN, or GB equivalents may differ</li>
+    <li><strong>Account for time zones</strong> — set realistic response deadlines considering the time difference</li>
+    <li><strong>Language clarity</strong> — avoid idioms and jargon. Simple, direct English works best</li>
+    <li><strong>Currency</strong> — specify USD, EUR, or local currency for pricing</li>
+    <li><strong>IP protection</strong> — include NDA requirements upfront if your design is proprietary</li>
+  </ul>
+
+  <p>Taiwan-based suppliers like KING HAN generally operate to international standards (ISO, ASTM) and communicate fluently in English, which significantly reduces the friction common with some other Asian sourcing destinations.</p>
+
+  <h2>Sample RFQ Email Template</h2>
+
+  <p>Here's a framework you can adapt:</p>
+
+  <div class="resource-box" style="background:#0d1117;">
+    <p><strong>Subject:</strong> RFQ — [Part Name/Number] — [Quantity] pcs — [Your Company]</p>
+    <p>Dear [Supplier],</p>
+    <p>We are looking for a CNC machining partner for the following part(s):</p>
+    <p><strong>Part:</strong> [Name/Number, Rev]<br>
+    <strong>Material:</strong> [Grade, e.g., SUS 304]<br>
+    <strong>Quantity:</strong> Please quote [100 / 500 / 2,000] pcs<br>
+    <strong>Annual Usage:</strong> ~[X] pcs/year<br>
+    <strong>Tolerance:</strong> General per ISO 2768-m; critical dimensions per drawing<br>
+    <strong>Surface Finish:</strong> [Ra value] + [any treatment]<br>
+    <strong>Delivery:</strong> Need by [date]; [FOB/CIF] to [location]<br>
+    <strong>Quality:</strong> Dimensional report required; material cert required</p>
+    <p>Please find attached: 2D drawing (PDF), 3D model (STEP).</p>
+    <p>Kindly reply by [date] with unit pricing, tooling cost, and lead time.</p>
+    <p>[Your Name, Title, Company, Contact]</p>
+  </div>
+
+  <div class="resource-box">
+    <h4>💰 Know Your Target Price Before You Negotiate</h4>
+    <p>Use the <a href="https://kinghancnc.gumroad.com/l/cnc-cost-calculator">CNC Cost Calculator ($9.99)</a> to estimate machining costs before sending your RFQ. Knowing your target price puts you in a stronger negotiation position.</p>
+  </div>
+
+  <h2>Key Takeaways</h2>
+
+  <ul>
+    <li>A well-prepared RFQ saves time and gets you more accurate, competitive quotes</li>
+    <li>Always include 2D drawings with tolerances — 3D models alone are not enough</li>
+    <li>Specify material grade, surface finish, and quality requirements explicitly</li>
+    <li>Request pricing at multiple quantity levels to understand cost structure</li>
+    <li>Compare quotes holistically — not just on unit price</li>
+    <li>For international sourcing, be explicit about units, standards, and commercial terms</li>
+  </ul>
+
+  <p>The effort you put into your RFQ directly translates to the quality of quotes — and ultimately, the quality of parts — you receive. Take the extra 30 minutes to prepare a thorough RFQ, and it will pay dividends throughout the entire project lifecycle.</p>
+
+  <div class="cta-box">
+    <h3>Ready to Get a Quote?</h3>
+    <p>KING HAN specializes in Swiss-type CNC turned parts from 3-25mm diameter, with 26 machines ready for production. Send us your drawing and we'll respond with a detailed quote within 24 hours.</p>
+    <a href="/#contact">Request a Free Quote →</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 KING HAN PRECISION INDUSTRY LTD. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

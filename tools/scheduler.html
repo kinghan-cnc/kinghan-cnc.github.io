@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鑫瀚精密 — 訂單排程系統</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f5;padding:10px;max-width:960px;margin:0 auto}
+h1{font-size:1.2em;text-align:center;padding:12px;background:#1a73e8;color:#fff;border-radius:8px;margin-bottom:10px}
+.tabs{display:flex;gap:4px;margin-bottom:10px}
+.tabs button{flex:1;padding:10px 4px;border:2px solid #ddd;border-radius:6px;background:#fff;font-size:0.85em;font-weight:600;cursor:pointer}
+.tabs button.active{border-color:#1a73e8;background:#e8f0fe;color:#1a73e8}
+.panel{display:none}
+.panel.active{display:block}
+.card{background:#fff;border-radius:8px;padding:12px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.card h3{font-size:0.95em;margin-bottom:8px;color:#333}
+.field{margin:6px 0}
+.field label{display:block;font-size:0.8em;color:#666;margin-bottom:2px}
+.field input,.field select{width:100%;padding:8px;border:1px solid #ddd;border-radius:6px;font-size:1em}
+.field-row{display:flex;gap:8px}
+.field-row .field{flex:1}
+.btn{display:block;width:100%;padding:12px;margin:8px 0;border:none;border-radius:8px;font-size:1em;font-weight:bold;cursor:pointer;color:#fff}
+.btn-blue{background:#1a73e8}
+.btn-green{background:#34a853}
+.btn-red{background:#ea4335}
+.btn-sm{display:inline-block;width:auto;padding:4px 10px;font-size:0.8em;margin:2px;border-radius:4px}
+.order-item{background:#fff;border-radius:8px;padding:10px 12px;margin-bottom:6px;box-shadow:0 1px 3px rgba(0,0,0,.1);border-left:4px solid #ccc}
+.order-item.p1{border-left-color:#ea4335}
+.order-item.p2{border-left-color:#fbbc04}
+.order-item.p3{border-left-color:#34a853}
+.order-item.paused{border-left-color:#9e9e9e;opacity:0.6}
+.tag-paused{background:#e0e0e0;color:#616161}
+.order-header{display:flex;justify-content:space-between;align-items:center}
+.order-header .title{font-weight:700;font-size:0.95em}
+.order-header .due{font-size:0.8em;padding:2px 8px;border-radius:10px;color:#fff}
+.due-urgent{background:#ea4335}
+.due-soon{background:#fbbc04}
+.due-ok{background:#34a853}
+.order-detail{font-size:0.8em;color:#666;margin-top:4px;line-height:1.6}
+.order-detail span{margin-right:10px}
+.order-actions{margin-top:6px;display:flex;gap:4px;flex-wrap:wrap}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.75em;font-weight:600}
+.tag-vip{background:#fce4ec;color:#c62828}
+.tag-normal{background:#e8f5e9;color:#2e7d32}
+.schedule-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #eee;font-size:0.85em}
+.schedule-row .machine{font-weight:700;min-width:50px}
+.schedule-row .bar{flex:1;height:24px;background:#e0e0e0;border-radius:4px;overflow:hidden;position:relative}
+.schedule-row .fill{height:100%;border-radius:4px;display:flex;align-items:center;padding:0 6px;color:#fff;font-size:0.75em;white-space:nowrap;overflow:hidden}
+.empty-state{text-align:center;padding:40px;color:#999;font-size:0.9em}
+.sync-bar{display:flex;justify-content:center;align-items:center;gap:8px;margin:4px 0 8px;font-size:0.8em;color:#666}
+.sync-bar .dot{width:8px;height:8px;border-radius:50%}
+.sync-bar .dot.ok{background:#34a853}
+.sync-bar .dot.off{background:#ccc}
+.sync-bar button{font-size:0.8em;padding:3px 10px;border:1px solid #1a73e8;background:#fff;color:#1a73e8;border-radius:4px;cursor:pointer}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.summary-box{background:#fff;border-radius:8px;padding:12px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.summary-box .num{font-size:1.8em;font-weight:700;color:#1a73e8}
+.summary-box .lbl{font-size:0.75em;color:#666}
+</style>
+</head>
+<body>
+
+<div id="lockScreen" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:80vh;gap:12px">
+  <h1 style="background:#1a73e8;color:#fff;padding:12px 24px;border-radius:8px;font-size:1.2em">🔒 鑫瀚精密 訂單排程</h1>
+  <input type="password" id="pwInput" placeholder="請輸入密碼" style="font-size:1.2em;padding:12px;border:2px solid #1a73e8;border-radius:8px;text-align:center;width:200px" onkeydown="if(event.key==='Enter')unlock()">
+  <button onclick="unlock()" style="font-size:1.1em;padding:10px 30px;background:#1a73e8;color:#fff;border:none;border-radius:8px;cursor:pointer">進入</button>
+  <span id="pwErr" style="color:#ea4335;font-size:0.85em"></span>
+</div>
+<div id="mainApp" style="display:none">
+<h1>📋 鑫瀚精密 — 訂單排程系統</h1>
+
+<div class="sync-bar">
+  <span class="dot off" id="syncDot"></span>
+  <span id="syncText">本機模式</span>
+  <button onclick="cloudSync()">☁️ 同步</button>
+  <button onclick="cloudLoad()">📥 下載</button>
+</div>
+
+<div class="tabs">
+  <button class="active" onclick="showTab('orders')">📦 訂單</button>
+  <button onclick="showTab('schedule')">🗓 排程</button>
+  <button onclick="showTab('add')">➕ 新增</button>
+</div>
+
+<div id="panel-orders" class="panel active">
+  <div class="summary-grid">
+    <div class="summary-box"><div class="num" id="totalOrders">0</div><div class="lbl">進行中訂單</div></div>
+    <div class="summary-box"><div class="num" id="urgentOrders">0</div><div class="lbl">🔴 急件</div></div>
+    <div class="summary-box"><div class="num" id="totalPcs">0</div><div class="lbl">總待加工數</div></div>
+    <div class="summary-box"><div class="num" id="totalHours">0</div><div class="lbl">預估總工時(hr)</div></div>
+  </div>
+  <div id="orderList"></div>
+</div>
+
+<div id="panel-schedule" class="panel">
+  <div class="card">
+    <h3>🏭 機台排程總覽</h3>
+    <p style="font-size:0.8em;color:#666;margin-bottom:8px">每台機目前指派的訂單與預估完工時間</p>
+    <div id="scheduleView"></div>
+  </div>
+</div>
+
+<div id="panel-add" class="panel">
+  <div class="card">
+    <h3>➕ 新增訂單</h3>
+    <div class="field-row">
+      <div class="field" style="position:relative"><label>客戶*</label><input type="text" id="f-customer" placeholder="客戶名" oninput="searchCompany(this.value)"><div id="companyDropdown" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #ddd;border-radius:4px;max-height:150px;overflow-y:auto;z-index:99;box-shadow:0 2px 8px rgba(0,0,0,.15)"></div></div>
+      <div class="field"><label>統一編號</label><input type="text" id="f-taxid" placeholder="自動帶入" readonly style="background:#f5f5f5;color:#666"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>下單日期*</label><input type="date" id="f-orderDate"></div>
+      <div class="field"><label>交期*</label><input type="date" id="f-due"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>品號*</label><input type="text" id="f-part" placeholder="A-123"></div>
+      <div class="field"><label>數量(件)*</label><input type="number" id="f-qty" placeholder="1000"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>加工外徑(mm)*</label><input type="number" id="f-dia" step="0.1" placeholder="12"></div>
+      <div class="field"><label>材質</label><input type="text" id="f-material" placeholder="SUS304"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Cycle Time(秒)</label><input type="number" id="f-ct" step="0.1" placeholder="30"></div>
+      <div class="field">
+        <label>客戶等級</label>
+        <select id="f-tier">
+          <option value="vip">⭐ VIP 大客戶</option>
+          <option value="normal" selected>一般客戶</option>
+        </select>
+      </div>
+    </div>
+    <div class="field"><label>備註</label><input type="text" id="f-note" placeholder="選填"></div>
+    <button class="btn btn-blue" onclick="addOrder()">✅ 新增訂單</button>
+  </div>
+</div>
+
+<script>
+
+var APP_PASSWORD = '0105';
+function unlock() {
+  if (document.getElementById('pwInput').value === APP_PASSWORD) {
+    document.getElementById('lockScreen').style.display = 'none';
+    document.getElementById('mainApp').style.display = 'block';
+    sessionStorage.setItem('tool-auth','1');
+  } else {
+    document.getElementById('pwErr').textContent = '密碼錯誤';
+    document.getElementById('pwInput').value = '';
+  }
+}
+if (sessionStorage.getItem('tool-auth') === '1') {
+  document.getElementById('lockScreen').style.display = 'none';
+  document.getElementById('mainApp').style.display = 'block';
+}
+// ===== 機台資料（含加工能力）=====
+var machineDB = [
+  {id:"1",  name:"1號",  type:"Citizen-A20",   zone:"主廠", maxDia:20},
+  {id:"2",  name:"2號",  type:"Citizen-A20",   zone:"主廠", maxDia:20},
+  {id:"3",  name:"3號",  type:"富格蘭25CSB3",  zone:"主廠", maxDia:25},
+  {id:"4",  name:"4號",  type:"富格蘭42CSB2",  zone:"主廠", maxDia:42},
+  {id:"5",  name:"5號",  type:"Nomura 20J",    zone:"主廠", maxDia:20},
+  {id:"6",  name:"6號",  type:"Nomura 20UB10", zone:"主廠", maxDia:20},
+  {id:"7",  name:"7號",  type:"Nomura 32UB10", zone:"主廠", maxDia:32},
+  {id:"8",  name:"8號",  type:"Nomura 20UB10", zone:"主廠", maxDia:20},
+  {id:"S1", name:"S1",   type:"Citizen-A20",   zone:"S廠",  maxDia:20},
+  {id:"S2", name:"S2",   type:"Citizen-A20",   zone:"S廠",  maxDia:20},
+  {id:"S3", name:"S3",   type:"Citizen-L20",   zone:"S廠",  maxDia:20},
+  {id:"S4", name:"S4",   type:"Citizen-L20",   zone:"S廠",  maxDia:20},
+  {id:"S5", name:"S5",   type:"Nomura 32J",    zone:"S廠",  maxDia:32},
+  {id:"S6", name:"S6",   type:"Nomura 32J",    zone:"S廠",  maxDia:32},
+  {id:"K1",  name:"K1",  type:"Nomura 20J",    zone:"K廠",  maxDia:20},
+  {id:"K2",  name:"K2",  type:"Nomura 20J",    zone:"K廠",  maxDia:20},
+  {id:"K3",  name:"K3",  type:"Nomura 20J",    zone:"K廠",  maxDia:20},
+  {id:"K4",  name:"K4",  type:"Nomura 20J",    zone:"K廠",  maxDia:20},
+  {id:"K5",  name:"K5",  type:"Nomura 20UB10", zone:"K廠",  maxDia:20},
+  {id:"K6",  name:"K6",  type:"Nomura 20J",    zone:"K廠",  maxDia:20},
+  {id:"K7",  name:"K7",  type:"Nomura 20J",    zone:"K廠",  maxDia:20},
+  {id:"K8",  name:"K8",  type:"Nomura 20J",    zone:"K廠",  maxDia:20},
+  {id:"K9",  name:"K9",  type:"Nomura 20J",    zone:"K廠",  maxDia:20},
+  {id:"K10", name:"K10", type:"Nomura 20J",    zone:"K廠",  maxDia:20},
+  {id:"K11", name:"K11", type:"Nomura 20J",    zone:"K廠",  maxDia:20},
+  {id:"K12", name:"K12", type:"Nomura 20J",    zone:"K廠",  maxDia:20},
+];
+
+var WORK_HOURS = 20; // 每日可用工時（含加班）
+var CHANGEOVER_HOURS = 24; // 換線時間（小時）
+
+function getOrders() {
+  return JSON.parse(localStorage.getItem('kh-orders') || '[]');
+}
+function saveOrders(orders) {
+  localStorage.setItem('kh-orders', JSON.stringify(orders));
+}
+
+function showTab(name) {
+  document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.tabs button').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById('panel-' + name).classList.add('active');
+  event.target.classList.add('active');
+  if (name === 'orders') renderOrders();
+  if (name === 'schedule') renderSchedule();
+  if (name === 'add') {
+    var today = new Date().toISOString().split('T')[0];
+    var od = document.getElementById('f-orderDate');
+    var dd = document.getElementById('f-due');
+    if (od && !od.value) od.value = today;
+    if (dd && !dd.value) dd.value = today;
+  }
+}
+
+// ===== 優先序排序 =====
+function sortOrders(orders) {
+  var today = new Date();
+  return orders.slice().sort(function(a, b) {
+    // 1. 交期天數（越少越優先）
+    var daysA = Math.ceil((new Date(a.due) - today) / 86400000);
+    var daysB = Math.ceil((new Date(b.due) - today) / 86400000);
+    // 2. VIP 加分（等效提前 3 天）
+    if (a.tier === 'vip') daysA -= 3;
+    if (b.tier === 'vip') daysB -= 3;
+    return daysA - daysB;
+  });
+}
+
+// ===== 自動分配機台 =====
+function suggestMachine(order) {
+  var dia = order.dia || 0;
+  // 找所有能加工該直徑的機台
+  var capable = machineDB.filter(function(m) { return m.maxDia >= dia; });
+  if (capable.length === 0) return null;
+  // 優先選最小能力的機台（不浪費大機台）
+  capable.sort(function(a, b) { return a.maxDia - b.maxDia; });
+  // 檢查已被指派的機台，優先選空閒的
+  var orders = getOrders();
+  var assigned = {};
+  orders.forEach(function(o) { if (o.machine) assigned[o.machine] = (assigned[o.machine] || 0) + 1; });
+  // 找負載最少的
+  var best = capable[0];
+  var bestLoad = assigned[best.id] || 0;
+  capable.forEach(function(m) {
+    var load = assigned[m.id] || 0;
+    if (load < bestLoad) { best = m; bestLoad = load; }
+  });
+  return best;
+}
+
+// ===== 交期計算 =====
+function calcDelivery(qty, ct) {
+  if (!qty || !ct) return null;
+  var totalSec = qty * ct;
+  var totalHours = totalSec / 3600;
+  var days = Math.ceil(totalHours / WORK_HOURS);
+  var finishDate = new Date();
+  finishDate.setDate(finishDate.getDate() + days);
+  return { hours: Math.round(totalHours * 10) / 10, days: days, date: finishDate.toISOString().split('T')[0] };
+}
+
+function daysUntil(dateStr) {
+  return Math.ceil((new Date(dateStr) - new Date()) / 86400000);
+}
+
+// 計算某機台目前排隊的工作全部做完的日期 = 新訂單的預計上線日
+function calcStartDate(machineId, existingOrders) {
+  var activeOnMachine = existingOrders.filter(function(o) {
+    return o.machine === machineId && o.status === 'active';
+  });
+  var totalHours = 0;
+  activeOnMachine.forEach(function(o) {
+    var d = calcDelivery(o.qty, o.ct);
+    if (d) totalHours += d.hours;
+  });
+  // 如果機台有訂單，加上換線時間
+  if (activeOnMachine.length > 0) {
+    totalHours += CHANGEOVER_HOURS;
+  }
+  var days = Math.ceil(totalHours / WORK_HOURS);
+  var startDate = new Date();
+  startDate.setDate(startDate.getDate() + days);
+  return startDate.toISOString().split('T')[0];
+}
+
+// ===== 渲染訂單列表 =====
+function renderOrders() {
+  var orders = sortOrders(getOrders().filter(function(o) { return o.status !== 'done'; }));
+  var totalPcs = 0, totalHr = 0, urgent = 0;
+  
+  var html = orders.map(function(o, idx) {
+    var days = daysUntil(o.due);
+    var isPaused = o.status === 'paused';
+    var dueClass = isPaused ? 'due-ok' : days <= 3 ? 'due-urgent' : days <= 7 ? 'due-soon' : 'due-ok';
+    var pClass = isPaused ? 'paused' : days <= 3 ? 'p1' : days <= 7 ? 'p2' : 'p3';
+    var dueText = isPaused ? '⏸ 暫停' : days <= 0 ? '已逾期' : days + '天';
+    if (days <= 3 && !isPaused) urgent++;
+    if (!isPaused) {
+      totalPcs += (o.qty || 0);
+      var del = calcDelivery(o.qty, o.ct);
+      if (del) totalHr += del.hours;
+    } else { var del = calcDelivery(o.qty, o.ct); }
+    
+    var machineText = o.machine ? machineDB.find(function(m){return m.id===o.machine;})?.name || o.machine : '未指派';
+    
+    return '<div class="order-item ' + pClass + '">' +
+      '<div class="order-header">' +
+        '<div class="title">' + o.part + ' <span class="tag ' + (o.tier==='vip'?'tag-vip':'tag-normal') + '">' + (o.tier==='vip'?'⭐VIP':'一般') + '</span></div>' +
+        '<span class="due ' + dueClass + '">' + dueText + '</span>' +
+      '</div>' +
+      '<div class="order-detail">' +
+        '<span>👤 ' + o.customer + (o.taxId ? ' (' + o.taxId + ')' : '') + '</span>' +
+        '<span>📦 ' + (o.qty||0).toLocaleString() + '件</span>' +
+        (o.ct ? '<span>⏱ CT:' + o.ct + 's</span>' : '') +
+        (o.dia ? '<span>⌀' + o.dia + 'mm</span>' : '') +
+        (o.material ? '<span>🔧 ' + o.material + '</span>' : '') +
+        '<br><span>🏭 ' + machineText + '</span>' +
+        (o.orderDate ? '<span>📋 下單: ' + o.orderDate + '</span>' : '') +
+        (o.actualStart ? '<span style="color:#1a73e8;font-weight:600">🚀 實際上線: ' + o.actualStart + '</span>' : '<span>🚀 預計上線: ' + (o.startDate || o.orderDate || o.created || '未定') + '</span>') +
+        '<span>📅 交期: ' + o.due + '</span>' +
+        (del ? '<span>⏳ 需' + del.days + '天(' + del.hours + 'hr)</span>' : '') +
+        (del ? (del.date > o.due ? '<span style="color:red">⚠️ 預計來不及!</span>' : '<span style="color:green">✅ 可如期</span>') : '') +
+        (o.note ? '<br>📝 ' + o.note : '') +
+      '</div>' +
+      '<div class="order-actions">' +
+        (!o.actualStart && !isPaused ? '<button class="btn btn-sm" style="background:#ff6d00;color:#fff" onclick="startProduction(' + idx + ')">🚀 上線</button>' : '') +
+        (o.actualStart && !isPaused ? '<span style="display:inline-block;padding:4px 8px;background:#e8f5e9;color:#2e7d32;border-radius:4px;font-size:0.75em;font-weight:600">⚙️ 生產中</span> ' : '') +
+        (o.actualStart && isPaused ? '<span style="display:inline-block;padding:4px 8px;background:#fff3e0;color:#e65100;border-radius:4px;font-size:0.75em;font-weight:600">⚠️ 停機中' + (o.pauseReason ? '：' + o.pauseReason : '') + '</span> ' : '') +
+        '<button class="btn btn-sm btn-green" onclick="completeOrder(' + idx + ')">✅ 完成</button>' +
+        (o.actualStart && !isPaused ? '<button class="btn btn-sm" style="background:#e65100;color:#fff" onclick="pauseProduction(' + idx + ')">⏸ 停機</button>' : '') +
+        (o.actualStart && isPaused ? '<button class="btn btn-sm" style="background:#2e7d32;color:#fff" onclick="resumeProduction(' + idx + ')">▶️ 復工</button>' : '') +
+        (!o.actualStart ? '<button class="btn btn-sm" style="background:#9e9e9e" onclick="togglePause(' + idx + ')">' + (isPaused ? '▶️ 恢復' : '⏸ 暫停') + '</button>' : '') +
+        '<button class="btn btn-sm btn-blue" onclick="editMachine(' + idx + ')">🔄 換機台</button>' +
+        '<button class="btn btn-sm btn-red" onclick="deleteOrder(' + idx + ')">🗑</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+  
+  document.getElementById('orderList').innerHTML = orders.length ? html : '<div class="empty-state">目前沒有訂單<br>按「➕ 新增」來加第一張單</div>';
+  document.getElementById('totalOrders').textContent = orders.length;
+  document.getElementById('urgentOrders').textContent = urgent;
+  document.getElementById('totalPcs').textContent = totalPcs.toLocaleString();
+  document.getElementById('totalHours').textContent = Math.round(totalHr);
+}
+
+// ===== 渲染排程 =====
+function renderSchedule() {
+  var orders = getOrders().filter(function(o) { return o.status === 'active'; });
+  var byMachine = {};
+  machineDB.forEach(function(m) { byMachine[m.id] = []; });
+  orders.forEach(function(o) {
+    if (o.machine && byMachine[o.machine]) byMachine[o.machine].push(o);
+  });
+  
+  var html = '';
+  var zones = ['主廠','S廠','K廠'];
+  var zoneColors = {'主廠':'#1a73e8','S廠':'#e8710a','K廠':'#9c27b0'};
+  zones.forEach(function(zone) {
+    html += '<div style="margin:12px 0 6px;font-weight:700;color:' + zoneColors[zone] + ';font-size:1em;border-bottom:2px solid ' + zoneColors[zone] + ';padding-bottom:4px">' + zone + '</div>';
+    machineDB.filter(function(m){return m.zone===zone;}).forEach(function(m) {
+      var mOrders = byMachine[m.id];
+      var totalHrs = 0;
+      
+      html += '<div style="background:#fff;border-radius:8px;padding:10px;margin-bottom:6px;box-shadow:0 1px 2px rgba(0,0,0,.08)">';
+      html += '<div style="font-weight:700;font-size:0.95em;margin-bottom:4px">' + m.name + ' <span style="font-weight:400;color:#888;font-size:0.8em">' + m.type + '</span></div>';
+      
+      if (mOrders.length === 0) {
+        html += '<div style="color:#999;font-size:0.85em;padding:4px 0">🟢 空閒 — 可排單</div>';
+      } else {
+        mOrders.forEach(function(o) {
+          var d = calcDelivery(o.qty, o.ct);
+          var hrs = d ? d.hours : 0;
+          var days = d ? d.days : 0;
+          totalHrs += hrs;
+          var daysLeft = daysUntil(o.due);
+          var dueColor = daysLeft <= 3 ? '#ea4335' : daysLeft <= 7 ? '#fbbc04' : '#34a853';
+          html += '<div style="background:#f8f9fa;border-radius:6px;padding:8px;margin:4px 0;border-left:3px solid ' + dueColor + '">';
+          html += '<div style="display:flex;justify-content:space-between;align-items:center">';
+          var prodStatus = o.status === 'paused' && o.actualStart ? '<span style="color:#e65100;font-size:0.75em">⚠️停機</span>' : o.actualStart ? '<span style="color:#2e7d32;font-size:0.75em">⚙️生產中</span>' : '<span style="color:#999;font-size:0.75em">排程中</span>';
+          html += '<span style="font-weight:600">' + o.part + ' ' + prodStatus + '</span>';
+          html += '<span style="font-size:0.8em;color:' + dueColor + ';font-weight:600">' + (daysLeft <= 0 ? '⚠️ 已逾期' : '剩 ' + daysLeft + ' 天') + '</span>';
+          html += '</div>';
+          html += '<div style="font-size:0.8em;color:#666;margin-top:2px">';
+          html += '👤 ' + (o.customer||'') + ' ｜ 📦 ' + (o.qty||0).toLocaleString() + '件';
+          if (hrs) html += ' ｜ ⏱ 預估 ' + Math.round(hrs) + 'hr (' + days + '天)';
+          html += '</div>';
+          var showStart = o.startDate || o.orderDate || o.created || '';
+          html += '<div style="font-size:0.75em;color:#999;margin-top:2px">🚀 上線: ' + (showStart || '未定') + ' ｜ 📅 交期: ' + o.due + '</div>';
+          html += '</div>';
+        });
+        html += '<div style="text-align:right;font-size:0.8em;color:#555;margin-top:4px;font-weight:600">合計: ' + Math.round(totalHrs) + ' 小時</div>';
+      }
+      html += '</div>';
+    });
+  });
+  
+  document.getElementById('scheduleView').innerHTML = html || '<div class="empty-state">沒有排程資料</div>';
+}
+
+// ===== 新增訂單 =====
+function addOrder() {
+  var part = document.getElementById('f-part').value.trim();
+  var customer = document.getElementById('f-customer').value.trim();
+  var qty = parseInt(document.getElementById('f-qty').value) || 0;
+  var due = document.getElementById('f-due').value;
+  var orderDate = document.getElementById('f-orderDate').value;
+  var dia = parseFloat(document.getElementById('f-dia').value) || 0;
+  
+  if (!part || !customer || !qty || !due || !dia || !orderDate) {
+    alert('請填寫必填欄位（品號、客戶、下單日期、交期、數量、加工外徑）');
+    return;
+  }
+  
+  var order = {
+    id: Date.now(),
+    part: part,
+    customer: customer,
+    taxId: document.getElementById('f-taxid').value.trim(),
+    qty: qty,
+    orderDate: orderDate,
+    startDate: null,  // auto-calculated after machine assignment
+    due: due,
+    material: document.getElementById('f-material').value.trim(),
+    dia: dia,
+    ct: parseFloat(document.getElementById('f-ct').value) || 0,
+    tier: document.getElementById('f-tier').value,
+    note: document.getElementById('f-note').value.trim(),
+    status: 'active',
+    machine: null,
+    created: new Date().toISOString().split('T')[0]
+  };
+  
+  // 自動建議機台
+  var suggested = suggestMachine(order);
+  if (suggested) {
+    order.machine = suggested.id;
+    // 自動計算預計上線日期
+    order.startDate = calcStartDate(suggested.id, getOrders());
+    alert('✅ 已新增！\n機台：' + suggested.name + ' (' + suggested.type + ')\n🚀 預計上線：' + order.startDate + '\n如需更換可在訂單列表按「🔄 換機台」');
+  } else {
+    order.startDate = new Date().toISOString().split('T')[0]; // 無機台就預設今天
+    alert('⚠️ 已新增，但找不到適合的機台（加工徑 ⌀' + dia + 'mm 超出所有機台能力）');
+  }
+  
+  var orders = getOrders();
+  orders.push(order);
+  saveOrders(orders);
+  
+  // 清空表單
+  ['f-part','f-customer','f-taxid','f-qty','f-due','f-orderDate','f-material','f-dia','f-ct','f-note'].forEach(function(id) {
+    document.getElementById(id).value = '';
+  });
+  
+  showTab('orders');
+  document.querySelectorAll('.tabs button')[0].click();
+}
+
+function completeOrder(sortedIdx) {
+  var orders = getOrders();
+  var sorted = sortOrders(orders.filter(function(o){return o.status!=='done';}));
+  var target = sorted[sortedIdx];
+  if (!target) return;
+  var realIdx = orders.findIndex(function(o){return o.id === target.id;});
+  if (realIdx >= 0) {
+    orders[realIdx].status = 'done';
+    orders[realIdx].completedDate = new Date().toISOString().split('T')[0];
+    saveOrders(orders);
+    renderOrders();
+  }
+}
+
+function deleteOrder(sortedIdx) {
+  if (!confirm('確定刪除？')) return;
+  var orders = getOrders();
+  var sorted = sortOrders(orders.filter(function(o){return o.status!=='done';}));
+  var target = sorted[sortedIdx];
+  if (!target) return;
+  var realIdx = orders.findIndex(function(o){return o.id === target.id;});
+  if (realIdx >= 0) {
+    orders.splice(realIdx, 1);
+    saveOrders(orders);
+    renderOrders();
+  }
+}
+
+function togglePause(sortedIdx) {
+  var orders = getOrders();
+  var sorted = sortOrders(orders.filter(function(o){return o.status!=='done';}));
+  var target = sorted[sortedIdx];
+  if (!target) return;
+  var realIdx = orders.findIndex(function(o){return o.id === target.id;});
+  if (realIdx >= 0) {
+    orders[realIdx].status = orders[realIdx].status === 'paused' ? 'active' : 'paused';
+    saveOrders(orders);
+    renderOrders();
+  }
+}
+
+function pauseProduction(sortedIdx) {
+  var orders = getOrders();
+  var sorted = sortOrders(orders.filter(function(o){return o.status!=='done';}));
+  var target = sorted[sortedIdx];
+  if (!target) return;
+  var reason = prompt('⏸ 停機原因：\n（例如：刀具磨損、材料問題、品質異常、機台故障）', '');
+  if (reason === null) return;
+  var realIdx = orders.findIndex(function(o){return o.id === target.id;});
+  if (realIdx >= 0) {
+    orders[realIdx].status = 'paused';
+    orders[realIdx].pauseReason = reason || '';
+    orders[realIdx].pausedAt = new Date().toISOString();
+    saveOrders(orders);
+    renderOrders();
+  }
+}
+
+function resumeProduction(sortedIdx) {
+  var orders = getOrders();
+  var sorted = sortOrders(orders.filter(function(o){return o.status!=='done';}));
+  var target = sorted[sortedIdx];
+  if (!target) return;
+  var realIdx = orders.findIndex(function(o){return o.id === target.id;});
+  if (realIdx >= 0) {
+    orders[realIdx].status = 'active';
+    orders[realIdx].pauseReason = '';
+    saveOrders(orders);
+    renderOrders();
+  }
+}
+
+function startProduction(sortedIdx) {
+  var orders = getOrders();
+  var sorted = sortOrders(orders.filter(function(o){return o.status!=='done';}));
+  var target = sorted[sortedIdx];
+  if (!target) return;
+  
+  var dia = target.dia || 0;
+  var capable = machineDB.filter(function(m){return m.maxDia >= dia;});
+  var options = capable.map(function(m){return m.id + ' - ' + m.name + ' (' + m.type + ')';}).join('\n');
+  var currentMachine = target.machine ? machineDB.find(function(m){return m.id===target.machine;}) : null;
+  var defaultText = currentMachine ? currentMachine.id : '';
+  
+  var choice = prompt('🚀 確認上線生產\n\n品號: ' + target.part + '\n客戶: ' + target.customer + '\n目前指派: ' + (currentMachine ? currentMachine.name : '未指派') + '\n\n請輸入實際生產機台編號（如 1, S3, K5）：\n\n' + options, defaultText);
+  if (!choice) return;
+  choice = choice.trim();
+  var found = machineDB.find(function(m){return m.id === choice;});
+  if (!found) { alert('找不到機台 ' + choice); return; }
+  
+  var realIdx = orders.findIndex(function(o){return o.id === target.id;});
+  if (realIdx >= 0) {
+    orders[realIdx].machine = found.id;
+    orders[realIdx].actualStart = new Date().toISOString().split('T')[0];
+    saveOrders(orders);
+    alert('✅ 已上線！\n機台：' + found.name + ' (' + found.type + ')\n上線日期：' + orders[realIdx].actualStart);
+    renderOrders();
+  }
+}
+
+function editMachine(sortedIdx) {
+  var orders = getOrders();
+  var sorted = sortOrders(orders.filter(function(o){return o.status!=='done';}));
+  var target = sorted[sortedIdx];
+  if (!target) return;
+  
+  var dia = target.dia || 0;
+  var capable = machineDB.filter(function(m){return m.maxDia >= dia;});
+  var options = capable.map(function(m){return m.id + ' - ' + m.name + ' (' + m.type + ', ⌀' + m.maxDia + 'mm)';}).join('\n');
+  var choice = prompt('可用機台：\n' + options + '\n\n輸入機台編號（如 K1, S3, 5）：');
+  if (!choice) return;
+  choice = choice.trim();
+  var found = machineDB.find(function(m){return m.id === choice;});
+  if (!found) { alert('找不到機台 ' + choice); return; }
+  if (found.maxDia < dia) {
+    if (!confirm('⚠️ ' + found.name + ' 最大加工徑 ⌀' + found.maxDia + 'mm，此訂單需要 ⌀' + dia + 'mm，確定指派？')) return;
+  }
+  
+  var realIdx = orders.findIndex(function(o){return o.id === target.id;});
+  if (realIdx >= 0) {
+    orders[realIdx].machine = found.id;
+    orders[realIdx].startDate = calcStartDate(found.id, orders.filter(function(o,i){return i !== realIdx;}));
+    saveOrders(orders);
+    renderOrders();
+  }
+}
+
+// ===== 雲端同步 (Google Apps Script) =====
+var SYNC_URL = 'https://script.google.com/macros/s/AKfycbxypKNZdC7MIrJGrhKAozn3QeUiLSyO51drhr8BzbGEio6kRIN-mv-XBL-eYYkyJwvChg/exec';
+var TOOL_NAME = 'scheduler';
+
+function cloudSync() {
+  var orders = getOrders();
+  document.getElementById('syncText').textContent = '上傳中...';
+  fetch(SYNC_URL, {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify({ tool: TOOL_NAME, key: 'all', data: { orders: orders } })
+  }).then(function() {
+    document.getElementById('syncDot').className = 'dot ok';
+    document.getElementById('syncText').textContent = '✅ 已上傳 ' + orders.length + ' 筆 ' + new Date().toLocaleTimeString();
+  }).catch(function(e) {
+    document.getElementById('syncText').textContent = '❌ ' + e.message;
+  });
+}
+
+function cloudLoad() {
+  document.getElementById('syncText').textContent = '下載中...';
+  fetch(SYNC_URL + '?tool=' + TOOL_NAME + '&key=all')
+  .then(function(r) { return r.text(); })
+  .then(function(text) {
+    if (!text || text === 'null') { document.getElementById('syncText').textContent = '雲端無資料'; return; }
+    var json = JSON.parse(text);
+    if (json.orders) {
+      saveOrders(json.orders);
+      document.getElementById('syncDot').className = 'dot ok';
+      document.getElementById('syncText').textContent = '✅ 已下載 ' + json.orders.length + ' 筆訂單';
+      renderOrders();
+    }
+  }).catch(function(e) {
+    document.getElementById('syncText').textContent = '❌ ' + e.message;
+  });
+}
+
+// ===== 公司統編查詢 (g0v 公司資料查詢) =====
+var companySearchTimer = null;
+function searchCompany(keyword) {
+  var dd = document.getElementById('companyDropdown');
+  if (!keyword || keyword.length < 2) { dd.style.display = 'none'; return; }
+  clearTimeout(companySearchTimer);
+  companySearchTimer = setTimeout(function() {
+    var url = 'https://company.g0v.ronny.tw/api/search?q=' + encodeURIComponent(keyword);
+    fetch(url).then(function(r){ return r.json(); }).then(function(res) {
+      var data = res.data || [];
+      if (!data.length) { dd.style.display = 'none'; return; }
+      dd.innerHTML = data.slice(0, 8).map(function(c) {
+        var name = (c['公司名稱'] || '').replace(/'/g, "\\'");
+        var taxid = c['統一編號'] || '';
+        var status = c['公司狀況'] || '';
+        var color = status === '核准設立' ? '#34a853' : '#999';
+        var rep = (c['代表人姓名'] || '').replace(/'/g, "\\'");
+        return '<div style="padding:8px 10px;cursor:pointer;border-bottom:1px solid #eee;font-size:0.85em" onclick="selectCompany(\'' + name + '\',\'' + taxid + '\')">' +
+          '<b>' + taxid + '</b> ' + name + (rep ? ' <span style="color:#555;font-size:0.8em">👤' + rep + '</span>' : '') + ' <span style="color:' + color + ';font-size:0.8em">(' + status + ')</span></div>';
+      }).join('');
+      dd.style.display = 'block';
+    }).catch(function() { dd.style.display = 'none'; });
+  }, 400);
+}
+
+function selectCompany(name, taxId) {
+  document.getElementById('f-customer').value = name;
+  document.getElementById('f-taxid').value = taxId;
+  document.getElementById('companyDropdown').style.display = 'none';
+}
+
+// 點擊其他地方關閉下拉選單
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#f-customer') && !e.target.closest('#companyDropdown')) {
+    document.getElementById('companyDropdown').style.display = 'none';
+  }
+});
+
+// ===== 初始化 =====
+renderOrders();
+</script>
+</div>
+</body>
+</html>

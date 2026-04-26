@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 智慧社群代操服務 | FB IG Threads 代操 | KING HAN</title>
+<meta name="description" content="AI 驅動的社群代操服務，效率是傳統代操 3-5 倍。Facebook、Instagram、Threads 一站搞定，專為台灣中小企業量身打造。">
+<meta name="keywords" content="社群代操,社群經營,FB代操,IG代操,Threads代操,AI社群,社群行銷,台灣社群代操,彰化社群代操">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="canonical" href="https://kinghan-cnc.com/social-media-service.html">
+<style>
+  :root {
+    --bg-dark: #0d1117;
+    --bg-section: #161b22;
+    --bg-card: #1c2333;
+    --accent: #f0a500;
+    --accent-dim: #c48800;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --border: #30363d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, 'Segoe UI', 'Microsoft JhengHei', sans-serif; background: var(--bg-dark); color: var(--text); line-height: 1.7; }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(13,17,23,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 2rem; height: 64px;
+  }
+  .logo { font-size: 1.1rem; font-weight: 700; color: var(--accent); letter-spacing: 1px; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo img { height: 36px; width: 36px; border-radius: 50%; }
+  .logo span { color: var(--text); font-weight: 400; }
+  nav ul { list-style: none; display: flex; gap: 1.5rem; }
+  nav a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  nav a:hover { color: var(--accent); }
+  .nav-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 120px 2rem 80px;
+    background: linear-gradient(160deg, #0d1117 0%, #1a1f2e 50%, #0d1117 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 40%, rgba(240,165,0,0.06) 0%, transparent 60%),
+                radial-gradient(circle at 70% 60%, rgba(240,165,0,0.04) 0%, transparent 50%);
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero-tag { color: var(--accent); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1rem; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p { color: var(--text-dim); font-size: clamp(1rem, 2vw, 1.25rem); max-width: 700px; margin-bottom: 2.5rem; }
+  .btn {
+    display: inline-block; padding: 14px 36px; background: var(--accent); color: #000;
+    font-weight: 700; text-decoration: none; border-radius: 4px; font-size: 1rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn:hover { background: var(--accent-dim); transform: translateY(-2px); }
+  .btn-outline {
+    display: inline-block; padding: 14px 36px; background: transparent; color: var(--accent);
+    font-weight: 700; text-decoration: none; border-radius: 4px; font-size: 1rem;
+    border: 2px solid var(--accent); transition: background 0.2s, transform 0.2s;
+  }
+  .btn-outline:hover { background: rgba(240,165,0,0.1); transform: translateY(-2px); }
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+  section { padding: 80px 2rem; }
+  .section-alt { background: var(--bg-section); }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-title { text-align: center; margin-bottom: 3rem; }
+  .section-title h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+  .section-title p { color: var(--text-dim); }
+  .section-title .line { width: 50px; height: 3px; background: var(--accent); margin: 1rem auto 0; }
+
+  .about-text { max-width: 800px; margin: 0 auto; text-align: center; }
+  .about-text p { margin-bottom: 1rem; color: var(--text-dim); font-size: 1.05rem; }
+
+  .adv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .adv-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 2rem; text-align: center; transition: border-color 0.3s, transform 0.3s;
+  }
+  .adv-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .adv-card .emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+  .adv-card h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+  .adv-card p { color: var(--text-dim); font-size: 0.9rem; }
+
+  /* PRICING */
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .pricing-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 2.5rem 2rem; text-align: center; transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+  }
+  .pricing-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .pricing-card.popular { border-color: var(--accent); }
+  .pricing-card.popular::before {
+    content: '🔥 最受歡迎'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--accent); color: #000; font-weight: 700; font-size: 0.8rem;
+    padding: 4px 16px; border-radius: 20px;
+  }
+  .pricing-card .plan-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .pricing-card .price { font-size: 2.5rem; font-weight: 800; color: var(--accent); margin-bottom: 0.3rem; }
+  .pricing-card .price-unit { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .pricing-card ul { list-style: none; text-align: left; margin-bottom: 2rem; }
+  .pricing-card ul li { padding: 0.4rem 0; color: var(--text-dim); font-size: 0.95rem; border-bottom: 1px solid var(--border); }
+  .pricing-card ul li::before { content: '✓ '; color: var(--accent); font-weight: 700; }
+
+  /* PROCESS */
+  .process-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+  .process-step {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 2rem 1.5rem; text-align: center; flex: 1 1 180px; max-width: 200px;
+    position: relative; transition: border-color 0.3s, transform 0.3s;
+  }
+  .process-step:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .process-step .step-num {
+    display: inline-block; width: 40px; height: 40px; line-height: 40px;
+    background: var(--accent); color: #000; font-weight: 800; border-radius: 50%;
+    font-size: 1.1rem; margin-bottom: 1rem;
+  }
+  .process-step h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .process-step p { color: var(--text-dim); font-size: 0.82rem; }
+
+  .cta-section {
+    text-align: center; padding: 80px 2rem;
+    background: linear-gradient(160deg, var(--bg-section), var(--bg-dark));
+  }
+  .cta-section h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+  .cta-section p { color: var(--text-dim); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+  .platform-badges { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .badge {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 0.5rem 1.2rem; font-size: 0.95rem; color: var(--text);
+  }
+
+  footer {
+    text-align: center; padding: 2rem; border-top: 1px solid var(--border);
+    color: var(--text-dim); font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    nav ul { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0;
+      background: rgba(13,17,23,0.98); padding: 1rem 2rem; gap: 1rem; }
+    nav ul.open { display: flex; }
+    .nav-toggle { display: block; }
+    .process-step { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="logo.png" alt="KH Logo">KING HAN <span>PRECISION</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="/">首頁</a></li>
+    <li><a href="/sourcing-service.html">Sourcing Service</a></li>
+    <li><a href="/social-media-service.html" style="color:var(--accent);">社群代操服務</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact">聯繫我們</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">AI 社群代操服務</div>
+  <h1>用 AI 幫你的品牌<em>搶佔社群版面</em></h1>
+  <p>Facebook、Instagram、Threads 三大平台一站搞定。AI 驅動的智慧社群經營，效率是傳統代操的 3-5 倍，專為台灣中小企業量身打造。</p>
+  <div class="platform-badges">
+    <div class="badge">📘 Facebook</div>
+    <div class="badge">📸 Instagram</div>
+    <div class="badge">🧵 Threads</div>
+  </div>
+  <div class="hero-buttons">
+    <a href="tel:0928371613" class="btn">立即諮詢 ➜ 0928-371-613</a>
+    <a href="https://kinghan-cnc.com" class="btn-outline">了解更多</a>
+  </div>
+</section>
+
+<!-- 為什麼需要社群代操 -->
+<section class="section-alt">
+  <div class="container">
+    <div class="section-title">
+      <h2>為什麼你需要社群代操？</h2>
+      <p>中小企業的社群痛點，我們都懂</p>
+      <div class="line"></div>
+    </div>
+    <div class="about-text">
+      <p>想經營社群，但<strong style="color:var(--text)">沒時間、沒人力、不知道發什麼</strong>？老闆一個人要管生產、業務、還要顧社群？這正是我們存在的理由。</p>
+      <p>我們用 <strong style="color:var(--accent)">AI 技術</strong>結合專業社群策略，幫你持續產出優質內容、追蹤數據表現、優化投放策略——你只要專心做好本業。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 服務特色 -->
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>我們的服務特色</h2>
+      <p>AI 加持，不只是代操</p>
+      <div class="line"></div>
+    </div>
+    <div class="adv-grid">
+      <div class="adv-card">
+        <div class="emoji">🤖</div>
+        <h3>AI 驅動，效率翻倍</h3>
+        <p>運用 AI 技術生成文案、設計圖文、分析數據，效率是傳統代操的 3-5 倍。</p>
+      </div>
+      <div class="adv-card">
+        <div class="emoji">⏰</div>
+        <h3>24/7 內容產出</h3>
+        <p>AI 不休息，隨時可以產出內容。緊急貼文、節慶行銷，再也不用等。</p>
+      </div>
+      <div class="adv-card">
+        <div class="emoji">📊</div>
+        <h3>數據驅動策略</h3>
+        <p>每一篇貼文都有數據追蹤，用數字說話，持續優化你的社群表現。</p>
+      </div>
+      <div class="adv-card">
+        <div class="emoji">📍</div>
+        <h3>彰化在地 × 全台服務</h3>
+        <p>公司在彰化，面對面溝通沒問題。也接受遠端合作，服務不受地域限制。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 方案價格 -->
+<section class="section-alt" id="pricing">
+  <div class="container">
+    <div class="section-title">
+      <h2>方案與價格</h2>
+      <p>透明定價，沒有隱藏費用</p>
+      <div class="line"></div>
+    </div>
+    <div class="pricing-grid">
+      <!-- 基礎方案 -->
+      <div class="pricing-card">
+        <div class="plan-name">基礎方案</div>
+        <div class="price">NT$8,000</div>
+        <div class="price-unit">/ 月</div>
+        <ul>
+          <li>每月 8 篇圖文貼文</li>
+          <li>FB + IG + Threads 三平台發佈</li>
+          <li>AI 生成文案與圖片</li>
+          <li>基本數據報告（月報）</li>
+          <li>適合剛起步的品牌</li>
+        </ul>
+        <a href="tel:0928371613" class="btn">立即諮詢</a>
+      </div>
+      <!-- 進階方案 -->
+      <div class="pricing-card popular">
+        <div class="plan-name">進階方案</div>
+        <div class="price">NT$18,000</div>
+        <div class="price-unit">/ 月</div>
+        <ul>
+          <li>每月 12 篇圖文貼文</li>
+          <li>每月 4 條短影音（Reels/限動）</li>
+          <li>FB + IG + Threads 三平台發佈</li>
+          <li>廣告投放建議與優化</li>
+          <li>完整月報（含競品分析）</li>
+        </ul>
+        <a href="tel:0928371613" class="btn">立即諮詢</a>
+      </div>
+      <!-- 全方位方案 -->
+      <div class="pricing-card">
+        <div class="plan-name">全方位方案</div>
+        <div class="price">NT$30,000</div>
+        <div class="price-unit">/ 月</div>
+        <ul>
+          <li>每月 20 篇圖文貼文</li>
+          <li>每月 8 條短影音（Reels/限動）</li>
+          <li>FB + IG + Threads 三平台發佈</li>
+          <li>廣告代操與預算管理</li>
+          <li>每週數據報告 + 策略顧問</li>
+        </ul>
+        <a href="tel:0928371613" class="btn">立即諮詢</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 合作流程 -->
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>合作流程</h2>
+      <p>簡單四步驟，開始你的社群經營</p>
+      <div class="line"></div>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h3>免費諮詢</h3>
+        <p>了解你的品牌、目標受眾與需求</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h3>方案確認</h3>
+        <p>選擇適合的方案，確認合作細節</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h3>內容製作</h3>
+        <p>AI 生成 + 人工審核，品質有保障</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h3>上線追蹤</h3>
+        <p>定期發佈、數據追蹤、持續優化</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>讓 AI 幫你經營社群，你專心做老闆</h2>
+  <p>不用再煩惱今天發什麼、圖片怎麼做。把社群交給我們，用 AI 的效率，幫你的品牌被更多人看見。</p>
+  <div class="hero-buttons">
+    <a href="tel:0928371613" class="btn">📞 立即來電 0928-371-613</a>
+    <a href="https://kinghan-cnc.com" class="btn-outline">🌐 kinghan-cnc.com</a>
+  </div>
+  <p style="margin-top:1.5rem; color: var(--text-dim); font-size:0.95rem;">聯繫人：陳先生 ｜ 電話：0928-371-613</p>
+</section>
+
+<footer>
+  <p>&copy; 2026 鑫瀚精密工業有限公司 KING HAN PRECISION INDUSTRY LTD. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

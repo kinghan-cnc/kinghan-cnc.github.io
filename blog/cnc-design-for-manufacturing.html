@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design for Manufacturing (DFM): How to Optimize CNC Parts for Cost & Quality | KING HAN Blog</title>
+<meta name="description" content="Practical DFM guide for CNC machined parts — learn how to reduce costs by 30-50% through smart design choices. Covers wall thickness, tolerances, radii, holes, threads, and material selection.">
+<meta name="keywords" content="DFM CNC machining, design for manufacturing CNC, CNC part design tips, reduce CNC machining cost, CNC design guidelines, manufacturability CNC parts">
+<link rel="icon" type="image/png" href="../logo.png">
+<link rel="canonical" href="https://kinghan-cnc.com/blog/cnc-design-for-manufacturing.html">
+<style>
+  :root{--bg-dark:#0d1117;--bg-section:#161b22;--bg-card:#1c2333;--accent:#f0a500;--accent-dim:#c48800;--text:#e6edf3;--text-dim:#8b949e;--border:#30363d}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.8}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,17,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:0 2rem;height:64px}
+  .logo{font-size:1.1rem;font-weight:700;color:var(--accent);letter-spacing:1px;display:flex;align-items:center;gap:10px;text-decoration:none}
+  .logo img{height:36px;width:36px;border-radius:50%}.logo span{color:var(--text);font-weight:400}
+  nav ul{list-style:none;display:flex;gap:1.5rem}
+  nav a{color:var(--text-dim);text-decoration:none;font-size:0.9rem;transition:color 0.2s}nav a:hover{color:var(--accent)}
+  .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+  .article-header{padding:120px 2rem 40px;text-align:center;background:linear-gradient(160deg,#0d1117 0%,#1a1f2e 50%,#0d1117 100%)}
+  .article-header h1{font-size:clamp(1.8rem,4vw,2.5rem);max-width:800px;margin:0 auto 1rem}
+  .article-header .meta{color:var(--text-dim);font-size:0.9rem}
+  .article{max-width:760px;margin:0 auto;padding:3rem 2rem}
+  .article h2{font-size:1.5rem;margin:2.5rem 0 1rem;color:var(--accent)}
+  .article h3{font-size:1.2rem;margin:2rem 0 0.8rem}
+  .article p{color:var(--text-dim);margin-bottom:1.2rem;font-size:1.02rem}
+  .article ul,.article ol{color:var(--text-dim);margin:0 0 1.2rem 1.5rem;font-size:1.02rem}
+  .article li{margin-bottom:0.5rem}
+  .article strong{color:var(--text)}
+  .article a{color:var(--accent);text-decoration:none}.article a:hover{text-decoration:underline}
+  .back-link{display:inline-block;margin-bottom:2rem;color:var(--accent);text-decoration:none;font-size:0.9rem}
+  .back-link:hover{text-decoration:underline}
+  .cta-box{background:var(--bg-card);border:1px solid var(--accent);border-radius:8px;padding:2rem;margin-top:3rem;text-align:center}
+  .cta-box h3{color:var(--accent);margin-bottom:0.5rem;font-size:1.3rem}
+  .cta-box p{color:var(--text-dim);margin-bottom:1rem}
+  .cta-box a{display:inline-block;background:var(--accent);color:#0d1117;padding:0.7rem 2rem;border-radius:6px;font-weight:700;text-decoration:none;transition:background 0.3s}
+  .cta-box a:hover{background:var(--accent-dim)}
+  .resource-box{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.5rem 0}
+  .resource-box h4{color:var(--accent);margin-bottom:0.5rem}
+  .resource-box p{color:var(--text-dim);font-size:0.95rem;margin-bottom:0.5rem}
+  .resource-box a{color:var(--accent)}
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0}
+  th,td{border:1px solid var(--border);padding:0.6rem 1rem;text-align:left;font-size:0.95rem;color:var(--text-dim)}
+  th{background:var(--bg-card);color:var(--text);font-weight:600}
+  footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-dim);font-size:0.85rem}
+  @media(max-width:768px){nav ul{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(13,17,23,0.98);padding:1rem 2rem;gap:1rem}nav ul.open{display:flex}.nav-toggle{display:block}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Design for Manufacturing (DFM): How to Optimize CNC Parts for Cost & Quality",
+  "description": "Practical DFM guide for CNC machined parts to reduce costs by 30-50% through smart design choices.",
+  "author": {"@type": "Organization", "name": "KING HAN Precision Industry"},
+  "publisher": {"@type": "Organization", "name": "KING HAN Precision Industry", "url": "https://kinghan-cnc.com"},
+  "datePublished": "2026-02-27",
+  "mainEntityOfPage": "https://kinghan-cnc.com/blog/cnc-design-for-manufacturing.html"
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="../logo.png" alt="KH Logo">KING HAN <span>PRECISION</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sourcing-service.html">Sourcing Service</a></li>
+    <li><a href="/blog/" style="color:var(--accent);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="article-header">
+  <h1>Design for Manufacturing (DFM): How to Optimize CNC Parts for Cost & Quality</h1>
+  <div class="meta">February 27, 2026 · 14 min read</div>
+</div>
+
+<div class="article">
+  <a href="/blog/" class="back-link">← Back to Blog</a>
+
+  <p>The most expensive CNC parts aren't the ones made from exotic materials or held to micro-tolerances — they're the ones designed without considering how they'll actually be manufactured. <strong>Design for Manufacturing (DFM)</strong> is the practice of optimizing your part design to be produced efficiently, reliably, and economically. Done well, DFM can reduce your CNC machining costs by <strong>30-50%</strong> without compromising functionality.</p>
+
+  <p>This guide distills practical DFM principles we apply daily at KING HAN across thousands of CNC turned and milled parts. Whether you're designing your first prototype or optimizing a high-volume production part, these guidelines will help you make better design decisions.</p>
+
+  <h2>Why DFM Matters: The Cost of Bad Design</h2>
+
+  <p>Consider two versions of the same functional part:</p>
+  <ul>
+    <li><strong>Design A:</strong> 4 tight-tolerance features (±0.01mm), deep internal pocket, sharp internal corners, exotic surface finish → $18/piece, 4-week lead time</li>
+    <li><strong>Design B:</strong> Same function, 2 tight-tolerance features, standard pocket depth, proper radii, as-machined finish where cosmetic → $7/piece, 2-week lead time</li>
+  </ul>
+
+  <p>The function is identical. The cost is 60% lower. That's the power of DFM.</p>
+
+  <p>The problem is that most design decisions are made by engineers focused on function, not manufacturing. By the time the design reaches procurement and the <a href="/blog/cnc-rfq-guide.html">RFQ goes out</a>, the costly decisions are already baked in. DFM should start at the design phase, not after the quote comes back too high.</p>
+
+  <h2>DFM Principle #1: Tolerance Only What Matters</h2>
+
+  <p>This is the single biggest cost lever in CNC machining. <strong>Over-tolerancing</strong> — specifying ±0.01mm on every dimension when only 2-3 features functionally require it — is the most common and most expensive design mistake.</p>
+
+  <h3>The Tolerance Cost Multiplier</h3>
+  <table>
+    <tr><th>Tolerance Range</th><th>Relative Machining Cost</th><th>Process Required</th></tr>
+    <tr><td>±0.1mm</td><td>1.0× (baseline)</td><td>Standard CNC turning/milling</td></tr>
+    <tr><td>±0.05mm</td><td>1.2×</td><td>Careful CNC with good tooling</td></tr>
+    <tr><td>±0.025mm</td><td>1.5×</td><td>Precision CNC, controlled environment</td></tr>
+    <tr><td>±0.01mm</td><td>2.5×</td><td>Precision CNC + possible grinding</td></tr>
+    <tr><td>±0.005mm</td><td>4-5×</td><td>Grinding, lapping, or jig boring</td></tr>
+  </table>
+
+  <p><strong>Best practice:</strong> Use ISO 2768-m (medium) as your general tolerance and only call out tight tolerances on features that functionally require them — mating surfaces, bearing fits, sealing diameters. Read our detailed <a href="/blog/cnc-machining-tolerance-guide.html">CNC tolerance guide</a> for specification advice.</p>
+
+  <h2>DFM Principle #2: Design for Standard Tooling</h2>
+
+  <p>Every non-standard tool adds cost and lead time. Design your features around standard, readily available cutting tools:</p>
+
+  <h3>Internal Corner Radii</h3>
+  <p>CNC milling tools are round — they cannot produce perfectly sharp internal corners. Always design internal corners with a radius:</p>
+  <ul>
+    <li><strong>Minimum radius:</strong> At least 1/3 of the pocket depth (e.g., 10mm deep pocket → minimum 3.3mm corner radius)</li>
+    <li><strong>Preferred:</strong> Standard end mill radii — R1.0, R1.5, R2.0, R3.0, R4.0, R5.0mm</li>
+    <li><strong>Avoid:</strong> Specifying R0.5mm in a 20mm deep pocket — requires a very small, fragile tool running at extremely slow speeds</li>
+  </ul>
+
+  <h3>Hole Sizes</h3>
+  <p>Use standard drill sizes whenever possible. Non-standard holes require boring or reaming, which adds operations and cost:</p>
+  <ul>
+    <li><strong>Standard metric drills:</strong> 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0, 8.0, 10.0, 12.0mm</li>
+    <li><strong>Standard imperial drills:</strong> #80 through #1 number drills, letter drills, fractional drills</li>
+    <li><strong>If a non-standard diameter is needed:</strong> the hole will likely be drilled undersize and bored/reamed to final size — expect 2-3× the cost of a standard drilled hole</li>
+  </ul>
+
+  <h3>Thread Sizes</h3>
+  <p>Stick to standard <a href="/blog/cnc-thread-machining-guide.html">thread sizes</a> — M3, M4, M5, M6, M8, M10, M12 for metric; #4-40, #6-32, #8-32, 1/4-20, 3/8-16 for unified. Custom pitches or non-standard sizes require special tooling.</p>
+
+  <h2>DFM Principle #3: Minimize Setups</h2>
+
+  <p>Every time a part needs to be removed from the machine, repositioned, and re-clamped, it adds:</p>
+  <ul>
+    <li><strong>Setup time:</strong> 15-60 minutes per additional setup</li>
+    <li><strong>Accuracy loss:</strong> Each re-clamping introduces positional error between features</li>
+    <li><strong>Risk:</strong> Each handling is a chance for damage or scrap</li>
+  </ul>
+
+  <p><strong>Design strategies to minimize setups:</strong></p>
+  <ol>
+    <li><strong>Keep features accessible from one direction</strong> — if all features can be machined from one side, it's a single-setup part</li>
+    <li><strong>Use Swiss-type CNC for turned parts</strong> — <a href="/blog/what-is-swiss-type-cnc-lathe.html">Swiss-type lathes</a> with live tooling can complete complex turned parts (OD turning, ID boring, cross-drilling, milling, threading) in a single setup</li>
+    <li><strong>Avoid features on multiple faces</strong> that require 5-axis machining when 3-axis would suffice</li>
+    <li><strong>Design reference surfaces</strong> — flat, stable surfaces for clamping improve accuracy and reduce setup time</li>
+  </ol>
+
+  <div class="resource-box">
+    <h4>📘 Swiss-Type CNC: The DFM Advantage</h4>
+    <p>Swiss-type CNC lathes are designed for single-setup production of complex turned parts. Learn how in our <a href="https://kinghancnc.gumroad.com/l/swiss-type-cnc-lathe-guide">Swiss CNC Lathe Guide ($12.99)</a> — covers capabilities, limitations, and how to design parts that maximize Swiss-type efficiency.</p>
+  </div>
+
+  <h2>DFM Principle #4: Respect Depth-to-Diameter Ratios</h2>
+
+  <p>Deep features are disproportionately expensive because long, thin tools deflect, vibrate, and break:</p>
+
+  <h3>Drilled Holes</h3>
+  <table>
+    <tr><th>Depth-to-Diameter Ratio</th><th>Difficulty</th><th>Cost Impact</th></tr>
+    <tr><td>Up to 3:1</td><td>Standard</td><td>No extra cost</td></tr>
+    <tr><td>3:1 to 6:1</td><td>Moderate</td><td>Requires peck drilling, 1.5× cost</td></tr>
+    <tr><td>6:1 to 10:1</td><td>Difficult</td><td>Special tooling, 2-3× cost</td></tr>
+    <tr><td>Over 10:1</td><td>Very difficult</td><td>Gun drilling or EDM, 5×+ cost</td></tr>
+  </table>
+
+  <h3>Milled Pockets</h3>
+  <ul>
+    <li><strong>Depth-to-width ratio:</strong> Keep below 4:1 for standard end mills</li>
+    <li><strong>Corner radii:</strong> Must accommodate the tool diameter needed for the pocket depth</li>
+    <li><strong>Thin walls:</strong> Avoid walls thinner than 0.5mm (metal) — they deflect during machining and may not hold tolerance</li>
+  </ul>
+
+  <h3>Turned Features</h3>
+  <ul>
+    <li><strong>Bore depth-to-diameter:</strong> Standard boring bars handle up to 4:1 L/D. Beyond that, vibration degrades surface finish and accuracy</li>
+    <li><strong>Slender shafts:</strong> Parts with length-to-diameter ratios above 8:1 may deflect during turning. Swiss-type CNC lathes solve this with guide bushing support close to the cutting zone — one reason they excel at <a href="/blog/small-diameter-cnc-machining.html">small-diameter parts</a></li>
+  </ul>
+
+  <h2>DFM Principle #5: Choose Materials Wisely</h2>
+
+  <p>Material choice affects machinability, tool life, cycle time, and ultimately cost:</p>
+
+  <table>
+    <tr><th>Material</th><th>Machinability Index</th><th>Relative Cost/Part</th></tr>
+    <tr><td><a href="/blog/brass-cnc-turned-parts-guide.html">Brass C36000</a></td><td>100 (reference)</td><td>1.0×</td></tr>
+    <tr><td><a href="/blog/aluminum-cnc-machining-guide.html">Aluminum 6061</a></td><td>90</td><td>0.9×</td></tr>
+    <tr><td>Carbon Steel 12L14</td><td>85</td><td>0.8×</td></tr>
+    <tr><td><a href="/blog/stainless-steel-cnc-machining.html">Stainless 303</a></td><td>78</td><td>1.3×</td></tr>
+    <tr><td>Stainless 304</td><td>45</td><td>1.8×</td></tr>
+    <tr><td>Stainless 316</td><td>36</td><td>2.2×</td></tr>
+    <tr><td>Titanium Ti-6Al-4V</td><td>22</td><td>4-5×</td></tr>
+  </table>
+
+  <p><strong>DFM takeaway:</strong> If your application allows it, choose the most machinable grade within the material family. The difference between 303 and 316 stainless can be 40-70% in machining cost. Our <a href="/blog/cnc-machining-cost-breakdown.html">cost breakdown guide</a> explains exactly how material affects pricing.</p>
+
+  <div class="resource-box">
+    <h4>💰 Calculate Before You Commit</h4>
+    <p>Use the <a href="https://kinghancnc.gumroad.com/l/cnc-cost-calculator">CNC Cost Calculator ($9.99)</a> to estimate how different design choices — material, tolerances, quantity — affect your per-part cost before finalizing the design.</p>
+  </div>
+
+  <h2>DFM Principle #6: Simplify Surface Finish Specs</h2>
+
+  <p>Different surfaces on the same part can have different <a href="/blog/cnc-surface-finish-guide.html">finish requirements</a>. Don't specify Ra 0.8 µm everywhere when most surfaces only need Ra 3.2 µm (standard as-machined):</p>
+
+  <ul>
+    <li><strong>Functional surfaces</strong> (sealing faces, bearing journals): specify the required Ra</li>
+    <li><strong>Non-functional surfaces:</strong> leave as-machined or specify "Ra 3.2 max"</li>
+    <li><strong>Cosmetic surfaces:</strong> specify finish requirements clearly — "bead blasted," "brushed," "anodized Type II" — not vague terms like "smooth" or "nice finish"</li>
+  </ul>
+
+  <h2>DFM Principle #7: Design for Workholding</h2>
+
+  <p>The machine can only cut what it can hold. Parts that are difficult to clamp are slow and expensive to produce:</p>
+
+  <ul>
+    <li><strong>Flat bottom surfaces:</strong> Provide at least one flat, stable surface for vise or fixture clamping</li>
+    <li><strong>Avoid fully radiused parts</strong> — round or organic shapes with no flat surfaces require custom fixtures</li>
+    <li><strong>Leave clamping material:</strong> For turned parts, leave enough bar stock length for the collet or chuck to grip. A tiny 3mm-long part still needs 10-15mm of material for the machine to hold</li>
+    <li><strong>Consider sacrificial tabs or witness marks</strong> where cosmetic requirements prevent visible clamp marks</li>
+  </ul>
+
+  <h2>DFM Principle #8: Think About Deburring</h2>
+
+  <p>Every machined edge needs deburring. Complex geometry with many intersecting holes and features creates deburring nightmares:</p>
+
+  <ul>
+    <li><strong>Add chamfers to all edges</strong> — 0.2-0.5mm chamfers on drawing saves manual deburring time</li>
+    <li><strong>Avoid intersecting cross-holes</strong> at acute angles — these create sharp, hard-to-reach burrs</li>
+    <li><strong>If deburring is critical</strong> (e.g., medical, hydraulic), specify deburring requirements on the drawing: "all edges broken 0.2-0.5mm, burr-free"</li>
+  </ul>
+
+  <h2>DFM Checklist for CNC Parts</h2>
+
+  <table>
+    <tr><th>#</th><th>Check Item</th><th>Impact</th></tr>
+    <tr><td>1</td><td>Tight tolerances only on functional features?</td><td>Cost: High</td></tr>
+    <tr><td>2</td><td>General tolerance standard specified (ISO 2768)?</td><td>Clarity: High</td></tr>
+    <tr><td>3</td><td>Internal corners have adequate radii?</td><td>Cost: Medium</td></tr>
+    <tr><td>4</td><td>Holes are standard drill sizes?</td><td>Cost: Low-Medium</td></tr>
+    <tr><td>5</td><td>Depth-to-diameter ratios within limits?</td><td>Cost: High</td></tr>
+    <tr><td>6</td><td>Wall thickness ≥ 0.5mm?</td><td>Quality: High</td></tr>
+    <tr><td>7</td><td>Can be completed in minimum setups?</td><td>Cost: High</td></tr>
+    <tr><td>8</td><td>Material is the most machinable option?</td><td>Cost: High</td></tr>
+    <tr><td>9</td><td>Surface finish specified only where needed?</td><td>Cost: Medium</td></tr>
+    <tr><td>10</td><td>Adequate workholding surfaces?</td><td>Feasibility: High</td></tr>
+    <tr><td>11</td><td>Threads are standard sizes?</td><td>Cost: Low</td></tr>
+    <tr><td>12</td><td>Chamfers/deburring requirements clear?</td><td>Quality: Medium</td></tr>
+  </table>
+
+  <div class="resource-box">
+    <h4>📋 Standardize Your DFM Process</h4>
+    <p>Build DFM review into your product development workflow. The <a href="https://kinghancnc.gumroad.com/l/cnc-sop-templates">CNC SOP Templates ($14.99)</a> include DFM review checklists, design review procedures, and production handoff templates used by professional engineering teams.</p>
+  </div>
+
+  <h2>Real-World DFM Example: Before and After</h2>
+
+  <h3>Before DFM Review</h3>
+  <ul>
+    <li>Material: SUS 316 (required by spec — can't change)</li>
+    <li>All dimensions toleranced to ±0.02mm</li>
+    <li>Internal corners specified as "sharp"</li>
+    <li>Cross-hole at 15mm deep in 3mm diameter (5:1 L/D)</li>
+    <li>Ra 0.8 µm on all surfaces</li>
+    <li><strong>Quote: $14.50/pc at 1,000 pcs</strong></li>
+  </ul>
+
+  <h3>After DFM Review</h3>
+  <ul>
+    <li>Material: SUS 316 (unchanged — functional requirement)</li>
+    <li>Only 3 critical dimensions at ±0.02mm; rest at ISO 2768-m (±0.1mm)</li>
+    <li>Internal corners changed to R1.5mm</li>
+    <li>Cross-hole reduced to 10mm deep (3.3:1 L/D) — functionally acceptable</li>
+    <li>Ra 0.8 µm only on sealing surface; Ra 3.2 µm elsewhere</li>
+    <li><strong>Revised quote: $8.20/pc at 1,000 pcs — 43% savings</strong></li>
+  </ul>
+
+  <p>Same functionality. Same material. Just smarter specifications.</p>
+
+  <h2>When to Engage Your Supplier for DFM</h2>
+
+  <p>The best time to get DFM feedback is <strong>before finalizing your design</strong>. Good CNC suppliers (like KING HAN) offer DFM review as part of the quoting process. Send your preliminary design along with your <a href="/blog/cnc-rfq-guide.html">RFQ</a> and explicitly ask:</p>
+
+  <ul>
+    <li>"Are there any features that significantly increase cost?"</li>
+    <li>"Can you suggest design modifications to reduce machining time?"</li>
+    <li>"What tolerances can you achieve without secondary operations?"</li>
+  </ul>
+
+  <p>A supplier who proactively offers DFM suggestions is a supplier worth keeping. It shows they understand manufacturing, care about your costs, and are invested in a long-term relationship. Our guide on <a href="/blog/choose-cnc-machining-partner-taiwan.html">choosing a CNC machining partner</a> covers how to evaluate supplier quality beyond just price.</p>
+
+  <div class="resource-box">
+    <h4>💬 Negotiate Better with DFM Knowledge</h4>
+    <p>Understanding DFM gives you leverage in supplier negotiations. The <a href="https://kinghancnc.gumroad.com/l/cnc-negotiation-scripts">CNC Negotiation Scripts ($9.99)</a> include proven conversation frameworks for discussing DFM changes, cost reductions, and value engineering with your CNC supplier.</p>
+  </div>
+
+  <h2>Key Takeaways</h2>
+
+  <ul>
+    <li><strong>Tolerance only what matters</strong> — over-tolerancing is the #1 cost driver</li>
+    <li><strong>Design for standard tooling</strong> — standard drill sizes, proper corner radii, standard threads</li>
+    <li><strong>Minimize setups</strong> — fewer setups = lower cost + better accuracy</li>
+    <li><strong>Respect depth-to-diameter limits</strong> — deep features are disproportionately expensive</li>
+    <li><strong>Choose machinable materials</strong> — 303 over 316 when function allows</li>
+    <li><strong>Specify finishes selectively</strong> — Ra 0.8 µm only where needed, Ra 3.2 µm elsewhere</li>
+    <li><strong>Engage suppliers early</strong> — DFM feedback before design freeze saves the most money</li>
+  </ul>
+
+  <p>DFM isn't about compromising your design — it's about achieving the same function at a fraction of the cost. The best engineers design for manufacturing from the start. The rest pay the premium for learning it the hard way.</p>
+
+  <div class="cta-box">
+    <h3>Free DFM Review with Every Quote</h3>
+    <p>KING HAN provides complimentary DFM feedback with every quotation. Send us your design — our engineers will suggest practical modifications to reduce cost and improve manufacturability, with no obligation.</p>
+    <a href="/#contact">Get a Free Quote + DFM Review →</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 KING HAN PRECISION INDUSTRY LTD. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

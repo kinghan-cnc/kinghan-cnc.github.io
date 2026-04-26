@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鑫瀚精密 — 每日生產記錄</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f5;padding:8px;max-width:600px;margin:0 auto}
+h1{font-size:1.2em;text-align:center;padding:12px;background:#34a853;color:#fff;border-radius:8px;margin-bottom:8px}
+.sync-bar{display:flex;justify-content:center;align-items:center;gap:8px;margin:4px 0 8px;font-size:0.8em;color:#666}
+.sync-bar .dot{width:8px;height:8px;border-radius:50%}
+.sync-bar .dot.ok{background:#34a853}
+.sync-bar .dot.off{background:#ccc}
+.date-row{display:flex;gap:8px;align-items:center;margin:6px 0 10px;justify-content:center}
+.date-row input[type="date"]{font-size:1.1em;padding:8px 12px;border:2px solid #34a853;border-radius:6px;flex:1;max-width:250px}
+.date-row button{font-size:0.9em;padding:8px 12px;border:none;background:#34a853;color:#fff;border-radius:6px;cursor:pointer}
+.zone-hdr{margin:8px 0 4px;padding:6px 10px;color:#fff;border-radius:6px;font-weight:700;font-size:0.9em}
+.row{display:flex;align-items:center;background:#fff;padding:8px;margin-bottom:4px;border-radius:6px;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.row .status-dot{flex-shrink:0}
+.row .mid{font-weight:700;font-size:0.85em;width:42px;flex-shrink:0}
+.row .mtype{font-size:0.7em;color:#888;width:80px;flex-shrink:0;margin-right:4px}
+.row input[type="text"]{flex:1;min-width:0;padding:5px;border:1px solid #ddd;border-radius:4px;font-size:0.9em;margin-right:4px}
+.row input[type="number"]{width:90px;flex-shrink:0;padding:5px;border:1px solid #ddd;border-radius:4px;font-size:0.9em;text-align:center}
+.status-dot{width:28px;height:28px;border-radius:50%;flex-shrink:0;cursor:pointer;border:2px solid #ccc}
+.status-dot.running{background:#34a853;border-color:#34a853}
+.status-dot.idle{background:#fbbc04;border-color:#fbbc04}
+.status-dot.down{background:#ea4335;border-color:#ea4335}
+.status-dot.off{background:#e0e0e0;border-color:#ccc}
+.save-btn{display:block;width:100%;padding:14px;margin:12px 0;font-size:1.1em;font-weight:700;border:none;border-radius:8px;cursor:pointer;color:#fff;background:#34a853}
+.save-btn:active{background:#2d8e47}
+.summary{text-align:center;padding:10px;background:#fff;border-radius:8px;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.summary b{color:#34a853;font-size:1.3em}
+.legend{display:flex;justify-content:center;gap:12px;font-size:0.75em;color:#666;margin-bottom:8px}
+.legend span{display:flex;align-items:center;gap:3px}
+.pick-btn{display:block;width:100%;padding:18px;margin:8px 0;font-size:1.2em;font-weight:700;border:none;border-radius:10px;cursor:pointer;color:#fff}
+.pick-btn:active{opacity:0.8}
+</style>
+</head>
+<body>
+
+<!-- Step 1: Password -->
+<div id="lockScreen" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:80vh;gap:12px">
+  <h1 style="background:#34a853;color:#fff;padding:12px 24px;border-radius:8px;font-size:1.2em">🔒 鑫瀚精密 生產記錄</h1>
+  <input type="password" id="pwInput" placeholder="請輸入密碼" style="font-size:1.2em;padding:12px;border:2px solid #34a853;border-radius:8px;text-align:center;width:200px" onkeydown="if(event.key==='Enter')unlock()">
+  <button onclick="unlock()" style="font-size:1.1em;padding:10px 30px;background:#34a853;color:#fff;border:none;border-radius:8px;cursor:pointer">進入</button>
+  <span id="pwErr" style="color:#ea4335;font-size:0.85em"></span>
+</div>
+
+<!-- Step 2: Zone Picker -->
+<div id="zonePicker" style="display:none;padding:20px">
+  <h1>📋 選擇廠區</h1>
+  <button class="pick-btn" style="background:#1a73e8" onclick="pickZone('AB')">🏭 主廠 + S廠（14台）</button>
+  <button class="pick-btn" style="background:#9c27b0" onclick="pickZone('K')">🏭 K廠（12台）</button>
+  <p style="text-align:center;margin-top:16px;color:#888;font-size:0.85em">選擇你負責的廠區</p>
+</div>
+
+<!-- Step 3: Main App -->
+<div id="mainApp" style="display:none">
+<h1 id="appTitle">📋 每日生產記錄</h1>
+
+<div class="sync-bar">
+  <span class="dot off" id="syncDot"></span>
+  <span id="syncText">填完按「儲存並同步」</span>
+</div>
+
+<div class="date-row">
+  <input type="date" id="trackDate" onchange="loadDate()">
+  <button onclick="loadPrev()">◀ 前一天</button>
+  <button onclick="loadNext()">▶ 後一天</button>
+</div>
+
+<div class="summary">
+  運轉 <b id="sumRun">0</b> 台 ｜ 總產量 <b id="sumOut">0</b> 件
+</div>
+
+<div class="legend">
+  <span><span class="status-dot running" style="width:10px;height:10px"></span> 運轉</span>
+  <span><span class="status-dot idle" style="width:10px;height:10px"></span> 待機</span>
+  <span><span class="status-dot down" style="width:10px;height:10px"></span> 停機</span>
+  <span><span class="status-dot off" style="width:10px;height:10px"></span> 未開</span>
+</div>
+
+<div id="list"></div>
+
+<button class="save-btn" id="saveBtn" onclick="saveAndSync()">💾 儲存並同步 ☁️</button>
+<button onclick="backToZonePicker()" style="display:block;width:100%;padding:10px;margin:4px 0;font-size:0.9em;border:1px solid #999;background:#fff;color:#666;border-radius:8px;cursor:pointer">← 切換廠區</button>
+</div>
+
+<script>
+var APP_PASSWORD = 'kinghan';
+var SYNC_URL = 'https://script.google.com/macros/s/AKfycbxypKNZdC7MIrJGrhKAozn3QeUiLSyO51drhr8BzbGEio6kRIN-mv-XBL-eYYkyJwvChg/exec';
+
+var allMachines = [
+  {id:"1",name:"1號",type:"Citizen-A20",zone:"主廠",group:"AB"},
+  {id:"2",name:"2號",type:"Citizen-A20",zone:"主廠",group:"AB"},
+  {id:"3",name:"3號",type:"富格蘭25CSB3",zone:"主廠",group:"AB"},
+  {id:"4",name:"4號",type:"富格蘭42CSB2",zone:"主廠",group:"AB"},
+  {id:"5",name:"5號",type:"Nomura 20J",zone:"主廠",group:"AB"},
+  {id:"6",name:"6號",type:"Nomura 20UB10",zone:"主廠",group:"AB"},
+  {id:"7",name:"7號",type:"Nomura 32UB10",zone:"主廠",group:"AB"},
+  {id:"8",name:"8號",type:"Nomura 20UB10",zone:"主廠",group:"AB"},
+  {id:"S1",name:"S1",type:"Citizen-A20",zone:"S廠",group:"AB"},
+  {id:"S2",name:"S2",type:"Citizen-A20",zone:"S廠",group:"AB"},
+  {id:"S3",name:"S3",type:"Citizen-L20",zone:"S廠",group:"AB"},
+  {id:"S4",name:"S4",type:"Citizen-L20",zone:"S廠",group:"AB"},
+  {id:"S5",name:"S5",type:"Nomura 32J",zone:"S廠",group:"AB"},
+  {id:"S6",name:"S6",type:"Nomura 32J",zone:"S廠",group:"AB"},
+  {id:"K1",name:"K1",type:"Nomura 20J",zone:"K廠",group:"K"},
+  {id:"K2",name:"K2",type:"Nomura 20J",zone:"K廠",group:"K"},
+  {id:"K3",name:"K3",type:"Nomura 20J",zone:"K廠",group:"K"},
+  {id:"K4",name:"K4",type:"Nomura 20J",zone:"K廠",group:"K"},
+  {id:"K5",name:"K5",type:"Nomura 20UB10",zone:"K廠",group:"K"},
+  {id:"K6",name:"K6",type:"Nomura 20J",zone:"K廠",group:"K"},
+  {id:"K7",name:"K7",type:"Nomura 20J",zone:"K廠",group:"K"},
+  {id:"K8",name:"K8",type:"Nomura 20J",zone:"K廠",group:"K"},
+  {id:"K9",name:"K9",type:"Nomura 20J",zone:"K廠",group:"K"},
+  {id:"K10",name:"K10",type:"Nomura 20J",zone:"K廠",group:"K"},
+  {id:"K11",name:"K11",type:"Nomura 20J",zone:"K廠",group:"K"},
+  {id:"K12",name:"K12",type:"Nomura 20J",zone:"K廠",group:"K"}
+];
+
+var zoneColors = {'主廠':'#1a73e8','S廠':'#e8710a','K廠':'#9c27b0'};
+var statusOrder = ['off','running','idle','down'];
+var currentGroup = '';
+var myMachines = [];
+var isLocked = false;
+
+// ===== Step 1: Password =====
+function unlock() {
+  if (document.getElementById('pwInput').value === APP_PASSWORD) {
+    document.getElementById('lockScreen').style.display = 'none';
+    sessionStorage.setItem('prod-auth','1');
+    showZonePicker();
+  } else {
+    document.getElementById('pwErr').textContent = '密碼錯誤';
+    document.getElementById('pwInput').value = '';
+  }
+}
+
+// ===== Step 2: Zone Picker =====
+function showZonePicker() {
+  document.getElementById('zonePicker').style.display = 'block';
+  document.getElementById('mainApp').style.display = 'none';
+}
+
+function pickZone(group) {
+  currentGroup = group;
+  myMachines = allMachines.filter(function(m){ return m.group === group; });
+  sessionStorage.setItem('prod-group', group);
+  document.getElementById('zonePicker').style.display = 'none';
+  document.getElementById('mainApp').style.display = 'block';
+  document.getElementById('appTitle').textContent = group === 'AB' ? '📋 主廠 + S廠 生產記錄' : '📋 K廠 生產記錄';
+  initApp();
+}
+
+function backToZonePicker() {
+  showZonePicker();
+}
+
+// ===== Step 3: Main App =====
+function getToday() { return new Date().toISOString().split('T')[0]; }
+
+function render() {
+  var el = document.getElementById('list');
+  var zones = currentGroup === 'AB' ? ['主廠','S廠'] : ['K廠'];
+  el.innerHTML = zones.map(function(zone) {
+    var ms = myMachines.filter(function(m){return m.zone===zone;});
+    return '<div class="zone-hdr" style="background:'+zoneColors[zone]+'">'+zone+'（'+ms.length+'台）</div>' +
+    ms.map(function(m) {
+      return '<div class="row" id="row-'+m.id+'">' +
+        '<div class="status-dot off" id="dot-'+m.id+'" onclick="cycleStatus(\''+m.id+'\')" data-status="off"></div>' +
+        '<span class="mid">'+m.name+'</span>' +
+        '<span class="mtype">'+m.type+'</span>' +
+        '<input type="text" id="pn-'+m.id+'" placeholder="品號">' +
+        '<input type="number" id="qty-'+m.id+'" placeholder="產量" min="0" step="1" onchange="updateSummary()">' +
+      '</div>';
+    }).join('');
+  }).join('');
+}
+
+function cycleStatus(id) {
+  if (isLocked) return;
+  var dot = document.getElementById('dot-'+id);
+  var cur = dot.getAttribute('data-status') || 'off';
+  var next = statusOrder[(statusOrder.indexOf(cur)+1) % statusOrder.length];
+  dot.setAttribute('data-status', next);
+  dot.className = 'status-dot ' + next;
+  updateSummary();
+}
+
+function updateSummary() {
+  var run=0, totalQty=0;
+  myMachines.forEach(function(m) {
+    var dot = document.getElementById('dot-'+m.id);
+    if (!dot) return;
+    var st = dot.getAttribute('data-status') || 'off';
+    if (st==='running') run++;
+    var q = parseInt(document.getElementById('qty-'+m.id).value) || 0;
+    if (st==='running'||st==='idle') totalQty += q;
+  });
+  document.getElementById('sumRun').textContent = run;
+  document.getElementById('sumOut').textContent = totalQty.toLocaleString();
+}
+
+function getData() {
+  return myMachines.map(function(m) {
+    var dot = document.getElementById('dot-'+m.id);
+    return {
+      id: m.id, name: m.name, type: m.type, zone: m.zone, group: m.group,
+      status: dot ? (dot.getAttribute('data-status') || 'off') : 'off',
+      product: document.getElementById('pn-'+m.id).value,
+      output: parseInt(document.getElementById('qty-'+m.id).value) || 0
+    };
+  });
+}
+
+function fillData(records) {
+  records.forEach(function(d) {
+    var dot = document.getElementById('dot-'+d.id);
+    if (!dot) return;
+    var st = d.status || 'off';
+    dot.setAttribute('data-status', st);
+    dot.className = 'status-dot ' + st;
+    document.getElementById('pn-'+d.id).value = d.product || '';
+    document.getElementById('qty-'+d.id).value = d.output || '';
+  });
+  updateSummary();
+}
+
+function clearAll() {
+  myMachines.forEach(function(m) {
+    var dot = document.getElementById('dot-'+m.id);
+    if (!dot) return;
+    dot.setAttribute('data-status','off');
+    dot.className = 'status-dot off';
+    document.getElementById('pn-'+m.id).value = '';
+    document.getElementById('qty-'+m.id).value = '';
+  });
+  updateSummary();
+}
+
+function setLockUI(locked, savedAt) {
+  isLocked = locked;
+  var btn = document.getElementById('saveBtn');
+  var inputs = document.querySelectorAll('#list input');
+  var dots = document.querySelectorAll('#list .status-dot');
+  if (locked) {
+    btn.disabled = true;
+    btn.textContent = '🔒 已送出（不可修改）';
+    btn.style.background = '#999';
+    inputs.forEach(function(el){ el.readOnly = true; el.style.background = '#f0f0f0'; });
+    dots.forEach(function(el){ el.style.pointerEvents = 'none'; el.style.opacity = '0.6'; });
+    var timeStr = savedAt ? new Date(savedAt).toLocaleString('zh-TW') : '';
+    document.getElementById('syncText').textContent = '🔒 已鎖定' + (timeStr ? '（' + timeStr + ' 送出）' : '');
+  } else {
+    btn.disabled = false;
+    btn.textContent = '💾 儲存並同步 ☁️';
+    btn.style.background = '#34a853';
+    inputs.forEach(function(el){ el.readOnly = false; el.style.background = ''; });
+    dots.forEach(function(el){ el.style.pointerEvents = ''; el.style.opacity = ''; });
+    document.getElementById('syncText').textContent = '填完按「儲存並同步」';
+  }
+}
+
+// Cloud key = "production-AB" or "production-K"
+function cloudKey() { return 'production-' + currentGroup; }
+
+function loadDate() {
+  var date = document.getElementById('trackDate').value;
+  clearAll();
+  setLockUI(false);
+  
+  // Try local first
+  var local = localStorage.getItem(cloudKey() + '-' + date);
+  if (local) {
+    var d = JSON.parse(local);
+    fillData(d.machines || []);
+    if (d.locked) setLockUI(true, d.savedAt);
+    return;
+  }
+  
+  // Try cloud
+  document.getElementById('syncText').textContent = '載入雲端資料...';
+  fetch(SYNC_URL + '?tool=' + cloudKey() + '&key=' + date)
+  .then(function(r){return r.text();})
+  .then(function(text) {
+    if (text && text !== 'null') {
+      var d = JSON.parse(text);
+      if (d.machines) fillData(d.machines);
+      localStorage.setItem(cloudKey() + '-' + date, text);
+      if (d.locked) setLockUI(true, d.savedAt);
+      else document.getElementById('syncText').textContent = '已從雲端載入（可編輯）';
+      document.getElementById('syncDot').className = 'dot ok';
+    } else {
+      // No data for this date — try to carry over part numbers from previous day
+      carryOverPartNumbers(date);
+    }
+  }).catch(function() {
+    carryOverPartNumbers(date);
+  });
+}
+
+// Load previous day's part numbers (品號) only, clear quantities
+function carryOverPartNumbers(date) {
+  var prev = new Date(date);
+  prev.setDate(prev.getDate() - 1);
+  var prevKey = cloudKey() + '-' + prev.toISOString().split('T')[0];
+  var prevLocal = localStorage.getItem(prevKey);
+  
+  if (prevLocal) {
+    applyPrevPartNumbers(JSON.parse(prevLocal));
+    return;
+  }
+  
+  // Try cloud for previous day
+  fetch(SYNC_URL + '?tool=' + cloudKey() + '&key=' + prev.toISOString().split('T')[0])
+  .then(function(r){return r.text();})
+  .then(function(text) {
+    if (text && text !== 'null') {
+      applyPrevPartNumbers(JSON.parse(text));
+    } else {
+      document.getElementById('syncText').textContent = '尚無記錄';
+    }
+  }).catch(function() {
+    document.getElementById('syncText').textContent = '尚無記錄';
+  });
+}
+
+function applyPrevPartNumbers(prevData) {
+  if (!prevData || !prevData.machines) return;
+  prevData.machines.forEach(function(d) {
+    var pnEl = document.getElementById('pn-' + d.id);
+    if (pnEl && d.product) pnEl.value = d.product;
+  });
+  document.getElementById('syncText').textContent = '已帶入前日品號（產量請填寫）';
+}
+
+function loadPrev() {
+  var d = new Date(document.getElementById('trackDate').value);
+  d.setDate(d.getDate()-1);
+  document.getElementById('trackDate').value = d.toISOString().split('T')[0];
+  loadDate();
+}
+function loadNext() {
+  var d = new Date(document.getElementById('trackDate').value);
+  d.setDate(d.getDate()+1);
+  document.getElementById('trackDate').value = d.toISOString().split('T')[0];
+  loadDate();
+}
+
+function saveAndSync() {
+  if (isLocked) return;
+  var date = document.getElementById('trackDate').value;
+  var groupLabel = currentGroup === 'AB' ? '主廠+S廠' : 'K廠';
+  if (!confirm('確定送出 ' + date + '【' + groupLabel + '】的生產記錄？\n\n⚠️ 送出後將無法修改！')) return;
+  
+  var now = new Date().toISOString();
+  var data = { date: date, group: currentGroup, machines: getData(), savedAt: now, locked: true };
+  
+  // Save local
+  localStorage.setItem(cloudKey() + '-' + date, JSON.stringify(data));
+  document.getElementById('syncText').textContent = '儲存並上傳中...';
+  
+  // Upload group-specific data
+  fetch(SYNC_URL, {
+    method: 'POST', mode: 'no-cors',
+    headers: {'Content-Type': 'text/plain'},
+    body: JSON.stringify({ tool: cloudKey(), key: date, data: data })
+  }).then(function() {
+    document.getElementById('syncDot').className = 'dot ok';
+    setLockUI(true, now);
+    
+    // Also merge into combined production data for utilization tracker
+    mergeToUtilization(date);
+  }).catch(function(e) {
+    setLockUI(true, now);
+    document.getElementById('syncText').textContent = '本機已鎖 ⚠️ 雲端: ' + e.message;
+  });
+}
+
+function mergeToUtilization(date) {
+  // Fetch both groups, merge, write to production-for-util
+  var groupA = null, groupK = null;
+  var done = 0;
+  
+  function tryMerge() {
+    done++;
+    if (done < 2) return;
+    var merged = [];
+    if (groupA && groupA.machines) merged = merged.concat(groupA.machines);
+    if (groupK && groupK.machines) merged = merged.concat(groupK.machines);
+    if (merged.length === 0) return;
+    
+    var utilData = {
+      workHours: 8,
+      machines: merged.map(function(d) {
+        return { id:d.id, name:d.name, type:d.type, zone:d.zone,
+          status:d.status, product:d.product, output:d.output, ct:0, note:'' };
+      })
+    };
+    fetch(SYNC_URL, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'text/plain'},
+      body: JSON.stringify({ tool:'production-for-util', key:date, data:utilData })
+    });
+  }
+  
+  fetch(SYNC_URL + '?tool=production-AB&key=' + date)
+  .then(function(r){return r.text();})
+  .then(function(t){ if(t&&t!=='null') groupA=JSON.parse(t); tryMerge(); })
+  .catch(function(){ tryMerge(); });
+  
+  fetch(SYNC_URL + '?tool=production-K&key=' + date)
+  .then(function(r){return r.text();})
+  .then(function(t){ if(t&&t!=='null') groupK=JSON.parse(t); tryMerge(); })
+  .catch(function(){ tryMerge(); });
+}
+
+function initApp() {
+  render();
+  document.getElementById('trackDate').value = getToday();
+  loadDate();
+}
+
+// ===== Auto-restore session =====
+if (sessionStorage.getItem('prod-auth') === '1') {
+  document.getElementById('lockScreen').style.display = 'none';
+  var savedGroup = sessionStorage.getItem('prod-group');
+  if (savedGroup) {
+    pickZone(savedGroup);
+  } else {
+    showZonePicker();
+  }
+} else {
+  document.getElementById('pwInput').focus();
+}
+</script>
+</body>
+</html>

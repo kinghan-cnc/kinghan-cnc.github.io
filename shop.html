@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Products | KingHan CNC</title>
+<meta name="description" content="CNC digital products — calculators, templates, eBooks, and toolkits for CNC professionals and buyers.">
+<link rel="icon" type="image/png" href="logo.png">
+<style>
+  :root {
+    --bg-dark: #0d1117;
+    --bg-section: #161b22;
+    --bg-card: #1c2333;
+    --accent: #f0a500;
+    --accent-dim: #c48800;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --border: #30363d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Segoe UI', 'Noto Sans TC', sans-serif; background: var(--bg-dark); color: var(--text); line-height: 1.7; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(13,17,23,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 2rem; height: 64px;
+  }
+  .logo { font-size: 1.1rem; font-weight: 700; color: var(--accent); letter-spacing: 1px; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo img { height: 36px; width: 36px; border-radius: 50%; }
+  .logo span { color: var(--text); font-weight: 400; }
+  nav ul { list-style: none; display: flex; gap: 1.5rem; }
+  nav a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  nav a:hover { color: var(--accent); }
+  .nav-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+  /* HERO */
+  .hero {
+    padding: 140px 2rem 60px; text-align: center;
+    background: linear-gradient(160deg, #0d1117 0%, #1a1f2e 50%, #0d1117 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 40%, rgba(240,165,0,0.06) 0%, transparent 60%);
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p { color: var(--text-dim); font-size: 1.15rem; max-width: 650px; margin: 0 auto; }
+
+  /* PRODUCTS */
+  .products { padding: 60px 2rem 80px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+  .product-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 2rem; display: flex; flex-direction: column; transition: border-color 0.3s, transform 0.3s;
+  }
+  .product-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .product-card .emoji { font-size: 2.2rem; margin-bottom: 1rem; }
+  .product-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .product-card .desc { color: var(--text-dim); font-size: 0.9rem; flex: 1; margin-bottom: 1.2rem; }
+  .product-card .price { font-size: 1.4rem; font-weight: 800; color: var(--accent); margin-bottom: 1rem; }
+  .product-card .btn {
+    display: inline-block; padding: 10px 24px; background: var(--accent); color: #000;
+    font-weight: 700; text-decoration: none; border-radius: 4px; font-size: 0.9rem;
+    transition: background 0.2s; text-align: center;
+  }
+  .product-card .btn:hover { background: var(--accent-dim); }
+  .badge {
+    display: inline-block; background: rgba(240,165,0,0.15); color: var(--accent);
+    font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.8rem;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2rem; border-top: 1px solid var(--border);
+    color: var(--text-dim); font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    nav ul { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0;
+      background: rgba(13,17,23,0.98); padding: 1rem 2rem; gap: 1rem; }
+    nav ul.open { display: flex; }
+    .nav-toggle { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="logo.png" alt="KH Logo">KING HAN <span>PRECISION</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sourcing-service.html">Sourcing Service</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/shop.html" style="color:var(--accent)">🛒 Shop</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1>Digital <em>Products</em></h1>
+  <p>Professional CNC resources — cost calculators, email templates, technical glossaries, SOP bundles, and comprehensive guides for CNC buyers and shop owners.</p>
+</section>
+
+<section class="products">
+  <div class="container">
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="emoji">🧮</div>
+        <h3>CNC Cost Calculator</h3>
+        <p class="desc">Estimate CNC machining costs instantly. Factor in material, complexity, quantity, and finishing to get accurate quotes.</p>
+        <div class="price">$9.99</div>
+        <a href="https://kinghancnc.gumroad.com/l/cnc-cost-calculator" target="_blank" class="btn">Buy Now →</a>
+      </div>
+
+      <div class="product-card">
+        <div class="emoji">📧</div>
+        <h3>Cold Email Templates for CNC Shops</h3>
+        <p class="desc">Ready-to-use email templates to reach CNC machine shops, request quotes, and build supplier relationships.</p>
+        <div class="price">$4.99</div>
+        <a href="https://kinghancnc.gumroad.com/l/cold-email-templates" target="_blank" class="btn">Buy Now →</a>
+      </div>
+
+      <div class="product-card">
+        <div class="emoji">📖</div>
+        <h3>CNC Technical Glossary (EN-ZH)</h3>
+        <p class="desc">Bilingual English-Chinese glossary of CNC machining terms. Essential for cross-border communication.</p>
+        <div class="price">$6.99</div>
+        <a href="https://kinghancnc.gumroad.com/l/cnc-glossary" target="_blank" class="btn">Buy Now →</a>
+      </div>
+
+      <div class="product-card">
+        <div class="emoji">📋</div>
+        <h3>CNC Factory SOP Template Bundle</h3>
+        <p class="desc">Complete set of standard operating procedure templates for CNC factory management — quality, safety, and workflow.</p>
+        <div class="price">$14.99</div>
+        <a href="https://kinghancnc.gumroad.com/l/sop-bundle" target="_blank" class="btn">Buy Now →</a>
+      </div>
+
+      <div class="product-card">
+        <div class="emoji">📘</div>
+        <span class="badge">eBook</span>
+        <h3>Complete Guide to Sourcing CNC Parts from Asia</h3>
+        <p class="desc">Everything you need to know about sourcing precision CNC parts from Taiwan and Asia — from finding suppliers to quality control.</p>
+        <div class="price">$9.99</div>
+        <a href="https://kinghancnc.gumroad.com/l/sourcing-guide" target="_blank" class="btn">Buy Now →</a>
+      </div>
+
+      <div class="product-card">
+        <div class="emoji">⚙️</div>
+        <h3>Swiss-Type CNC Lathe Operations Manual</h3>
+        <p class="desc">Comprehensive operations manual for Swiss-type CNC lathes — setup, tooling, programming, and troubleshooting.</p>
+        <div class="price">$12.99</div>
+        <a href="https://kinghancnc.gumroad.com/l/swiss-lathe-manual" target="_blank" class="btn">Buy Now →</a>
+      </div>
+
+      <div class="product-card">
+        <div class="emoji">📊</div>
+        <h3>CNC Order Management Workbook</h3>
+        <p class="desc">Track orders, production schedules, and delivery timelines with this ready-to-use CNC order management workbook.</p>
+        <div class="price">$12.99</div>
+        <a href="https://kinghancnc.gumroad.com/l/order-workbook" target="_blank" class="btn">Buy Now →</a>
+      </div>
+
+      <div class="product-card">
+        <div class="emoji">🎁</div>
+        <span class="badge">Best Value</span>
+        <h3>CNC Buyer's Complete Toolkit (Bundle)</h3>
+        <p class="desc">Everything in one package — calculator, templates, glossary, SOPs, guides, and workbook. Save over 60% vs buying individually.</p>
+        <div class="price">$49.99</div>
+        <a href="https://kinghancnc.gumroad.com/l/complete-toolkit" target="_blank" class="btn">Buy Now →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 鑫瀚精密工業有限公司 KING HAN PRECISION INDUSTRY LTD. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

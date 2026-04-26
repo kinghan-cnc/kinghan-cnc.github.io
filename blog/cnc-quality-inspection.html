@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quality Inspection Methods for CNC Machined Parts: CMM, Optical & More | KING HAN Blog</title>
+<meta name="description" content="Complete guide to quality inspection methods for CNC machined parts — CMM, optical measurement, surface profilometry, GD&T verification, and sampling strategies for production.">
+<meta name="keywords" content="CNC quality inspection, CMM inspection, optical measurement CNC, surface roughness testing, GD&T verification, CNC parts inspection methods">
+<link rel="icon" type="image/png" href="../logo.png">
+<link rel="canonical" href="https://kinghan-cnc.com/blog/cnc-quality-inspection.html">
+<style>
+  :root{--bg-dark:#0d1117;--bg-section:#161b22;--bg-card:#1c2333;--accent:#f0a500;--accent-dim:#c48800;--text:#e6edf3;--text-dim:#8b949e;--border:#30363d}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.8}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,17,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:0 2rem;height:64px}
+  .logo{font-size:1.1rem;font-weight:700;color:var(--accent);letter-spacing:1px;display:flex;align-items:center;gap:10px;text-decoration:none}
+  .logo img{height:36px;width:36px;border-radius:50%}.logo span{color:var(--text);font-weight:400}
+  nav ul{list-style:none;display:flex;gap:1.5rem}
+  nav a{color:var(--text-dim);text-decoration:none;font-size:0.9rem;transition:color 0.2s}nav a:hover{color:var(--accent)}
+  .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+  .article-header{padding:120px 2rem 40px;text-align:center;background:linear-gradient(160deg,#0d1117 0%,#1a1f2e 50%,#0d1117 100%)}
+  .article-header h1{font-size:clamp(1.8rem,4vw,2.5rem);max-width:800px;margin:0 auto 1rem}
+  .article-header .meta{color:var(--text-dim);font-size:0.9rem}
+  .article{max-width:760px;margin:0 auto;padding:3rem 2rem}
+  .article h2{font-size:1.5rem;margin:2.5rem 0 1rem;color:var(--accent)}
+  .article h3{font-size:1.2rem;margin:2rem 0 0.8rem}
+  .article p{color:var(--text-dim);margin-bottom:1.2rem;font-size:1.02rem}
+  .article ul,.article ol{color:var(--text-dim);margin:0 0 1.2rem 1.5rem;font-size:1.02rem}
+  .article li{margin-bottom:0.5rem}
+  .article strong{color:var(--text)}
+  .article a{color:var(--accent);text-decoration:none}.article a:hover{text-decoration:underline}
+  .back-link{display:inline-block;margin-bottom:2rem;color:var(--accent);text-decoration:none;font-size:0.9rem}
+  .back-link:hover{text-decoration:underline}
+  .cta-box{background:var(--bg-card);border:1px solid var(--accent);border-radius:8px;padding:2rem;margin-top:3rem;text-align:center}
+  .cta-box h3{color:var(--accent);margin-bottom:0.5rem;font-size:1.3rem}
+  .cta-box p{color:var(--text-dim);margin-bottom:1rem}
+  .cta-box a{display:inline-block;background:var(--accent);color:#0d1117;padding:0.7rem 2rem;border-radius:6px;font-weight:700;text-decoration:none;transition:background 0.3s}
+  .cta-box a:hover{background:var(--accent-dim)}
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0}
+  th,td{border:1px solid var(--border);padding:0.6rem 1rem;text-align:left;font-size:0.95rem;color:var(--text-dim)}
+  th{background:var(--bg-card);color:var(--text);font-weight:600}
+  footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-dim);font-size:0.85rem}
+  @media(max-width:768px){nav ul{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(13,17,23,0.98);padding:1rem 2rem;gap:1rem}nav ul.open{display:flex}.nav-toggle{display:block}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is CMM inspection for CNC parts?", "acceptedAnswer": {"@type": "Answer", "text": "CMM (Coordinate Measuring Machine) inspection uses a precision probe to measure the exact coordinates of points on a part's surface, then calculates dimensions, positions, and geometric features. CMMs can measure to accuracies of ±0.001–0.003 mm and are the standard method for verifying critical dimensions on CNC machined parts."}},
+    {"@type": "Question", "name": "How often should CNC parts be inspected during production?", "acceptedAnswer": {"@type": "Answer", "text": "Inspection frequency depends on process capability (Cpk) and part criticality. Common practice: 100% inspection on first piece after setup, then sample every 20–50 parts for critical dimensions during the run. For stable processes with Cpk > 1.67, sampling can be reduced to every 100+ parts. Final outgoing inspection uses AQL sampling per ISO 2859-1."}},
+    {"@type": "Question", "name": "What is the difference between CMM and optical inspection?", "acceptedAnswer": {"@type": "Answer", "text": "CMM inspection uses a physical touch probe and measures individual points with high accuracy (±0.001 mm). Optical inspection uses cameras and vision systems to measure 2D profiles and can capture hundreds of dimensions in seconds. CMM is better for 3D features, true position, and GD&T verification. Optical is faster for 2D profile dimensions on small, flat, or turned parts."}},
+    {"@type": "Question", "name": "What is a First Article Inspection Report (FAIR)?", "acceptedAnswer": {"@type": "Answer", "text": "A First Article Inspection Report is a comprehensive dimensional report that verifies every dimension, tolerance, and specification on the engineering drawing against an actual production part. It's typically performed on 1–3 parts from the first production setup and serves as documented proof that the manufacturing process can produce conforming parts. AS9102 is the aerospace standard for FAIRs."}},
+    {"@type": "Question", "name": "How do you measure surface roughness on CNC parts?", "acceptedAnswer": {"@type": "Answer", "text": "Surface roughness is measured with a profilometer — a device that drags a diamond-tipped stylus across the surface and records the height variations. The most common parameter is Ra (arithmetic average roughness), measured in micrometers (µm) or microinches (µin). Typical CNC machined surfaces range from Ra 0.4 µm (fine turning/grinding) to Ra 3.2 µm (standard milling)."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="../logo.png" alt="KH Logo">KING HAN <span>PRECISION</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sourcing-service.html">Sourcing Service</a></li>
+    <li><a href="/blog/" style="color:var(--accent);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="article-header">
+  <h1>Quality Inspection Methods for CNC Machined Parts: CMM, Optical & More</h1>
+  <div class="meta">February 22, 2026 · 12 min read</div>
+</div>
+
+<div class="article">
+  <a href="/blog/" class="back-link">← Back to Blog</a>
+
+  <p>A CNC machine can cut metal to micron-level accuracy — but how do you <strong>verify</strong> that accuracy? Quality inspection is the bridge between what your drawing specifies and what your supplier actually delivers. Without robust inspection, tight tolerances are just numbers on paper.</p>
+
+  <p>This guide covers the essential inspection methods for CNC machined parts, from traditional hand tools to advanced CMM and optical systems. You'll learn when to use each method, what accuracy to expect, and how to structure an inspection strategy that balances cost with quality assurance.</p>
+
+  <h2>Overview of CNC Inspection Methods</h2>
+
+  <table>
+    <tr><th>Method</th><th>Accuracy</th><th>Speed</th><th>Best For</th><th>Typical Cost</th></tr>
+    <tr><td>Hand tools (calipers, micrometers)</td><td>±0.01 mm</td><td>Fast</td><td>Quick checks, simple dimensions</td><td>Low</td></tr>
+    <tr><td>Pin/ring gauges</td><td>±0.002 mm</td><td>Very fast</td><td>Go/no-go bore and shaft checks</td><td>Low</td></tr>
+    <tr><td>Optical comparator</td><td>±0.005 mm</td><td>Moderate</td><td>2D profile, thread forms</td><td>Moderate</td></tr>
+    <tr><td>Vision measurement system</td><td>±0.002–0.005 mm</td><td>Fast</td><td>Small parts, 2D multi-dimension</td><td>Moderate</td></tr>
+    <tr><td>CMM (touch probe)</td><td>±0.001–0.003 mm</td><td>Moderate</td><td>3D features, GD&T, true position</td><td>High</td></tr>
+    <tr><td>CMM (scanning probe)</td><td>±0.001 mm</td><td>Slow</td><td>Contours, freeform surfaces</td><td>High</td></tr>
+    <tr><td>Surface profilometer</td><td>Ra ±0.01 µm</td><td>Fast</td><td>Surface roughness measurement</td><td>Moderate</td></tr>
+    <tr><td>Roundness tester</td><td>0.02 µm</td><td>Moderate</td><td>Cylindricity, roundness, runout</td><td>High</td></tr>
+    <tr><td>CT scanning</td><td>±0.005–0.020 mm</td><td>Slow</td><td>Internal features, porosity detection</td><td>Very high</td></tr>
+  </table>
+
+  <h2>Hand Tools: The First Line of Inspection</h2>
+
+  <p>Every CNC machine shop uses hand measurement tools daily. They're fast, versatile, and sufficient for many dimensional checks:</p>
+
+  <h3>Digital Calipers</h3>
+  <ul>
+    <li><strong>Resolution:</strong> 0.01 mm</li>
+    <li><strong>Accuracy:</strong> ±0.02 mm (typical for 150 mm range)</li>
+    <li><strong>Best for:</strong> External/internal diameters, lengths, step dimensions, depths</li>
+    <li><strong>Limitations:</strong> Operator-dependent measuring force; not suitable for tolerances tighter than ±0.05 mm</li>
+  </ul>
+
+  <h3>Outside Micrometers</h3>
+  <ul>
+    <li><strong>Resolution:</strong> 0.001 mm (digital) or 0.01 mm (analog)</li>
+    <li><strong>Accuracy:</strong> ±0.002–0.004 mm</li>
+    <li><strong>Best for:</strong> Precision diameter and thickness measurements</li>
+    <li><strong>Key practice:</strong> Use a ratchet stop for consistent measuring force. Calibrate against gauge blocks regularly.</li>
+  </ul>
+
+  <h3>Bore Gauges</h3>
+  <ul>
+    <li><strong>Resolution:</strong> 0.001 mm (with dial indicator)</li>
+    <li><strong>Accuracy:</strong> ±0.003–0.005 mm</li>
+    <li><strong>Best for:</strong> Internal bore diameters, especially where calipers can't reach</li>
+  </ul>
+
+  <h3>Go/No-Go Gauges</h3>
+  <p>Pin gauges and ring gauges provide the fastest inspection for critical bore and shaft dimensions. A go/no-go check takes seconds and definitively confirms whether a feature is within tolerance. For high-volume production of <a href="/blog/swiss-type-cnc-turning-guide.html">Swiss-turned parts</a>, go/no-go gauges are essential for operator self-inspection during the run.</p>
+
+  <h2>Coordinate Measuring Machines (CMM)</h2>
+
+  <p>CMMs are the gold standard for dimensional verification of CNC machined parts. They use a precision probe (touch-trigger or scanning) mounted on a 3-axis gantry to measure the exact spatial coordinates of points on a part's surface.</p>
+
+  <h3>How CMM Inspection Works</h3>
+  <ol>
+    <li><strong>Setup:</strong> The part is fixtured on the CMM table and a coordinate system (datum reference frame) is established by probing datum features.</li>
+    <li><strong>Probing:</strong> The CMM probe touches predefined points on each feature. For a cylinder, typically 4–8 points are probed; for a plane, 3+ points.</li>
+    <li><strong>Calculation:</strong> Software fits geometric elements (circles, planes, cylinders, cones) to the probed points and calculates dimensions, positions, and GD&T characteristics.</li>
+    <li><strong>Reporting:</strong> Results are output as an inspection report showing nominal value, actual value, tolerance, and pass/fail status for each dimension.</li>
+  </ol>
+
+  <h3>CMM Capabilities</h3>
+  <ul>
+    <li><strong>Dimensional accuracy:</strong> ±0.001–0.003 mm (depends on machine grade and environment)</li>
+    <li><strong>GD&T verification:</strong> True position, concentricity, perpendicularity, parallelism, runout, profile — all directly measurable</li>
+    <li><strong>3D measurement:</strong> Unlike 2D optical systems, CMMs measure in full 3D space</li>
+    <li><strong>Automated programs:</strong> Once a CMM program is written, the same measurement routine runs identically on every part, eliminating operator variability</li>
+  </ul>
+
+  <h3>When to Use CMM Inspection</h3>
+  <ul>
+    <li>Tolerances tighter than ±0.01 mm</li>
+    <li>GD&T call-outs (true position, profile, concentricity)</li>
+    <li>First Article Inspection reports</li>
+    <li>Multi-feature parts where inter-feature relationships matter</li>
+    <li>Dispute resolution (CMM data is widely accepted as definitive)</li>
+  </ul>
+
+  <h2>Optical and Vision Measurement</h2>
+
+  <h3>Optical Comparators (Profile Projectors)</h3>
+  <p>Optical comparators project a magnified shadow of the part onto a screen where it's compared against an overlay template or measured with digital crosshairs. They excel at:</p>
+  <ul>
+    <li><strong>Thread profile verification:</strong> Pitch, angle, major/minor diameters</li>
+    <li><strong>2D contour checking:</strong> Edge profiles, radii, angles</li>
+    <li><strong>Small feature measurement:</strong> Chamfers, grooves, and features difficult to probe with a CMM touch probe</li>
+  </ul>
+
+  <h3>Video Measurement Systems (CNC Vision)</h3>
+  <p>Modern CNC vision systems use high-resolution cameras, automated stages, and edge-detection software to measure parts automatically. Advantages over traditional comparators:</p>
+  <ul>
+    <li><strong>Speed:</strong> Can measure 50+ dimensions in under 30 seconds</li>
+    <li><strong>Automation:</strong> Programmable routines for repeatable measurement</li>
+    <li><strong>Multi-part measurement:</strong> Place multiple small parts in the field of view and measure all at once</li>
+    <li><strong>Digital records:</strong> Every measurement is recorded and traceable</li>
+  </ul>
+
+  <p>Vision systems are particularly valuable for <a href="/blog/small-diameter-cnc-machining.html">small-diameter CNC parts</a> and high-volume <a href="/blog/brass-cnc-turned-parts-guide.html">brass turned components</a> where inspection speed must match production speed.</p>
+
+  <h2>Surface Roughness Measurement</h2>
+
+  <p>Surface roughness is a critical quality parameter for many CNC parts — it affects seal performance, friction, fatigue life, and aesthetic appearance. Read our detailed <a href="/blog/cnc-surface-finish-guide.html">surface finish guide</a> for specification details.</p>
+
+  <h3>Contact Profilometers</h3>
+  <p>The standard method uses a diamond stylus (typically 2 µm or 5 µm tip radius) dragged across the surface at constant speed. The stylus displacement is recorded and processed to calculate roughness parameters:</p>
+  <ul>
+    <li><strong>Ra:</strong> Arithmetic average roughness (most commonly specified)</li>
+    <li><strong>Rz:</strong> Average maximum height of the profile (common in European/Asian drawings)</li>
+    <li><strong>Rmax:</strong> Maximum peak-to-valley height (used for sealing surfaces)</li>
+  </ul>
+
+  <h3>Measurement Best Practices</h3>
+  <ul>
+    <li>Measure perpendicular to the machining marks (across the lay pattern)</li>
+    <li>Use the correct cut-off length (λc) for the expected roughness range — 0.8 mm for Ra 0.1–2 µm, 2.5 mm for Ra 2–10 µm</li>
+    <li>Take multiple measurements and average — surface roughness varies across a surface</li>
+    <li>Specify the measurement location on the drawing if only specific surfaces are critical</li>
+  </ul>
+
+  <h2>Roundness and Form Measurement</h2>
+
+  <p>For precision turned parts, roundness (circularity), cylindricity, and runout are often more important than diameter tolerance. A shaft that's 0.001 mm oversize but perfectly round may work fine, while one that's nominally correct but 0.005 mm out-of-round will cause vibration and premature bearing failure.</p>
+
+  <h3>Roundness Testers</h3>
+  <p>Dedicated roundness testing machines (Taylor Hobson Talyrond, Mitutoyo Roundtest) rotate the part on a precision spindle while a sensitive probe measures radial deviation. They can characterize:</p>
+  <ul>
+    <li><strong>Roundness:</strong> Deviation from a perfect circle (lobing, ovality)</li>
+    <li><strong>Cylindricity:</strong> Combined roundness variation along the axis</li>
+    <li><strong>Concentricity/Coaxiality:</strong> Alignment between different diameters</li>
+    <li><strong>Runout (TIR):</strong> Total indicator reading when rotated about a datum axis</li>
+  </ul>
+
+  <h2>Inspection Planning: Building Your Quality Strategy</h2>
+
+  <h3>First Article Inspection (FAI)</h3>
+  <p>The FAI is the foundation of production quality. A thorough FAI report includes:</p>
+  <ul>
+    <li>Every dimension on the drawing measured and reported (balloon drawing with numbered features)</li>
+    <li>Material certification (<a href="/blog/cnc-material-certifications.html">MTR</a>) linked to the measured parts</li>
+    <li>Surface finish measurements on specified surfaces</li>
+    <li>Visual inspection results (cosmetic, burrs, surface defects)</li>
+    <li>Functional test results if applicable</li>
+    <li>AS9102 format for aerospace applications</li>
+  </ul>
+
+  <h3>In-Process Inspection</h3>
+  <p>Catching defects during production is far cheaper than discovering them at final inspection. Effective in-process inspection includes:</p>
+  <ul>
+    <li><strong>First-off check:</strong> 100% dimensional verification of the first part from each setup</li>
+    <li><strong>Tool change checks:</strong> Verify dimensions immediately after each cutting tool replacement</li>
+    <li><strong>SPC sampling:</strong> Measure critical dimensions at regular intervals (every 20–50 parts) and plot on control charts</li>
+    <li><strong>Automated in-machine probing:</strong> Modern CNC machines with touch probes can measure key features without removing the part, enabling real-time offset corrections</li>
+  </ul>
+
+  <h3>Final Inspection and AQL Sampling</h3>
+  <p>Final outgoing inspection verifies the completed batch before shipment. For production quantities, 100% inspection is usually neither practical nor necessary. Instead, use <strong>Acceptable Quality Level (AQL) sampling</strong> per ISO 2859-1:</p>
+
+  <table>
+    <tr><th>Defect Severity</th><th>Typical AQL</th><th>Example</th></tr>
+    <tr><td>Critical (safety/function failure)</td><td>0 (100% inspection)</td><td>Wrong material, cracked part</td></tr>
+    <tr><td>Major (likely rejection by customer)</td><td>1.0</td><td>Dimension out of tolerance, wrong thread</td></tr>
+    <tr><td>Minor (cosmetic, non-functional)</td><td>2.5–4.0</td><td>Light scratch, minor burr</td></tr>
+  </table>
+
+  <h2>Statistical Process Control (SPC)</h2>
+
+  <p>SPC transforms inspection from a pass/fail gate into a predictive quality tool. By tracking dimensional measurements over time, you can detect trends and make corrections <strong>before</strong> parts go out of tolerance.</p>
+
+  <h3>Key SPC Metrics</h3>
+  <ul>
+    <li><strong>Cp (Process Capability):</strong> Measures whether the process spread fits within the tolerance band. Cp = tolerance width / (6 × standard deviation). Target: Cp ≥ 1.33.</li>
+    <li><strong>Cpk (Process Capability Index):</strong> Like Cp, but accounts for process centering. A process can have high Cp but low Cpk if the mean is shifted off-center. Target: Cpk ≥ 1.33 (≥ 1.67 for critical features).</li>
+    <li><strong>X-bar and R charts:</strong> Control charts that track the mean and range of sample measurements over time. Points outside control limits signal an assignable cause that needs investigation.</li>
+  </ul>
+
+  <h3>SPC in Practice</h3>
+  <p>For a CNC production run, practical SPC implementation looks like:</p>
+  <ol>
+    <li>Identify 3–5 critical dimensions for SPC tracking</li>
+    <li>Sample 5 consecutive parts every 30–60 minutes (or every 50 parts)</li>
+    <li>Measure and plot on X-bar/R charts</li>
+    <li>React to trends (7 consecutive points above or below the mean) before limits are exceeded</li>
+    <li>Document any process adjustments and their causes</li>
+  </ol>
+
+  <h2>Inspection Equipment Calibration</h2>
+
+  <p>All inspection results are only as good as the equipment calibration. A quality CNC supplier maintains:</p>
+  <ul>
+    <li><strong>Calibration schedules:</strong> All measurement equipment calibrated at defined intervals (typically 6–12 months)</li>
+    <li><strong>Traceability:</strong> Calibration standards traceable to national standards (NIST, PTB, NML)</li>
+    <li><strong>Calibration records:</strong> Certificates for every instrument, available for customer audit</li>
+    <li><strong>Environmental control:</strong> Measurement room temperature maintained at 20°C ± 1°C (per ISO 1, the standard reference temperature for dimensional measurement)</li>
+  </ul>
+
+  <h2>What to Ask Your CNC Supplier About Quality</h2>
+
+  <p>When evaluating a CNC supplier's inspection capabilities, ask these specific questions:</p>
+
+  <ol>
+    <li>What CMM equipment do you have? (Brand, model, measurement volume, last calibration date)</li>
+    <li>Do you perform in-process SPC on production runs? Can you share Cpk data?</li>
+    <li>What surface roughness testing equipment do you use?</li>
+    <li>Can you provide First Article Inspection reports? In what format?</li>
+    <li>How do you handle non-conforming parts? (Document your NCR process)</li>
+    <li>Is your measurement room temperature-controlled?</li>
+    <li>What AQL standards do you use for final inspection?</li>
+    <li>Can I audit your quality systems? (Any good supplier says yes)</li>
+  </ol>
+
+  <p>For more supplier evaluation guidance, see our articles on <a href="/blog/how-to-choose-cnc-machine-shop.html">choosing a CNC machine shop</a> and <a href="/blog/choose-cnc-machining-partner-taiwan.html">choosing a Taiwan CNC partner</a>.</p>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <h3>What is CMM inspection for CNC parts?</h3>
+  <p>CMM (Coordinate Measuring Machine) inspection uses a precision probe to measure the exact coordinates of points on a part's surface, then calculates dimensions, positions, and geometric features. CMMs can measure to accuracies of ±0.001–0.003 mm and are the standard method for verifying critical dimensions on CNC machined parts.</p>
+
+  <h3>How often should CNC parts be inspected during production?</h3>
+  <p>Inspection frequency depends on process capability (Cpk) and part criticality. Common practice: 100% inspection on first piece after setup, then sample every 20–50 parts for critical dimensions during the run. For stable processes with Cpk > 1.67, sampling can be reduced to every 100+ parts. Final outgoing inspection uses AQL sampling per ISO 2859-1.</p>
+
+  <h3>What is the difference between CMM and optical inspection?</h3>
+  <p>CMM inspection uses a physical touch probe and measures individual points with high accuracy (±0.001 mm). Optical inspection uses cameras and vision systems to measure 2D profiles and can capture hundreds of dimensions in seconds. CMM is better for 3D features, true position, and GD&T verification. Optical is faster for 2D profile dimensions on small, flat, or turned parts.</p>
+
+  <h3>What is a First Article Inspection Report (FAIR)?</h3>
+  <p>A First Article Inspection Report is a comprehensive dimensional report that verifies every dimension, tolerance, and specification on the engineering drawing against an actual production part. It's typically performed on 1–3 parts from the first production setup and serves as documented proof that the manufacturing process can produce conforming parts. AS9102 is the aerospace standard for FAIRs.</p>
+
+  <h3>How do you measure surface roughness on CNC parts?</h3>
+  <p>Surface roughness is measured with a profilometer — a device that drags a diamond-tipped stylus across the surface and records the height variations. The most common parameter is Ra (arithmetic average roughness), measured in micrometers (µm) or microinches (µin). Typical CNC machined surfaces range from Ra 0.4 µm (fine turning/grinding) to Ra 3.2 µm (standard milling).</p>
+
+  <div class="cta-box">
+    <h3>Quality You Can Verify</h3>
+    <p>KING HAN operates CMM, optical vision systems, surface profilometers, and roundness testers. Every order includes dimensional inspection reports, and we provide full FAI documentation on request.</p>
+    <a href="/#contact">Get a Free Quote →</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 KING HAN PRECISION INDUSTRY LTD. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鑫瀚精密工業有限公司 | KING HAN PRECISION INDUSTRY</title>
+<meta name="description" content="走心式CNC車床專業加工，26台設備穩定量產，加工區間ø3.0–25mm。彰化精密零件製造商。">
+<link rel="icon" type="image/png" href="logo.png">
+<style>
+  :root {
+    --bg-dark: #0d1117;
+    --bg-section: #161b22;
+    --bg-card: #1c2333;
+    --accent: #f0a500;
+    --accent-dim: #c48800;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --border: #30363d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, 'Segoe UI', 'Noto Sans TC', sans-serif; background: var(--bg-dark); color: var(--text); line-height: 1.7; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(13,17,23,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 2rem; height: 64px;
+  }
+  .logo { font-size: 1.1rem; font-weight: 700; color: var(--accent); letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
+  .logo img { height: 36px; width: 36px; border-radius: 50%; }
+  .logo span { color: var(--text); font-weight: 400; }
+  nav ul { list-style: none; display: flex; gap: 1.5rem; }
+  nav a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  nav a:hover { color: var(--accent); }
+  .nav-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 120px 2rem 80px;
+    background: linear-gradient(160deg, #0d1117 0%, #1a1f2e 50%, #0d1117 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 40%, rgba(240,165,0,0.06) 0%, transparent 60%),
+                radial-gradient(circle at 70% 60%, rgba(240,165,0,0.04) 0%, transparent 50%);
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero-tag { color: var(--accent); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 800; margin-bottom: 1rem; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p { color: var(--text-dim); font-size: clamp(1rem, 2vw, 1.25rem); max-width: 650px; margin-bottom: 2.5rem; }
+  .hero-stats { display: flex; gap: 3rem; margin-bottom: 3rem; flex-wrap: wrap; justify-content: center; }
+  .hero-stats div { text-align: center; }
+  .hero-stats strong { display: block; font-size: 2.2rem; color: var(--accent); font-weight: 800; }
+  .hero-stats span { font-size: 0.85rem; color: var(--text-dim); }
+  .btn {
+    display: inline-block; padding: 14px 36px; background: var(--accent); color: #000;
+    font-weight: 700; text-decoration: none; border-radius: 4px; font-size: 1rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn:hover { background: var(--accent-dim); transform: translateY(-2px); }
+
+  /* SECTIONS */
+  section { padding: 80px 2rem; }
+  .section-alt { background: var(--bg-section); }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-title {
+    text-align: center; margin-bottom: 3rem;
+  }
+  .section-title h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+  .section-title p { color: var(--text-dim); }
+  .section-title .line { width: 50px; height: 3px; background: var(--accent); margin: 1rem auto 0; }
+
+  /* ABOUT */
+  .about-text { max-width: 800px; margin: 0 auto; text-align: center; }
+  .about-text p { margin-bottom: 1rem; color: var(--text-dim); font-size: 1.05rem; }
+
+  /* EQUIPMENT TABLE */
+  .eq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .eq-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .eq-card .icon { font-size: 1.8rem; flex-shrink: 0; width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(240,165,0,0.1); border-radius: 8px;
+  }
+  .eq-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+  .eq-card p { color: var(--text-dim); font-size: 0.9rem; }
+
+  /* ADVANTAGES */
+  .adv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .adv-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 2rem; text-align: center; transition: border-color 0.3s, transform 0.3s;
+  }
+  .adv-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .adv-card .emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+  .adv-card h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+  .adv-card p { color: var(--text-dim); font-size: 0.9rem; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .contact-info div { margin-bottom: 1.5rem; }
+  .contact-info .label { color: var(--accent); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
+  .contact-info p { color: var(--text-dim); }
+  .contact-map {
+    width: 100%; height: 300px; border-radius: 8px; border: 1px solid var(--border);
+    filter: grayscale(0.8) brightness(0.8); transition: filter 0.3s;
+  }
+  .contact-map:hover { filter: grayscale(0.3) brightness(1); }
+
+  /* CTA */
+  .cta-section {
+    text-align: center; padding: 80px 2rem;
+    background: linear-gradient(160deg, var(--bg-section), var(--bg-dark));
+  }
+  .cta-section h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+  .cta-section p { color: var(--text-dim); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2rem; border-top: 1px solid var(--border);
+    color: var(--text-dim); font-size: 0.85rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav ul { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0;
+      background: rgba(13,17,23,0.98); padding: 1rem 2rem; gap: 1rem; }
+    nav ul.open { display: flex; }
+    .nav-toggle { display: block; }
+    .hero-stats { gap: 1.5rem; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><img src="logo.png" alt="KH Logo">KING HAN <span>PRECISION</span></div>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="#about">公司簡介</a></li>
+    <li><a href="#equipment">設備能力</a></li>
+    <li><a href="#advantages">服務優勢</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+    <li><a href="/sourcing-service.html" style="color:var(--accent)">🌐 Sourcing Service</a></li>
+    <li><a href="/quote-calculator/" style="color:var(--accent)">💰 Quote Calculator</a></li>
+    <li><a href="/quote-calculator/zh/" style="color:var(--accent)">🇹🇼 中文報價</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/shop.html" style="color:var(--accent)">🛒 Shop</a></li>
+    <li><a href="/zh/" style="border:1px solid var(--accent);color:var(--accent);padding:4px 12px;border-radius:4px;font-size:0.85rem">🇹🇼 中文版</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">CNC Swiss-Type Lathe Specialists</div>
+  <h1>精密，<em>源於專注</em></h1>
+  <p>走心式車床專業加工｜穩定量產｜加工區間 ø3.0–25 mm</p>
+  <div class="hero-stats">
+    <div><strong>26</strong><span>台走心式車床</span></div>
+    <div><strong>ø3–25</strong><span>mm 加工直徑</span></div>
+    <div><strong>5+</strong><span>產業領域服務</span></div>
+  </div>
+  <a href="#contact" class="btn">立即諮詢 ➜</a>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section-alt">
+  <div class="container">
+    <div class="section-title">
+      <h2>公司簡介</h2>
+      <p>About KING HAN</p>
+      <div class="line"></div>
+    </div>
+    <div class="about-text">
+      <p>鑫瀚精密工業有限公司成立於彰化，專注走心式（Swiss-Type）CNC 車床加工。我們以產線型工廠模式運作，配備 26 台走心式車床，主力加工直徑範圍 ø3.0–25 mm，從小徑精密零件到中徑結構件皆能穩定供應。</p>
+      <p>多年來，鑫瀚秉持「精準、穩定、準時」的經營理念，服務涵蓋汽車零組件、醫療器材、電子連接器、航太扣件等產業，深獲客戶信賴。</p>
+      <p style="color: var(--text); font-style: italic; margin-top: 1.5rem;">Based in Changhua, Taiwan — serving automotive, medical, electronics, and aerospace industries worldwide.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPMENT -->
+<section id="equipment">
+  <div class="container">
+    <div class="section-title">
+      <h2>設備能力</h2>
+      <p>Equipment & Capabilities</p>
+      <div class="line"></div>
+    </div>
+    <div class="eq-grid">
+      <div class="eq-card">
+        <div class="icon">⚙️</div>
+        <div><h3>設備類型</h3><p>走心式（Swiss-Type）CNC 車床</p></div>
+      </div>
+      <div class="eq-card">
+        <div class="icon">🏭</div>
+        <div><h3>設備數量</h3><p>26 台，產線型配置</p></div>
+      </div>
+      <div class="eq-card">
+        <div class="icon">📏</div>
+        <div><h3>加工直徑</h3><p>ø3.0 mm – ø25 mm</p></div>
+      </div>
+      <div class="eq-card">
+        <div class="icon">🔧</div>
+        <div><h3>加工材質</h3><p>不鏽鋼、碳鋼、銅合金、鋁合金、鈦合金</p></div>
+      </div>
+      <div class="eq-card">
+        <div class="icon">🔩</div>
+        <div><h3>製程能力</h3><p>車削、鑽孔、攻牙、偏心加工、複合加工</p></div>
+      </div>
+      <div class="eq-card">
+        <div class="icon">📦</div>
+        <div><h3>生產模式</h3><p>產線型量產，支援中高量穩定出貨</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVANTAGES -->
+<section id="advantages" class="section-alt">
+  <div class="container">
+    <div class="section-title">
+      <h2>服務優勢</h2>
+      <p>Why KING HAN</p>
+      <div class="line"></div>
+    </div>
+    <div class="adv-grid">
+      <div class="adv-card">
+        <div class="emoji">🔩</div>
+        <h3>專注走心加工</h3>
+        <p>深耕走心式車床領域，技術經驗累積深厚，專業度高於綜合加工廠。</p>
+      </div>
+      <div class="adv-card">
+        <div class="emoji">⚙️</div>
+        <h3>26 台設備，產能充沛</h3>
+        <p>產線型配置確保大批量訂單穩定交付，彈性調度降低交期風險。</p>
+      </div>
+      <div class="adv-card">
+        <div class="emoji">📏</div>
+        <h3>精準掌控 ø3.0–25 mm</h3>
+        <p>主力區間涵蓋業界最常見規格，一站滿足多元零件需求。</p>
+      </div>
+      <div class="adv-card">
+        <div class="emoji">📦</div>
+        <h3>穩定量產，品質一致</h3>
+        <p>標準化製程管理，確保首件到末件品質如一，批次間差異最小化。</p>
+      </div>
+      <div class="adv-card">
+        <div class="emoji">🤝</div>
+        <h3>務實合作，快速回應</h3>
+        <p>報價迅速、溝通直接、交期明確，與客戶建立長期信賴關係。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-title">
+      <h2>聯絡我們</h2>
+      <p>Contact</p>
+      <div class="line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div>
+          <div class="label">📍 地址 Address</div>
+          <p>彰化縣彰化市寶廍路 380 號</p>
+          <p>No. 380, Baobu Rd., Changhua City, Taiwan</p>
+        </div>
+        <div>
+          <div class="label">📞 電話 Phone</div>
+          <p>04-786-3027 ｜ +886-4-786-3027</p>
+        </div>
+        <div>
+          <div class="label">🕐 營業時間 Hours</div>
+          <p>週一至週五 Mon–Fri 08:00–17:00</p>
+        </div>
+      </div>
+      <iframe class="contact-map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3636.5!2d120.52!3d24.08!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z5b2w5YyW57ij5b2w5YyW5biC5a-25buw6Lev380!5e0!3m2!1szh-TW!2stw!4v1"
+        allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>需要穩定的精密零件供應商？</h2>
+  <p>立即聯繫鑫瀚，讓我們為您的產品提供最可靠的加工方案。</p>
+  <a href="tel:+886-4-786-3027" class="btn">立即來電 ➜</a>
+</section>
+
+<footer>
+  <p>&copy; 2026 鑫瀚精密工業有限公司 KING HAN PRECISION INDUSTRY LTD. All rights reserved.</p>
+  <div style="margin-top:12px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.15); font-size:0.85rem;">
+    <p style="margin-bottom:6px"><strong>🔗 Our Other Sites</strong></p>
+    <a href="https://fintools-tw.github.io" style="color:#90caf9; margin-right:12px;">台灣財經工具</a>
+    <a href="https://tools-by-jarvis.github.io" style="color:#90caf9; margin-right:12px;">AI Tools Review</a>
+    <a href="https://healthtools-ai.github.io" style="color:#90caf9;">Health Tools</a>
+  </div>
+</footer>
+
+</body>
+</html>
